@@ -9,8 +9,8 @@ Requisitos:
 - pip install groq python-dotenv
 - Arquivo .env com GROQ_API_KEY
 
-Autor: [Seu Nome]
-Data: 25 Nov 2024
+Autor: Renato Saldanha
+Data: 24 Nov 2025
 """
 
 import os

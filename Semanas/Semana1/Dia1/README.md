@@ -1,4 +1,4 @@
-# 📅 Dia 1 - Terça-feira (25 Nov 2024)
+# 📅 Dia 1 - Segunda-feira (24 Nov 2024)
 
 ## 🎯 Contexto para Agentes IA
 
@@ -10,13 +10,13 @@ Este é o **primeiro dia** do plano de desenvolvimento de 2 meses em Desenvolvim
 - **Foco:** Configuração de ambiente e primeira integração com IA
 
 ### 🗺️ Estrutura do Plano:
-- **Semana 1:** Fundamentos de IA Generativa (25 Nov - 1 Dez)
-- **Dia 1 (hoje - Terça):** Setup APIs + Tutorial básico prompting
-- **Dia 2 (Quarta):** Script 1 - Gerador de conteúdo para blog
-- **Dia 3 (Quinta):** Script 2 - Analisador de sentimentos
-- **Dia 4 (Sexta):** Script 3 - Resumidor de PDFs
-- **Dia 5 (Sábado):** Refatoração + Documentação
-- **Dia 6-7 (Domingo-Segunda):** Projeto integrado CLI
+- **Semana 1:** Fundamentos de IA Generativa (24 Nov - 30 Nov)
+- **Dia 1 (hoje - Segunda):** Setup APIs + Tutorial básico prompting
+- **Dia 2 (Terça):** Script 1 - Gerador de conteúdo para blog
+- **Dia 3 (Quarta):** Script 2 - Analisador de sentimentos
+- **Dia 4 (Quinta):** Script 3 - Resumidor de PDFs
+- **Dia 5 (Sexta):** Refatoração + Documentação
+- **Dia 6-7 (Sábado-Domingo):** Projeto integrado CLI
 
 ### 📁 Arquivos neste diretório:
 - `README.md` - Este arquivo (contexto)
@@ -31,7 +31,7 @@ Este é o **primeiro dia** do plano de desenvolvimento de 2 meses em Desenvolvim
 2. Configurar APIs (Groq, Gemini, Claude)
 3. Executar `hello_ai_groq.py`
 4. Preencher journal ao final do dia
-5. Preparar para Dia 2 - Quarta-feira (Gerador de conteúdo)
+5. Preparar para Dia 2 - Terça-feira (Gerador de conteúdo)
 
 ### 💡 Notas Importantes:
 - **Meta realista:** 80% de aderência é excelente
@@ -47,5 +47,5 @@ Este é o **primeiro dia** do plano de desenvolvimento de 2 meses em Desenvolvim
 ---
 
 **Status:** 🟡 Em progresso  
-**Última atualização:** 25 Nov 2024
+**Última atualização:** 24 Nov 2024
 

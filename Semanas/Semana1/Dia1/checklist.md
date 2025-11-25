@@ -1,4 +1,4 @@
-# ✅ Checklist - Dia 1 (Terça-feira, 25 Nov 2024)
+# ✅ Checklist - Dia 1 (Segunda-feira, 24 Nov 2024)
 
 ## 🎯 Objetivo do Dia
 Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI"
@@ -77,9 +77,9 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 - [ X] Verificar tempo de resposta (Groq é ultra-rápido!)
 
 ### Git
-- [ ] Adicionar arquivos: `git add .`
-- [ ] Commit: `git commit -m "First AI integration with Groq - Hello AI 2025"`
-- [ ] Push: `git push origin main`
+- [ X] Adicionar arquivos: `git add .`
+- [ X] Commit: `git commit -m "First AI integration with Groq - Hello AI 2025"`
+- [ X] Push: `git push origin main`
 
 **Tempo estimado:** 60 minutos  
 **Quando:** 19:00-20:00
@@ -89,18 +89,22 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 ## 📝 FASE 4: FINALIZAÇÃO (30min - 20:00-20:30)
 
 ### Journal e Planejamento
-- [ ] Abrir arquivo `journal.md`
-- [ ] Preencher journal com o que fez hoje
-- [ ] Anotar dificuldades encontradas
-- [ ] Planejar 3 tarefas para amanhã (Quarta-feira):
-  1. 
-  2. 
-  3. 
+- [ X] Abrir arquivo `journal.md`
+- [ X] Preencher journal com o que fez hoje
+- [ X] Anotar dificuldades encontradas
+- [ X] Planejar 3 tarefas para amanhã (Terça-feira):
+
+  **Seu planejamento:**  
+  1. Criar arquivo `gerador_conteudo_blog.py` com função que recebe tema e gera parágrafo introdutório usando Groq API
+  2. Testar script com 3 temas diferentes (ex: "IA", "Python", "Web Dev") e salvar resultados
+  3. Adicionar tratamento de erros e mensagens informativas ao usuário
+  
+  *(Veja mais exemplos em: `EXEMPLOS_TAREFAS.md`)*
 
 ### Revisão
-- [ ] Revisar código escrito hoje
-- [ ] Verificar se tudo está funcionando
-- [ ] Confirmar commit no GitHub
+- [ X] Revisar código escrito hoje
+- [ X] Verificar se tudo está funcionando
+- [ X] Confirmar commit no GitHub
 
 **Tempo estimado:** 30 minutos  
 **Quando:** 20:00-20:30
@@ -112,12 +116,12 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 **Total estimado:** 3-4 horas
 
 ### ✅ Critérios de Sucesso:
-- [ ] Contas criadas (Groq, Gemini, opcional Claude)
-- [ ] Ambiente Python configurado
-- [ ] Primeiro script funcionando
-- [ ] Commit feito no GitHub
-- [ ] Journal preenchido
-- [ ] WakaTime instalado
+- [ X] Contas criadas (Groq, Gemini, opcional Claude)
+- [ X] Ambiente Python configurado
+- [ X] Primeiro script funcionando
+- [ X] Commit feito no GitHub
+- [ X] Journal preenchido
+- [ X] WakaTime instalado
 
 ### 🎯 Streak: 1/56 dias
 
@@ -133,5 +137,5 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 
 ---
 
-**Última atualização:** 25 Nov 2024
+**Última atualização:** 24 Nov 2024
 

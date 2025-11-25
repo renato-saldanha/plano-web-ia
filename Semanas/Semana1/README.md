@@ -1,6 +1,6 @@
 # 📅 Semana 1: Fundamentos de IA Generativa
 
-**Período:** 25 Nov - 1 Dez 2024  
+**Período:** 24 Nov - 30 Nov 2024  
 **Objetivo:** Entender conceitos básicos de IA e criar primeiros scripts de automação
 
 ---
@@ -18,13 +18,13 @@
 
 | Dia | Data | Dia da Semana | Foco | Entrega |
 |-----|------|---------------|------|---------|
-| **Dia 1** | 25/11 | Terça-feira | Setup APIs + Tutorial básico prompting | Hello AI funcionando |
-| **Dia 2** | 26/11 | Quarta-feira | Script 1 - Gerador de conteúdo para blog | Script funcionando |
-| **Dia 3** | 27/11 | Quinta-feira | Script 2 - Analisador de sentimentos (3 LLMs) | Comparação documentada |
-| **Dia 4** | 28/11 | Sexta-feira | Script 3 - Resumidor de documentos PDF | Script funcionando |
-| **Dia 5** | 29/11 | Sábado | Refatorar scripts + Documentação | Código limpo + README |
-| **Dia 6** | 30/11 | Domingo | Projeto integrado: CLI para múltiplas automações | CLI funcional |
-| **Dia 7** | 01/12 | Segunda-feira | Deploy no GitHub + README épico + Review | Projeto completo |
+| **Dia 1** | 24/11 | Segunda-feira | Setup APIs + Tutorial básico prompting | Hello AI funcionando |
+| **Dia 2** | 25/11 | Terça-feira | Script 1 - Gerador de conteúdo para blog | Script funcionando |
+| **Dia 3** | 26/11 | Quarta-feira | Script 2 - Analisador de sentimentos (3 LLMs) | Comparação documentada |
+| **Dia 4** | 27/11 | Quinta-feira | Script 3 - Resumidor de documentos PDF | Script funcionando |
+| **Dia 5** | 28/11 | Sexta-feira | Refatorar scripts + Documentação | Código limpo + README |
+| **Dia 6** | 29/11 | Sábado | Projeto integrado: CLI para múltiplas automações | CLI funcional |
+| **Dia 7** | 30/11 | Domingo | Deploy no GitHub + README épico + Review | Projeto completo |
 
 ---
 
@@ -75,7 +75,7 @@ Semana1/
 
 ## ✅ Checklist Semanal
 
-- [ ] Dia 1 completo (Setup)
+- [x] Dia 1 completo (Setup) ✅
 - [ ] Dia 2 completo (Gerador de conteúdo)
 - [ ] Dia 3 completo (Analisador de sentimentos)
 - [ ] Dia 4 completo (Resumidor de PDF)
@@ -86,5 +86,5 @@ Semana1/
 ---
 
 **Status:** 🟡 Em progresso  
-**Progresso:** 0/7 dias completos
+**Progresso:** 1/7 dias completos (14%)
 
