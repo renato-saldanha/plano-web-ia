@@ -14,6 +14,7 @@ Data: 24 Nov 2025
 """
 
 import os
+import time
 from dotenv import load_dotenv
 from groq import Groq
 
@@ -46,7 +47,7 @@ print("⏳ Gerando resposta...\n")
 # Lista de modelos para tentar (em ordem de preferência)
 modelos = [
     "llama-3.1-8b-instant",      # Modelo rápido e eficiente
-    "llama-3.1-70b-versatile",   # Modelo mais poderoso
+    "llama-3.3-70b-versatile",   # Modelo mais poderoso
     "mixtral-8x7b-32768",        # Alternativa
 ]
 
@@ -58,6 +59,10 @@ try:
     for modelo in modelos:
         try:
             print(f"🔄 Tentando modelo: {modelo}...")
+            
+            # Medir tempo em milissegundos
+            inicio_ms = time.perf_counter() * 1000  # Converter para ms
+            
             chat_completion = client.chat.completions.create(
                 messages=[
                     {
@@ -69,6 +74,10 @@ try:
                 temperature=0.7,
                 max_tokens=150
             )
+            
+            fim_ms = time.perf_counter() * 1000  # Converter para ms
+            tempo_resposta_ms = fim_ms - inicio_ms
+            
             modelo_usado = modelo
             print(f"✅ Modelo {modelo} funcionou!\n")
             break
@@ -95,7 +104,8 @@ try:
     print(f"\n📊 Informações:")
     print(f"   - Modelo usado: {modelo_usado}")
     print(f"   - Tokens usados: {chat_completion.usage.total_tokens}")
-    print(f"   - Tempo de resposta: Ultra-rápido! ⚡")
+    print(f"   - Tempo de resposta: {tempo_resposta_ms:.0f} ms ({tempo_resposta_ms/1000:.3f} segundos) ⚡")
+    print(f"   - Velocidade: {chat_completion.usage.total_tokens / (tempo_resposta_ms/1000):.1f} tokens/segundo")
     
     print("\n✅ Primeira integração com IA concluída com sucesso!")
     print("🎉 Parabéns! Você completou o Dia 1!")
