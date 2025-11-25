@@ -8,10 +8,10 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 ## 📋 FASE 1: LEITURA E PLANEJAMENTO (45-60min)
 
 ### Leitura Inicial
-- [ ] Ler `plano_desenvolvimento_2meses_v2.md` completo
-- [ ] Entender as 8 semanas e expectativas REALISTAS (80% aderência)
+- [ X] Ler `plano_desenvolvimento_2meses_v2.md` completo
+- [ X] Entender as 8 semanas e expectativas REALISTAS (80% aderência)
 - [ ] Escolher 1 das 4 opções de projeto final (ver plano, Semana 7)
-- [ ] Mentalizar o compromisso de 2 meses
+- [ X] Mentalizar o compromisso de 2 meses
 
 **Tempo estimado:** 45-60 minutos  
 **Quando:** Durante almoço ou antes do jantar
@@ -21,38 +21,38 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 ## 🔧 FASE 2: SETUP TÉCNICO (70min - 17:20-18:30)
 
 ### Contas e APIs
-- [ ] Criar conta Groq (GRÁTIS!) → [console.groq.com](https://console.groq.com)
-  - [ ] Obter API key
-  - [ ] Salvar em local seguro
-- [ ] Criar conta Google AI Studio (Gemini - GRÁTIS) → [ai.google.dev](https://ai.google.dev)
-  - [ ] Obter API key
-  - [ ] Salvar em local seguro
-- [ ] (Opcional) Criar conta Anthropic (Claude) → [console.anthropic.com](https://console.anthropic.com)
-  - [ ] Obter API key ($5 grátis)
-  - [ ] Salvar em local seguro
+- [ X] Criar conta Groq (GRÁTIS!) → [console.groq.com](https://console.groq.com)
+  - [ X] Obter API key
+  - [ X] Salvar em local seguro
+- [ X] Criar conta Google AI Studio (Gemini - GRÁTIS) → [ai.google.dev](https://ai.google.dev)
+  - [ X] Obter API key
+  - [ X] Salvar em local seguro
+- [ X] (Opcional) Criar conta Anthropic (Claude) → [console.anthropic.com](https://console.anthropic.com)
+  - [ X] Obter API key ($5 grátis)
+  - [ X] Salvar em local seguro
 
 ### Ambiente de Desenvolvimento
-- [ ] Verificar Python instalado: `python --version` (deve ser 3.12+)
-- [ ] Criar ambiente virtual: `python -m venv venv`
-- [ ] Ativar venv:
+- [ X] Verificar Python instalado: `python --version` (deve ser 3.12+)
+- [ X] Criar ambiente virtual: `python -m venv venv`
+- [ X] Ativar venv:
   - Windows: `venv\Scripts\activate`
   - Mac/Linux: `source venv/bin/activate`
-- [ ] Instalar dependências:
+- [ X] Instalar dependências:
   ```bash
   pip install groq anthropic google-generativeai python-dotenv
   ```
 
 ### GitHub e Tracking
-- [ ] Criar repositório GitHub "2-month-ai-journey-2025"
-- [ ] Clonar ou inicializar git no projeto
-- [ ] Instalar WakaTime (tracking automático) → [wakatime.com](https://wakatime.com)
-  - [ ] Instalar extensão VS Code/Cursor
-  - [ ] Configurar API key do WakaTime
+- [ X] Criar repositório GitHub "2-month-ai-journey-2025"
+- [ X] Clonar ou inicializar git no projeto
+- [ X] Instalar WakaTime (tracking automático) → [wakatime.com](https://wakatime.com)
+  - [ X] Instalar extensão VS Code/Cursor
+  - [X ] Configurar API key do WakaTime
 
 ### Organização
-- [ ] Criar estrutura de pastas (já criada: Semanas/Semana1/Dia1/)
-- [ ] Criar arquivo `.env` (usar `.env.example` como template)
-- [ ] Adicionar `.env` ao `.gitignore`
+- [ X] Criar estrutura de pastas (já criada: Semanas/Semana1/Dia1/)
+- [ X] Criar arquivo `.env` (usar `.env.example` como template)
+- [ X] Adicionar `.env` ao `.gitignore`
 
 **Tempo estimado:** 70 minutos  
 **Quando:** 17:20-18:30
@@ -62,19 +62,19 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 ## 💻 FASE 3: PRIMEIRO CÓDIGO (60min - 19:00-20:00)
 
 ### Hello AI com Groq
-- [ ] Abrir arquivo `hello_ai_groq.py`
-- [ ] Configurar API key no `.env`:
+- [ X] Abrir arquivo `hello_ai_groq.py`
+- [ X] Configurar API key no `.env`:
   ```env
   GROQ_API_KEY=sua_chave_aqui
   ```
-- [ ] Executar script: `python hello_ai_groq.py`
-- [ ] Verificar resposta do Llama 3.2
-- [ ] Testar com diferentes prompts
+- [ X] Executar script: `python hello_ai_groq.py`
+- [ X] Verificar resposta do Llama 3.2
+- [ X] Testar com diferentes prompts
 
 ### Teste Básico
-- [ ] Modificar prompt no script
-- [ ] Testar novamente
-- [ ] Verificar tempo de resposta (Groq é ultra-rápido!)
+- [X] Modificar prompt no script
+- [ X] Testar novamente
+- [ X] Verificar tempo de resposta (Groq é ultra-rápido!)
 
 ### Git
 - [ ] Adicionar arquivos: `git add .`
