@@ -13,7 +13,6 @@ if not groq_api_key:
 
 client = Groq(api_key=groq_api_key)
 
-
 def gerar_conteudo_tema(tema: str): 
     if not tema:
         raise ValueError("Favor escolher um tema.")

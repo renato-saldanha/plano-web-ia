@@ -1,3 +1,5 @@
+
+
 # 🔧 Troubleshooting: Autocomplete não funciona no Python
 
 Guia para resolver problemas de autocomplete/IntelliSense no Python.

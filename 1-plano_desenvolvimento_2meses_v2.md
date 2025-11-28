@@ -1,7 +1,7 @@
 # 📚 Plano de Desenvolvimento Pessoal - 2 Meses (v2.0 - 2025)
 **Área:** Desenvolvimento Web Integrado à Automações com IA Generativa  
 **Período:** 2 meses (8 semanas / ~56 dias)  
-**Início:** 25 de Novembro de 2024  
+**Início:** 25 de Novembro de 2025  
 **Versão:** 2.0 - Atualizado para 2025 | Expectativas Realistas
 
 ---

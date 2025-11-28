@@ -76,8 +76,8 @@ Semana1/
 ## ✅ Checklist Semanal
 
 - [x] Dia 1 completo (Setup) ✅
-- [ ] Dia 2 completo (Gerador de conteúdo)
-- [ ] Dia 3 completo (Analisador de sentimentos)
+- [x] Dia 2 completo (Gerador de conteúdo) ✅
+- [ ] Dia 3 completo (Analisador de sentimentos) 🟡
 - [ ] Dia 4 completo (Resumidor de PDF)
 - [ ] Dia 5 completo (Refatoração)
 - [ ] Dia 6 completo (CLI integrado)
@@ -86,5 +86,5 @@ Semana1/
 ---
 
 **Status:** 🟡 Em progresso  
-**Progresso:** 1/7 dias completos (14%)
+**Progresso:** 2/7 dias completos (29%)
 

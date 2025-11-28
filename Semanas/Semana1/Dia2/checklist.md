@@ -90,19 +90,17 @@ Criar Script 1 - Gerador de conteúdo para blog usando Groq API
 ## 📝 FASE 4: FINALIZAÇÃO (30min - 20:00-20:30)
 
 ### Git e Organização
-- [ ] Adicionar arquivos: `git add .`
-- [ ] Commit: `git commit -m "Dia 2: Gerador de conteúdo para blog funcionando"`
-- [ ] Push: `git push origin main`
+- [ X] Adicionar arquivos: `git add .`
+- [ X] Commit: `git commit -m "Dia 2: Gerador de conteúdo para blog funcionando"`
+- [ X] Push: `git push origin main`
 
 ### Journal e Planejamento
-- [ ] Abrir arquivo `journal.md`
-- [ ] Preencher journal com o que fez hoje
-- [ ] Anotar dificuldades encontradas
-- [ ] Anotar aprendizados sobre prompt engineering
-- [ ] Planejar 3 tarefas para amanhã (Quarta-feira - Analisador de sentimentos):
-  1. 
-  2. 
-  3. 
+- [ X] Abrir arquivo `journal.md`
+- [ X] Preencher journal com o que fez hoje
+- [ X] Anotar dificuldades encontradas
+- [ X] Anotar aprendizados sobre prompt engineering
+- [ X] Planejar 3 tarefas para amanhã (Quarta-feira - Analisador de sentimentos):
+  
 
 **Tempo estimado:** 30 minutos  
 **Quando:** 20:00-20:30
@@ -114,13 +112,13 @@ Criar Script 1 - Gerador de conteúdo para blog usando Groq API
 **Total estimado:** 3 horas
 
 ### ✅ Critérios de Sucesso:
-- [ ] Script `gerador_conteudo_blog.py` criado e funcionando
-- [ ] Função gera parágrafo introdutório a partir de um tema
-- [ ] Testado com 3 temas diferentes
-- [ ] Resultados salvos em arquivos
-- [ ] Tratamento de erros implementado
-- [ ] Commit feito no GitHub
-- [ ] Journal preenchido
+- [ X] Script `gerador_conteudo_blog.py` criado e funcionando
+- [ X] Função gera parágrafo introdutório a partir de um tema
+- [ X] Testado com 3 temas diferentes
+- [ X] Resultados salvos em arquivos
+- [ X] Tratamento de erros implementado
+- [ X] Commit feito no GitHub
+- [ X] Journal preenchido
 
 ### 🎯 Streak: 2/56 dias
 
