@@ -1,6 +1,6 @@
 # 📋 Modelos Disponíveis no Groq
 
-Lista de modelos que funcionam na API do Groq (atualizado 2024).
+Lista de modelos que funcionam na API do Groq (atualizado 2025).
 
 ---
 
@@ -47,5 +47,5 @@ Para ver todos os modelos disponíveis, consulte:
 
 ---
 
-**Última atualização:** 25 Nov 2024
+**Última atualização:** 25 Nov 2025
 

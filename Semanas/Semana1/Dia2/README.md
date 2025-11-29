@@ -12,10 +12,10 @@ Este é o **segundo dia** do plano de desenvolvimento de 2 meses em Desenvolvime
 ### 🗺️ Estrutura do Plano:
 - **Semana 1:** Fundamentos de IA Generativa (24 Nov - 30 Nov)
 - **Dia 1 (concluído):** Setup APIs + Tutorial básico prompting ✅
-- **Dia 2 (hoje):** Script 1 - Gerador de conteúdo para blog
+- **Dia 2 (concluído):** Script 1 - Gerador de conteúdo para blog ✅
 - **Dia 3:** Script 2 - Analisador de sentimentos
-- **Dia 4:** Script 3 - Resumidor de PDFs
-- **Dia 5:** Refatoração + Documentação
+- **Dia 4 (criado):** Script 3 - Resumidor de PDFs 📁
+- **Dia 5 (criado):** Refatoração + Documentação 📁
 - **Dia 6-7:** Projeto integrado CLI
 
 ### 📁 Arquivos neste diretório:
@@ -40,9 +40,12 @@ Este é o **segundo dia** do plano de desenvolvimento de 2 meses em Desenvolvime
 - Plano completo: `../../1-plano_desenvolvimento_2meses_v2.md`
 - Recursos: `../../3-recursos_e_links_uteis.md`
 - Dia 1: `../Dia1/hello_ai_groq.py` (referência de código)
+- Dia 3: `../Dia3/` (em desenvolvimento)
+- Dia 4: `../Dia4/` (estrutura criada)
+- Dia 5: `../Dia5/` (estrutura criada)
 
 ---
 
-**Status:** 🟡 Em progresso  
-**Última atualização:** 25 Nov 2024
+**Status:** ✅ Concluído  
+**Última atualização:** 25 Nov 2025
 

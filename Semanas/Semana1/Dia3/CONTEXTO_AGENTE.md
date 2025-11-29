@@ -18,9 +18,13 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 ### O que foi feito:
 - ✅ Dia 1: Setup APIs (Groq, Gemini, Claude) + Hello AI
 - ✅ Dia 2: Gerador de conteúdo para blog com Groq
+- ✅ Dia 4: Estrutura criada (Resumidor de PDFs)
+- ✅ Dia 5: Estrutura criada (Refatoração + Documentação)
 
 ### O que está em progresso:
 - 🟡 Dia 3: Analisador de sentimentos comparando múltiplos LLMs
+- 🟡 Dia 4: Resumidor de PDFs (estrutura criada, aguardando implementação)
+- 🟡 Dia 5: Refatoração (estrutura criada, aguardando implementação)
 
 ### O que falta fazer (hoje):
 - [ ] Criar script `analisador_sentimentos.py`
@@ -86,6 +90,7 @@ Criar analisador de sentimentos que usa múltiplos LLMs e compara os resultados 
 8. Preencher journal.md
 
 ### Próximo Dia (Dia 4 - Quinta-feira):
+- ✅ Estrutura criada (README, CONTEXTO_AGENTE, checklist, journal)
 - Criar script resumidor de documentos PDF
 - Usar múltiplos LLMs para resumir
 
@@ -164,6 +169,6 @@ Review 5: Decepcionado. O produto não corresponde ao que foi prometido na descr
 
 ---
 
-**Última atualização:** 26 Nov 2024  
+**Última atualização:** 26 Nov 2025  
 **Status:** 🟡 Em progresso
 

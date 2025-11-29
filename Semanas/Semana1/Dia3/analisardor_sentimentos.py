@@ -1,28 +1,6 @@
-"""
-
-## Review 1 - Positivo
-Este produto é incrível! Funciona perfeitamente e superou minhas expectativas. A qualidade é excelente e vale cada centavo. Recomendo muito!
-
-## Review 2 - Negativo
-Péssima qualidade, não recomendo. Quebrei após 2 dias de uso. O produto não corresponde ao que foi prometido na descrição. Muito decepcionado.
-
-## Review 3 - Neutro
-O produto é ok, nada especial mas funciona como esperado. Não é excelente mas também não é ruim. Serve para o propósito básico.
-
-## Review 4 - Positivo Detalhado
-Estou muito satisfeito com a compra. Entrega rápida e produto de qualidade superior. O atendimento ao cliente também foi excelente. O produto chegou bem embalado e em perfeitas condições. Com certeza compraria novamente e recomendaria para amigos e familiares. Excelente custo-benefício!
-
-## Review 5 - Negativo Detalhado
-Decepcionado. O produto não corresponde ao que foi prometido na descrição. A qualidade é inferior ao esperado e já apresentou problemas após uma semana de uso. O suporte ao cliente também deixou a desejar. Não recomendo esta compra e estou considerando pedir reembolso.
-
-"""
-
-import json
 import os
 import time
-from typing import Any
 from dotenv import load_dotenv
-from google.genai.types import GenerationConfig
 from groq import Groq
 from google import genai
 from google.genai import types

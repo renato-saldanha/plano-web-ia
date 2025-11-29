@@ -105,17 +105,17 @@ Criar Script 2 - Analisador de sentimentos de reviews comparando múltiplos LLMs
 ## 📝 FASE 4: FINALIZAÇÃO (30min - 20:00-20:30)
 
 ### Git e Organização
-- [ ] Adicionar arquivos: `git add .`
-- [ ] Commit: `git commit -m "Dia 3: Analisador de sentimentos com comparação de LLMs"`
-- [ ] Push: `git push origin main`
+- [ X] Adicionar arquivos: `git add .`
+- [ X] Commit: `git commit -m "Dia 3: Analisador de sentimentos com comparação de LLMs"`
+- [ X] Push: `git push origin main`
 
 ### Journal e Planejamento
-- [ ] Abrir arquivo `journal.md`
-- [ ] Preencher journal com o que fez hoje
-- [ ] Anotar dificuldades encontradas
-- [ ] Anotar aprendizados sobre comparação de LLMs
-- [ ] Documentar qual LLM foi melhor para análise de sentimentos
-- [ ] Planejar 3 tarefas para amanhã (Quinta-feira - Resumidor de PDFs):
+- [ X] Abrir arquivo `journal.md`
+- [ X] Preencher journal com o que fez hoje
+- [ X] Anotar dificuldades encontradas
+- [ X] Anotar aprendizados sobre comparação de LLMs
+- [ X] Documentar qual LLM foi melhor para análise de sentimentos
+- [ X] Planejar 3 tarefas para amanhã (Quinta-feira - Resumidor de PDFs):
 
 **Seu planejamento:**
 1. Criar script resumidor_pdf.py que recebe caminho de PDF e retorna resumo usando Groq
@@ -132,14 +132,14 @@ Criar Script 2 - Analisador de sentimentos de reviews comparando múltiplos LLMs
 **Total estimado:** 3 horas
 
 ### ✅ Critérios de Sucesso:
-- [ ] Script `analisador_sentimentos.py` criado e funcionando
-- [ ] Função de análise funciona com pelo menos 2 LLMs (Groq + Gemini)
-- [ ] Testado com 5 reviews diferentes
-- [ ] Tabela comparativa criada e salva em arquivo
-- [ ] Comparação mostra concordância/discordância entre LLMs
-- [ ] Tratamento de erros implementado
-- [ ] Commit feito no GitHub
-- [ ] Journal preenchido
+- [ X] Script `analisador_sentimentos.py` criado e funcionando
+- [ X] Função de análise funciona com pelo menos 2 LLMs (Groq + Gemini)
+- [ X] Testado com 5 reviews diferentes
+- [ X] Tabela comparativa criada e salva em arquivo
+- [ X] Comparação mostra concordância/discordância entre LLMs
+- [ X] Tratamento de erros implementado
+- [ X] Commit feito no GitHub
+- [ X] Journal preenchido
 
 ### 🎯 Streak: 3/56 dias
 
@@ -182,5 +182,5 @@ Sentimento:
 
 ---
 
-**Última atualização:** 26 Nov 2024
+**Última atualização:** 26 Nov 2025
 

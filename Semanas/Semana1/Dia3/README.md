@@ -14,8 +14,8 @@ Este é o **terceiro dia** do plano de desenvolvimento de 2 meses em Desenvolvim
 - **Dia 1 (concluído):** Setup APIs + Tutorial básico prompting ✅
 - **Dia 2 (concluído):** Script 1 - Gerador de conteúdo para blog ✅
 - **Dia 3 (hoje):** Script 2 - Analisador de sentimentos comparando LLMs
-- **Dia 4:** Script 3 - Resumidor de PDFs
-- **Dia 5:** Refatoração + Documentação
+- **Dia 4 (criado):** Script 3 - Resumidor de PDFs 📁
+- **Dia 5 (criado):** Refatoração + Documentação 📁
 - **Dia 6-7:** Projeto integrado CLI
 
 ### 📁 Arquivos neste diretório:
@@ -41,9 +41,11 @@ Este é o **terceiro dia** do plano de desenvolvimento de 2 meses em Desenvolvim
 - Recursos: `../../3-recursos_e_links_uteis.md`
 - Dia 1: `../Dia1/hello_ai_groq.py` (referência de código)
 - Dia 2: `../Dia2/gerador_conteudo_blog.py` (referência de código)
+- Dia 4: `../Dia4/` (estrutura criada)
+- Dia 5: `../Dia5/` (estrutura criada)
 
 ---
 
 **Status:** 🟡 Em progresso  
-**Última atualização:** 26 Nov 2024
+**Última atualização:** 26 Nov 2025
 

@@ -27,7 +27,7 @@
 - **Linhas de código:** ~ 302
 - **Commits:** 1
 - **Link GitHub:**
-- **WakaTime:** ___h (tracking automático)
+- **WakaTime:** 1:54
 
 ## ❌ Dificuldades Enfrentadas
 - **Problema:** Enfrentei problemas com a implementação do gemini e depois acabou a cota de testes do dia

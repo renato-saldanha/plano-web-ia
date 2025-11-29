@@ -78,13 +78,13 @@ Semana1/
 - [x] Dia 1 completo (Setup) ✅
 - [x] Dia 2 completo (Gerador de conteúdo) ✅
 - [ ] Dia 3 completo (Analisador de sentimentos) 🟡
-- [ ] Dia 4 completo (Resumidor de PDF)
-- [ ] Dia 5 completo (Refatoração)
+- [x] Dia 4 criado (Resumidor de PDF) 📁
+- [x] Dia 5 criado (Refatoração) 📁
 - [ ] Dia 6 completo (CLI integrado)
 - [ ] Dia 7 completo (Deploy + Review)
 
 ---
 
 **Status:** 🟡 Em progresso  
-**Progresso:** 2/7 dias completos (29%)
+**Progresso:** 2/7 dias completos (29%) | 4/7 dias criados (57%)
 

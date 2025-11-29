@@ -15,20 +15,19 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 ## 🎯 Estado Atual do Projeto
 
-### O que foi feito (Dia 1):
-- ✅ Setup completo das APIs (Groq, Gemini, Claude)
-- ✅ Ambiente Python configurado
-- ✅ Primeiro script "Hello AI" funcionando
-- ✅ WakaTime instalado
-- ✅ Estrutura de pastas criada
+### O que foi feito:
+- ✅ Dia 1: Setup APIs (Groq, Gemini, Claude) + Hello AI
+- ✅ Dia 2: Gerador de conteúdo para blog com Groq
+- ✅ Dia 3: Analisador de sentimentos comparando múltiplos LLMs
+- ✅ Dia 4: Estrutura criada (Resumidor de PDFs)
+- ✅ Dia 5: Estrutura criada (Refatoração + Documentação)
 
-### O que está em progresso (Dia 2):
-- 🟡 Criar script gerador de conteúdo para blog
-- 🟡 Implementar função que gera parágrafo introdutório
-- 🟡 Testar com 3 temas diferentes
-- 🟡 Salvar resultados em arquivos
+### O que está em progresso:
+- 🟡 Dia 3: Analisador de sentimentos (em desenvolvimento)
+- 🟡 Dia 4: Resumidor de PDFs (estrutura criada, aguardando implementação)
+- 🟡 Dia 5: Refatoração (estrutura criada, aguardando implementação)
 
-### O que falta fazer (hoje):
+### O que falta fazer (Dia 2 - se ainda não concluído):
 - [ ] Completar script `gerador_conteudo_blog.py`
 - [ ] Testar com 3 temas planejados
 - [ ] Adicionar tratamento de erros
@@ -83,10 +82,10 @@ Criar script funcional que gera conteúdo de blog usando Groq API
 4. Testar e salvar resultados
 5. Preencher journal.md
 
-### Próximo Dia (Dia 3 - Quarta-feira):
-- Criar script analisador de sentimentos
-- Comparar 3 LLMs diferentes (Groq, Gemini, Claude)
-- Documentar comparação
+### Próximos Dias:
+- ✅ Dia 3: Analisador de sentimentos (em desenvolvimento)
+- ✅ Dia 4: Resumidor de PDFs (estrutura criada)
+- ✅ Dia 5: Refatoração + Documentação (estrutura criada)
 
 ### Próxima Semana:
 - Semana 2: LangChain + RAG
@@ -142,6 +141,6 @@ Criar script funcional que gera conteúdo de blog usando Groq API
 
 ---
 
-**Última atualização:** 25 Nov 2024  
-**Status:** 🟡 Em progresso
+**Última atualização:** 25 Nov 2025  
+**Status:** ✅ Concluído (verificar se todas as tarefas foram completadas)
 

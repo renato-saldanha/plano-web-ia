@@ -137,5 +137,5 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 
 ---
 
-**Última atualização:** 24 Nov 2024
+**Última atualização:** 24 Nov 2025
 

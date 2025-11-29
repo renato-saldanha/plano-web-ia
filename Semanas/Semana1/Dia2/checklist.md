@@ -141,5 +141,5 @@ Criar Script 1 - Gerador de conteúdo para blog usando Groq API
 
 ---
 
-**Última atualização:** 25 Nov 2024
+**Última atualização:** 25 Nov 2025
 

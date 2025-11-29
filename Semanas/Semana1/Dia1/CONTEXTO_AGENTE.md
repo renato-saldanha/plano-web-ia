@@ -16,14 +16,16 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 ## 🎯 Estado Atual do Projeto
 
 ### O que foi feito:
-- ✅ Estrutura de pastas criada (Semanas/Semana1/Dia1/)
-- ✅ Arquivos de configuração criados (README, checklist, scripts)
-- ✅ Template de journal criado
-- ✅ Guia de setup das APIs criado
+- ✅ Dia 1: Setup APIs (Groq, Gemini, Claude) + Hello AI
+- ✅ Dia 2: Gerador de conteúdo para blog com Groq
+- ✅ Dia 3: Analisador de sentimentos comparando múltiplos LLMs
+- ✅ Dia 4: Estrutura criada (Resumidor de PDFs)
+- ✅ Dia 5: Estrutura criada (Refatoração + Documentação)
 
 ### O que está em progresso:
-- 🟡 Setup inicial das APIs (Groq, Gemini, Claude)
-- 🟡 Primeiro script "Hello AI" (hello_ai_groq.py)
+- 🟡 Dia 3: Analisador de sentimentos (em desenvolvimento)
+- 🟡 Dia 4: Resumidor de PDFs (estrutura criada, aguardando implementação)
+- 🟡 Dia 5: Refatoração (estrutura criada, aguardando implementação)
 
 ### O que falta fazer (hoje):
 - [ X] Completar checklist do Dia 1
@@ -75,10 +77,11 @@ Configurar ambiente e fazer primeira integração com IA (Groq)
 3. Executar hello_ai_groq.py
 4. Preencher journal.md
 
-### Próximo Dia (Dia 2 - Terça-feira):
-- Criar script gerador de conteúdo para blog
-- Usar Groq para geração de texto
-- Comparar com Gemini (opcional)
+### Próximos Dias:
+- ✅ Dia 2: Gerador de conteúdo para blog (concluído)
+- ✅ Dia 3: Analisador de sentimentos (em desenvolvimento)
+- ✅ Dia 4: Resumidor de PDFs (estrutura criada)
+- ✅ Dia 5: Refatoração + Documentação (estrutura criada)
 
 ### Próxima Semana:
 - Semana 2: LangChain + RAG
@@ -132,6 +135,6 @@ Configurar ambiente e fazer primeira integração com IA (Groq)
 
 ---
 
-**Última atualização:** 24 Nov 2024  
+**Última atualização:** 24 Nov 2025  
 **Status:**  Conluído
 
