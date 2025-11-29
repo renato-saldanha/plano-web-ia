@@ -26,7 +26,7 @@
 - **Projeto:** Semana 1 - Dia 3 (Analisador de sentimentos)
 - **Linhas de código:** ~ 302
 - **Commits:** 1
-- **Link GitHub:**
+- **Link GitHub:** https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia3
 - **WakaTime:** 1:54
 
 ## ❌ Dificuldades Enfrentadas

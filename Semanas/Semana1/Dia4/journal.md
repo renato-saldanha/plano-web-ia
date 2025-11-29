@@ -23,13 +23,13 @@
 - **Projeto:** Semanas\Semana1\Dia4\resumidor_pdf.py
 - **Linhas de código:** 292
 - **Commits:** 1
-- **Link GitHub:**
+- **Link GitHub:** https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia4
 - **WakaTime:** 4:08h (tracking automático)
 
 ## ❌ Dificuldades Enfrentadas
-- **Problema:**
-- **Tempo perdido:**
-- **Como resolvi (ou não):**
+- **Problema:** com permissões de arquivos por conta de tentar usar o caminho completo
+- **Tempo perdido:** 20 minutos
+- **Como resolvi (ou não):** Solicitando ao Cursor para me mostrar um exemplo
 
 ## 🔍 Recursos Utilizados
 - [ ] Documentação:
