@@ -8,18 +8,22 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 ## 📋 FASE 1: REVISÃO E PREPARAÇÃO (15min - 17:20-17:35)
 
 ### Revisão do Dia Anterior
-- [ ] Abrir journal do Dia 4
-- [ ] Revisar código `resumidor_pdf.py` do Dia 4
-- [ ] Verificar se ambiente virtual está ativado
-- [ ] Listar todos os scripts criados nos dias anteriores
+- [ X] Abrir journal do Dia 4
+- [ X] Revisar código `resumidor_pdf.py` do Dia 4
+- [ X] Verificar se ambiente virtual está ativado
+- [ X] Listar todos os scripts criados nos dias anteriores
+    1: hello_ai_groq.py
+    2: gerar_conteudo_blog.py
+    3: analisador_sentimentos.py
+    4: resumidor_pdf.py
 
 ### Preparação
-- [ ] Ler tarefas planejadas (já definidas no Dia 4):
+- [ X] Ler tarefas planejadas (já definidas no Dia 4):
     1. Refatorar scripts dos dias anteriores (melhorar código, adicionar type hints)
     2. Criar documentação completa (README principal, guias de uso)
     3. Organizar estrutura de pastas e preparar para projeto integrado (Dia 6-7)
-- [ ] Definir objetivo do dia em 1 frase: "Refatorar código e criar documentação completa"
-- [ ] Revisar conceitos de type hints e docstrings (5min - opcional)
+- [ X] Definir objetivo do dia em 1 frase: "Refatorar código e criar documentação completa"
+- [ X] Revisar conceitos de type hints e docstrings (5min - opcional)
 
 **Tempo estimado:** 15 minutos  
 **Quando:** 17:20-17:35
@@ -29,43 +33,43 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 ## 💻 FASE 2: REFATORAÇÃO (90min - 17:35-19:05)
 
 ### Tarefa 1: Refatorar Script Dia 2 (Gerador de Conteúdo)
-- [ ] Abrir `../Dia2/gerador_conteudo_blog.py`
-- [ ] Adicionar type hints em todas as funções
-- [ ] Adicionar docstrings completas (Google style)
-- [ ] Melhorar tratamento de erros (try/except específicos)
-- [ ] Adicionar logging (opcional)
-- [ ] Verificar se código está seguindo PEP 8
-- [ ] Testar script após refatoração
+- [ X] Abrir `../Dia2/gerador_conteudo_blog.py`
+- [ X] Adicionar type hints em todas as funções
+- [ X] Adicionar docstrings completas (Google style)
+- [ X] Melhorar tratamento de erros (try/except específicos)
+- [ X] Adicionar logging (opcional)
+- [ X] Verificar se código está seguindo PEP 8
+- [ X] Testar script após refatoração
 
 **Tempo estimado:** 25 minutos
 
 ### Tarefa 2: Refatorar Script Dia 3 (Analisador de Sentimentos)
-- [ ] Abrir `../Dia3/analisardor_sentimentos.py`
-- [ ] Adicionar type hints em todas as funções
-- [ ] Adicionar docstrings completas
-- [ ] Melhorar tratamento de erros
-- [ ] Identificar código duplicado (criar funções utilitárias se necessário)
-- [ ] Verificar se código está seguindo PEP 8
-- [ ] Testar script após refatoração
+- [ X] Abrir `../Dia3/analisardor_sentimentos.py`
+- [ X] Adicionar type hints em todas as funções
+- [ X] Adicionar docstrings completas
+- [ X] Melhorar tratamento de erros
+- [ X] Identificar código duplicado (criar funções utilitárias se necessário)
+- [ X] Verificar se código está seguindo PEP 8
+- [ X] Testar script após refatoração
 
 **Tempo estimado:** 30 minutos
 
 ### Tarefa 3: Refatorar Script Dia 4 (Resumidor de PDFs)
-- [ ] Abrir `../Dia4/resumidor_pdf.py`
-- [ ] Adicionar type hints em todas as funções
-- [ ] Adicionar docstrings completas
-- [ ] Melhorar tratamento de erros
-- [ ] Verificar se código está seguindo PEP 8
-- [ ] Testar script após refatoração
+- [ X] Abrir `../Dia4/resumidor_pdf.py`
+- [ X] Adicionar type hints em todas as funções
+- [ X] Adicionar docstrings completas
+- [ X] Melhorar tratamento de erros
+- [ X] Verificar se código está seguindo PEP 8
+- [ X] Testar script após refatoração
 
 **Tempo estimado:** 25 minutos
 
 ### Tarefa 4: Criar Funções Utilitárias Comuns
-- [ ] Identificar código duplicado entre scripts (configuração de clientes, tratamento de erros)
-- [ ] Criar arquivo `../utils.py` ou `../helpers.py` com funções comuns
-- [ ] Mover funções utilitárias para arquivo comum
-- [ ] Atualizar imports nos scripts
-- [ ] Testar se tudo ainda funciona
+- [ X] Identificar código duplicado entre scripts (configuração de clientes, tratamento de erros)
+- [ X] Criar arquivo `../utils.py` ou `../helpers.py` com funções comuns
+- [ X] Mover funções utilitárias para arquivo comum
+- [ X] Atualizar imports nos scripts
+- [ X] Testar se tudo ainda funciona
 
 **Tempo estimado:** 10 minutos
 
@@ -83,22 +87,22 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 ## 📚 FASE 3: DOCUMENTAÇÃO (30min - 19:30-20:00)
 
 ### Criar README Principal da Semana 1
-- [ ] Criar arquivo `../README.md` na pasta Semana1
-- [ ] Adicionar visão geral da semana
-- [ ] Listar todos os scripts criados
-- [ ] Adicionar instruções de instalação
-- [ ] Adicionar instruções de uso
-- [ ] Adicionar links para cada dia
-- [ ] Adicionar tecnologias utilizadas
+- [ X] Criar arquivo `../README.md` na pasta Semana1
+- [ X] Adicionar visão geral da semana
+- [ X] Listar todos os scripts criados
+- [ X] Adicionar instruções de instalação
+- [ X] Adicionar instruções de uso
+- [ X] Adicionar links para cada dia
+- [ X] Adicionar tecnologias utilizadas
 
 ### Criar Guias de Uso
-- [ ] Criar arquivo `../GUIA_USO.md` ou seção no README
-- [ ] Documentar como usar cada script:
+- [ X] Criar arquivo `../GUIA_USO.md` ou seção no README
+- [ X] Documentar como usar cada script:
   - Gerador de conteúdo (Dia 2)
   - Analisador de sentimentos (Dia 3)
   - Resumidor de PDFs (Dia 4)
-- [ ] Adicionar exemplos de uso
-- [ ] Adicionar troubleshooting comum
+- [ X] Adicionar exemplos de uso
+- [ X] Adicionar troubleshooting comum
 
 **Tempo estimado:** 30 minutos  
 **Quando:** 19:30-20:00
@@ -108,23 +112,23 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 ## 📝 FASE 4: FINALIZAÇÃO (30min - 20:00-20:30)
 
 ### Organização e Preparação
-- [ ] Verificar estrutura de pastas está organizada
-- [ ] Criar arquivo `.gitignore` se necessário (verificar se já existe)
-- [ ] Preparar estrutura para projeto integrado (Dia 6-7):
+- [ X] Verificar estrutura de pastas está organizada
+- [ X] Criar arquivo `.gitignore` se necessário (verificar se já existe)
+- [ X] Preparar estrutura para projeto integrado (Dia 6-7):
   - Criar pasta `projeto_integrado/` ou planejar estrutura
   - Documentar ideia do projeto integrado
 
 ### Git e Organização
-- [ ] Adicionar arquivos: `git add .`
-- [ ] Commit: `git commit -m "Dia 5: Refatoração e documentação completa"`
-- [ ] Push: `git push origin main`
+- [ X] Adicionar arquivos: `git add .`
+- [ X] Commit: `git commit -m "Dia 5: Refatoração e documentação completa"`
+- [ X] Push: `git push origin main`
 
 ### Journal e Planejamento
-- [ ] Abrir arquivo `journal.md`
-- [ ] Preencher journal com o que fez hoje
-- [ ] Anotar dificuldades encontradas
-- [ ] Anotar aprendizados sobre refatoração e documentação
-- [ ] Planejar 3 tarefas para amanhã (Sábado - Projeto Integrado):
+- [ X] Abrir arquivo `journal.md`
+- [ X] Preencher journal com o que fez hoje
+- [ X] Anotar dificuldades encontradas
+- [ X] Anotar aprendizados sobre refatoração e documentação
+- [ X] Planejar 3 tarefas para amanhã (Sábado - Projeto Integrado):
 
 **Seu planejamento:**
 1. Criar estrutura do projeto integrado CLI
@@ -141,16 +145,16 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 **Total estimado:** 3 horas
 
 ### ✅ Critérios de Sucesso:
-- [ ] Scripts refatorados com type hints
-- [ ] Docstrings completas em todas as funções
-- [ ] Tratamento de erros melhorado
-- [ ] Código duplicado removido (funções utilitárias criadas)
-- [ ] README principal da Semana 1 criado
-- [ ] Guias de uso criados
-- [ ] Estrutura organizada
-- [ ] Preparação para projeto integrado concluída
-- [ ] Commit feito no GitHub
-- [ ] Journal preenchido
+- [ X] Scripts refatorados com type hints
+- [ X] Docstrings completas em todas as funções
+- [ X] Tratamento de erros melhorado
+- [ X] Código duplicado removido (funções utilitárias criadas)
+- [ X] README principal da Semana 1 criado
+- [ X] Guias de uso criados
+- [ X] Estrutura organizada
+- [ X] Preparação para projeto integrado concluída
+- [ X] Commit feito no GitHub
+- [ X] Journal preenchido
 
 ### 🎯 Streak: 5/56 dias
 

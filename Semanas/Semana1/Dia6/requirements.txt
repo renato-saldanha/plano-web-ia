@@ -1,0 +1,23 @@
+# Dependências para CLI de Automações com IA
+# Dia 6 - Projeto Integrado CLI
+
+# APIs de IA
+groq>=0.36.0
+google-generativeai>=0.8.5
+anthropic>=0.75.0
+
+# Manipulação de PDFs
+pdfplumber>=0.11.0
+
+# Variáveis de ambiente
+python-dotenv>=1.2.0
+
+# CLI (opcional - argparse é built-in)
+click>=8.1.7
+
+# Melhorias de UX (opcional)
+colorama>=0.4.6
+
+# Utilitários
+typing-extensions>=4.15.0
+
