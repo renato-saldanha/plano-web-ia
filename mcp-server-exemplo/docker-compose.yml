@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mcp-server:
+    build: .
+    container_name: meu-servidor-mcp
+    stdin_open: true
+    tty: true
+    environment:
+      - PYTHONUNBUFFERED=1
+    # Se precisar de variáveis de ambiente:
+    # env_file:
+    #   - .env
+

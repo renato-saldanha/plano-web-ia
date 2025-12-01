@@ -200,3 +200,4 @@ def mostrar_menu():
 **Última atualização:** 29 Nov 2025  
 **Status:** 🟡 Em progresso
 
+

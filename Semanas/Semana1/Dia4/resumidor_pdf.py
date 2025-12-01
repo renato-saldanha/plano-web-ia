@@ -110,7 +110,7 @@ def resumir_com_gemini(texto: str) -> str:
 
 
 # Função para resumir PDF
-def resumir_pdf(texto: str, caminho_arquivo: str, llm: str = ["groq", "gemini"]) -> dict:
+def resumir_pdf(texto: str, caminho_arquivo: str, llm: str = ['groq', 'gemini']) -> dict:
     """
     Resumir o texto do PDF usando o modelo de LLM especif icado.
 
@@ -122,11 +122,14 @@ def resumir_pdf(texto: str, caminho_arquivo: str, llm: str = ["groq", "gemini"])
     Returns:
         dict - O dicionário com o resumo do texto
     """
+
     try:
         match llm:
-            case "groq":
+            case 'groq':
+                logging.info(f"Resumindo texto com Groq")
                 resumo = resumir_com_groq(texto)
-            case "gemini":
+            case 'gemini':
+                logging.info(f"Resumindo texto com Gemini")
                 resumo = resumir_com_gemini(texto)
             case _:
                 raise ValueError("Modelo de LLM inválido.")

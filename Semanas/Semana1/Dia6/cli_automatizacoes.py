@@ -1,254 +1,264 @@
 #!/usr/bin/env python3
 """
-CLI Integrado de Automações com IA Generativa
+CLI Integrado de Automações com IA Generativa - Template
 
-Este script integra os 3 scripts criados nos dias anteriores:
+TODO: Preencher docstring explicando o propósito do CLI
+
+Este CLI integra os 3 scripts criados nos dias anteriores:
 - Dia 2: Gerador de conteúdo para blog
 - Dia 3: Analisador de sentimentos
 - Dia 4: Resumidor de PDFs
 
-Uso:
+Uso planejado:
     python cli_automatizacoes.py blog --tema "Python"
     python cli_automatizacoes.py sentimentos --arquivo reviews/reviews.txt
     python cli_automatizacoes.py resumir --pdf pdfs/arquivo.pdf --llm groq
     python cli_automatizacoes.py  # Menu interativo
 """
 
+from Semanas.Semana1.Dia4.resumidor_pdf import resumir_pdf
+from Semanas.Semana1.Dia3.analisador_sentimentos import comparar_reviews_llm
+from Semanas.Semana1.Dia2.gerador_conteudo_blog import gerar_conteudo_tema
 import argparse
 import os
 import sys
-from pathlib import Path
-from typing import Optional
-
-# Adicionar caminhos dos scripts anteriores ao path
-sys.path.insert(0, str(Path(__file__).parent.parent / "Dia2"))
-sys.path.insert(0, str(Path(__file__).parent.parent / "Dia3"))
-sys.path.insert(0, str(Path(__file__).parent.parent / "Dia4"))
-
 import logging
-from dotenv import load_dotenv
+from pathlib import Path
+from colorama import Fore, Back, Style, init
 
-# Configurar logging
+init(autoreset=True)
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     datefmt='%H:%M:%S',
 )
 
-# Carregar variáveis de ambiente
-load_dotenv()
-
-# Imports dos scripts anteriores (serão implementados)
-# TODO: Importar funções dos scripts dos dias anteriores
+raiz_projeto = Path(__file__).parent.parent.parent.parent
+sys.path.insert(0, str(raiz_projeto))
 
 
 def comando_blog(tema: str) -> None:
     """
-    Gerar conteúdo para blog sobre um tema específico.
-    
+    Gerar conteúdo para um tema de blog.
+
     Args:
-        tema: Tema do conteúdo a ser gerado
-        
-    Example:
-        >>> comando_blog("Python")
+        tema: Tema do blog
+
+    Returns:
+        None
     """
-    logging.info(f"Gerando conteúdo para blog sobre: {tema}")
-    # TODO: Integrar com Dia2/gerador_conteudo_blog.py
-    print(f"⚠️ Funcionalidade em desenvolvimento: Gerar conteúdo sobre '{tema}'")
+
+    # Validar se tema não está vazio
+    if not tema:
+        tratar_erro(ValueError("Tema não pode estar vazio!"))
+
+    # Chamar função do Dia 2 para gerar conteúdo
+    try:
+        # Função que gera conteúdo para um tema de blog
+        resultado = gerar_conteudo_tema(tema)
+        logging.info(f"{Fore.YELLOW}{Style.DIM}Conteúdo gerado: {resultado}")
+    except Exception as e:
+        tratar_erro(e)
 
 
 def comando_sentimentos(arquivo: str) -> None:
     """
     Analisar sentimentos de reviews em um arquivo.
-    
+
     Args:
         arquivo: Caminho para o arquivo com reviews
-        
-    Example:
-        >>> comando_sentimentos("reviews/reviews.txt")
+
+    Returns:
+        None
     """
-    logging.info(f"Analisando sentimentos do arquivo: {arquivo}")
-    # TODO: Integrar com Dia3/analisardor_sentimentos.py
-    print(f"⚠️ Funcionalidade em desenvolvimento: Analisar sentimentos de '{arquivo}'")
+    if not arquivo:
+        tratar_erro(ValueError("Arquivo não pode estar vazio!"))
+
+    # Chamar funções do Dia 3 para analisar sentimentos
+    try:
+        resultado = comparar_reviews_llm(arquivo)
+        logging.info(f"{Fore.YELLOW}{Style.DIM}Sentimento: {resultado}")
+    except Exception as e:
+        tratar_erro(e)
 
 
 def comando_resumir(pdf: str, llm: str = "groq") -> None:
     """
     Resumir um arquivo PDF usando um LLM específico.
-    
+
     Args:
         pdf: Caminho para o arquivo PDF
         llm: LLM a ser usado ('groq' ou 'gemini')
-        
-    Example:
-        >>> comando_resumir("pdfs/arquivo.pdf", "groq")
+
+    Returns:
+        None
     """
-    logging.info(f"Resumindo PDF: {pdf} com LLM: {llm}")
-    # TODO: Integrar com Dia4/resumidor_pdf.py
-    print(f"⚠️ Funcionalidade em desenvolvimento: Resumir '{pdf}' com {llm}")
+
+    # Chama função do Dia 4 para resumir o PDF
+    try:
+        resultado = resumir_pdf(pdf, llm)
+        logging.info(f"{Fore.YELLOW}{Style.DIM}Resumo: {resultado}")
+    except Exception as e:
+        tratar_erro(e)
 
 
-def mostrar_menu() -> str:
+def mostrar_menu() -> int:
     """
     Mostrar menu interativo e retornar escolha do usuário.
-    
+
+    Args:
+        None
+
     Returns:
-        Escolha do usuário como string
+        Escolha do usuário como inteiro (1, 2, 3 ou 4)
     """
-    print("\n" + "=" * 60)
-    print("🤖 CLI de Automações com IA Generativa")
-    print("=" * 60)
-    print("\nEscolha uma opção:")
-    print("  1. Gerar conteúdo para blog")
-    print("  2. Analisar sentimentos de reviews")
-    print("  3. Resumir arquivo PDF")
-    print("  4. Sair")
-    print("\n" + "-" * 60)
-    
-    escolha = input("\nDigite o número da opção: ").strip()
-    return escolha
+
+    # Mostra o menu
+    logging.info(f"{Fore.BLUE}{Style.BRIGHT}Escolha uma opção:")
+    logging.info(f"{Fore.BLUE}{Style.BRIGHT}  1. Gerar conteúdo para blog")
+    logging.info(
+        f"{Fore.BLUE}{Style.BRIGHT}  2. Analisar sentimentos de reviews")
+    logging.info(f"{Fore.BLUE}{Style.BRIGHT}  3. Resumir arquivo PDF")
+    logging.info(f"{Fore.BLUE}{Style.BRIGHT}  4. Sair")
+    logging.info(f"{Fore.BLUE}{Style.BRIGHT}-" * 60)
+    return int(input(f"{Fore.BLUE}{Style.BRIGHT}\nDigite o número da opção: "))
 
 
 def processar_menu() -> None:
     """
-    Processar escolha do menu interativo.
+    Processar menu interativo
+
+    Args:
+        None
+
+    Returns:
+        None
     """
+
+    # Loop que valida a escolha do usuário
     while True:
         escolha = mostrar_menu()
-        
-        if escolha == "1":
-            tema = input("\nDigite o tema do blog: ").strip()
-            if tema:
+
+        match escolha:
+            case 1:
+                # Solicita o tema do blog
+                tema = input("Digite o tema do blog: ")
                 comando_blog(tema)
-            else:
-                print("❌ Tema não pode estar vazio!")
-        
-        elif escolha == "2":
-            arquivo = input("\nDigite o caminho do arquivo de reviews: ").strip()
-            if arquivo:
+            case 2:
+                # Solicita o arquivo com reviews
+                arquivo = input("Digite o caminho do arquivo: ")
                 comando_sentimentos(arquivo)
-            else:
-                print("❌ Caminho do arquivo não pode estar vazio!")
-        
-        elif escolha == "3":
-            pdf = input("\nDigite o caminho do arquivo PDF: ").strip()
-            if pdf:
-                llm = input("Escolha o LLM (groq/gemini) [padrão: groq]: ").strip().lower()
-                if llm not in ["groq", "gemini"]:
-                    llm = "groq"
-                comando_resumir(pdf, llm)
-            else:
-                print("❌ Caminho do PDF não pode estar vazio!")
-        
-        elif escolha == "4":
-            print("\n👋 Até logo!")
-            break
-        
-        else:
-            print("\n❌ Opção inválida! Escolha um número de 1 a 4.")
-        
-        input("\nPressione Enter para continuar...")
+            case 3:
+                # Solicita o arquivo PDF e LLM
+                arquivo = input("Digite o caminho do arquivo PDF: ")
+                llm = input("Digite o LLM a ser usado (groq/gemini): ")
+                comando_resumir(arquivo, llm)
+            case 4:
+                # Sai do loop
+                logging.info(f"{Fore.GREEN}{Style.DIM}Até logo!")
+                break
+            case _:
+                logging.warning(f"{Back.YELLOW}{Fore.RED}Opção inválida!")
+                logging.warning(f"{Back.YELLOW}{Fore.RED}{Style.DIM}=" * 60)
 
 
 def criar_parser() -> argparse.ArgumentParser:
     """
-    Criar parser de argumentos para o CLI.
-    
-    Returns:
-        Parser configurado
+    Criar parser principal e subparsers blog, sentimentos e resumir
+
     """
-    parser = argparse.ArgumentParser(
-        description="CLI Integrado de Automações com IA Generativa",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Exemplos de uso:
-  %(prog)s blog --tema "Python"
-  %(prog)s sentimentos --arquivo reviews/reviews.txt
-  %(prog)s resumir --pdf pdfs/arquivo.pdf --llm groq
-  %(prog)s  # Menu interativo
-        """
-    )
-    
-    subparsers = parser.add_subparsers(dest='comando', help='Comandos disponíveis')
-    
-    # Comando blog
-    parser_blog = subparsers.add_parser(
-        'blog',
-        help='Gerar conteúdo para blog sobre um tema'
-    )
-    parser_blog.add_argument(
-        '--tema',
-        required=True,
-        help='Tema do conteúdo a ser gerado'
-    )
-    
-    # Comando sentimentos
-    parser_sentimentos = subparsers.add_parser(
-        'sentimentos',
-        help='Analisar sentimentos de reviews em um arquivo'
-    )
-    parser_sentimentos.add_argument(
-        '--arquivo',
-        required=True,
-        help='Caminho para o arquivo com reviews (uma por linha)'
-    )
-    
-    # Comando resumir
-    parser_resumir = subparsers.add_parser(
-        'resumir',
-        help='Resumir um arquivo PDF usando IA'
-    )
-    parser_resumir.add_argument(
-        '--pdf',
-        required=True,
-        help='Caminho para o arquivo PDF a ser resumido'
-    )
-    parser_resumir.add_argument(
-        '--llm',
-        choices=['groq', 'gemini'],
-        default='groq',
-        help='LLM a ser usado para resumir (padrão: groq)'
-    )
-    
-    return parser
+
+    try:
+        parser = argparse.ArgumentParser(
+            description="CLI para automação de blog, sentimentos e resumir",
+            epilog="Exemplo de uso: python cli_automatizacoes.py blog --tema 'Python'"
+            " ou python cli_automatizacoes.py sentimentos --arquivo 'reviews/reviews.txt'"
+            " ou python cli_automatizacoes.py resumir --pdf 'pdfs/arquivo.pdf' --llm 'groq'"
+        )
+
+        subparsers = parser.add_subparsers(
+            dest="comando", help="Comando a ser executado blog, sentimentos ou resumir")
+
+        parser_blog = subparsers.add_parser(
+            'blog', help="Gerar conteúdo para blog")
+        parser_blog.add_argument(
+            "--tema", required=True, help="Tema do conteúdo")
+
+        parser_sentimentos = subparsers.add_parser(
+            'sentimentos', help="Analisar sentimentos de reviews")
+        parser_sentimentos.add_argument(
+            "--arquivo", required=True, help="Arquivo com reviews")
+
+        parser_resumir = subparsers.add_parser('resumir', help="Resumir PDF")
+        parser_resumir.add_argument("--pdf", required=True, help="Arquivo PDF")
+        parser_resumir.add_argument("--llm", required=True, help="LLM a ser usado", choices=["groq", "gemini"])
+
+        return parser
+    except Exception as e:
+        tratar_erro(e)
 
 
 def main() -> None:
     """
     Função principal do CLI.
+
+    TODO: Implementar lógica principal que:
+    1. Cria parser
+    2. Parseia argumentos
+    3. Se nenhum comando, mostra menu interativo
+    4. Se comando específico, processa comando
+    5. Trata erros (KeyboardInterrupt, Exception)
+
+    Dica: Consulte exemplo_cli_simples.py para ver estrutura completa
     """
-    parser = criar_parser()
-    args = parser.parse_args()
-    
-    # Se nenhum comando foi passado, mostrar menu interativo
-    if not args.comando:
-        processar_menu()
-        return
-    
-    # Processar comando específico
+
     try:
-        if args.comando == 'blog':
-            comando_blog(args.tema)
-        
-        elif args.comando == 'sentimentos':
-            comando_sentimentos(args.arquivo)
-        
-        elif args.comando == 'resumir':
-            comando_resumir(args.pdf, args.llm)
-        
+        parser = criar_parser()
+
+        if len(sys.argv) == 1:
+            processar_menu()
+            return
         else:
-            parser.print_help()
-            sys.exit(1)
-    
+            args = parser.parse_args()
+
+            match args.comando:
+                case "blog":
+                    comando_blog(args.tema)
+                case "sentimentos":
+                    comando_sentimentos(args.arquivo)
+                case "resumir":
+                    comando_resumir(args.pdf, args.llm)
+                case _:
+                    logging.warning(f"{Back.RED}Comando inválido!")
     except KeyboardInterrupt:
-        print("\n\n⚠️ Operação cancelada pelo usuário.")
-        sys.exit(130)
-    
+        tratar_erro(KeyboardInterrupt)
     except Exception as e:
-        logging.error(f"❌ Erro ao executar comando: {e}")
-        sys.exit(1)
+        tratar_erro(e)
+    finally:
+        logging.info(f"{Fore.GREEN}Comando executado com sucesso!")
+        logging.info(f"{Fore.GREEN}{Style.DIM}Até logo!")
+
+
+def tratar_erro(erro: Exception | KeyboardInterrupt) -> None:
+    """
+    Tratar erro
+
+    Args:
+        erro: Erro
+
+    Returns:
+        None
+    """
+    if isinstance(erro, KeyboardInterrupt):
+        logging.error(f"{Back.RED}Interrompido pelo usuário!")
+    elif isinstance(erro, ValueError):
+        logging.error(f"{Back.RED}Verifique o valor informado: {erro.args[0]}")
+    else:
+        logging.error(f"{Back.RED}Erro inesperado: {erro.args[0]}")
+
+    logging.error("=" * 60)
 
 
 if __name__ == "__main__":
     main()
-

@@ -160,7 +160,7 @@ def efetuar_analise_sentimentos(reviews: list):
 
 
 # Função para ler as reviews
-def ler_reviews() -> list:
+def ler_reviews(arquivo: str) -> list:
     """
     Lê as reviews de um arquivo.    
     Args:
@@ -169,7 +169,6 @@ def ler_reviews() -> list:
         list - Lista de reviews
     """
 
-    arquivo = "reviews/reviews.txt"
     logging.info(f"Lendo reviews do arquivo: {arquivo}")
     try:
         diretorio_script = os.path.dirname(os.path.abspath(__file__))
@@ -237,7 +236,7 @@ def salvar_resultados_comparacao(resultados: str) -> None:
 
 
 # Função para comparar as reviews
-def comparar_reviews_llm(reviews: list) -> dict:
+def comparar_reviews_llm(arquivo: str) -> dict:
     """
     Compara as reviews com Groq e Gemini.    
     Args:
@@ -245,6 +244,12 @@ def comparar_reviews_llm(reviews: list) -> dict:
     Returns:
         dict - Dicionário com os resultados da comparação
     """
+
+    reviews = ler_reviews(arquivo)
+    if not reviews:
+        logging.error("Não foi possível ler reviews")
+        logging.error("=" * 50)
+        return None
 
     logging.info("-" * 50)
     logging.info("Comparando reviews")
@@ -317,20 +322,16 @@ def comparar_reviews_llm(reviews: list) -> dict:
         tabela += f"- **Tempo Médio Groq:** {tempo_medio_groq:.0f}ms\n"
         tabela += f"- **Tempo Médio Gemini:** {tempo_medio_gemini:.0f}ms\n"
 
+        if tabela:
+            salvar_resultados_comparacao(tabela)
+        else:
+            raise Exception("Não foi possível salvar resultados da comparação \n" + "=" * 50)
+
         return tabela
     except Exception as e:
-        logging.error(f"Erro ao comparar reviews: {e}")
-        logging.error("=" * 50)
-        return None
+        raise Exception(f"Erro ao comparar reviews: {e}")
 
 
 if __name__ == "__main__":
-    reviews = ler_reviews()
-
-    comparacao = comparar_reviews_llm(reviews)
-    logging.info(comparacao)
-    if comparacao:
-        salvar_resultados_comparacao(comparacao)
-    else:
-        logging.error("Não foi possível comparar reviews")
-        logging.error("=" * 50)
+    logging.info(comparar_reviews_llm("reviews/reviews.txt"))
+    

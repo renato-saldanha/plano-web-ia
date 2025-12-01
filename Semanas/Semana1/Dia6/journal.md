@@ -8,36 +8,43 @@ Criar CLI integrado unificando os 3 scripts dos dias anteriores.
 ## ✅ O que foi feito hoje?
 
 ### Manhã/Tarde
-- [ ] Estrutura do CLI criada
-- [ ] Scripts integrados
-- [ ] Menu interativo implementado
-- [ ] Testes realizados
+- [ X] Estrutura do CLI criada
+- [ X] Scripts integrados
+- [ X] Menu interativo implementado
+- [ X] Testes realizados
 
 ### Detalhes das Tarefas
-_(Preencher ao longo do dia)_
+ Execução dos exercícios de fixação do 1 ao 5
+ Criação do script cli_automatizacoes.py
+ Efetuado implementação seguindo o Semanas\Semana1\Dia6\exemplo_cli_simples.py
 
 ---
 
 ## 🎓 O que aprendi hoje?
 
 ### Conceitos Novos
-- 
+- Importação de scripts de outros níveis de pasta usando o sys.path.insert
+- Utilizaçção do colorama para colorir as saídas
+- Melhora no tratamento de erros
 
 ### Ferramentas Utilizadas
-- 
+- Python
+- Cursor
 
 ### Desafios Enfrentados
-- 
+- Gerenciamento de tempo
+- Assimilação na implementação do parser
 
 ---
 
 ## 💡 Insights e Reflexões
 
 ### O que funcionou bem?
-- 
+- Somente uma das funções importadas necessitou de uma pequena alteração para ser executada corretamente sem a necessidade de dois níveis de chamada de metodo
+- Menu interativo funcionou do modo esperado
 
 ### O que poderia ser melhorado?
-- 
+- Entendimento da lógica de criação do CLI
 
 ### Próximos Passos
 - 
@@ -46,10 +53,10 @@ _(Preencher ao longo do dia)_
 
 ## 📊 Métricas do Dia
 
-- **Tempo total:** ___ horas
-- **Commits:** ___
-- **Linhas de código:** ___
-- **Scripts integrados:** ___/3
+- **Tempo total:** 8 horas
+- **Commits:** 1
+- **Linhas de código:** 265
+- **Scripts integrados:** 3/3
 
 ---
 
@@ -65,6 +72,7 @@ _(Espaço livre para anotações)_
 
 ---
 
-**Data:** 29 Nov 2024  
+**Data:** 29 Nov 2025
 **Status:** 🟡 Em progresso
+
 

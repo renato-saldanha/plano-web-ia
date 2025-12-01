@@ -22,10 +22,28 @@ Este é o **sexto dia** do plano de desenvolvimento de 2 meses em Desenvolviment
 ### 📁 Arquivos neste diretório:
 - `README.md` - Este arquivo (contexto)
 - `CONTEXTO_AGENTE.md` - Contexto detalhado para agentes IA
-- `checklist.md` - Checklist detalhado do dia
-- `cli_automatizacoes.py` - Script principal do CLI integrado
+- `checklist.md` - Checklist detalhado com guias passo-a-passo
 - `journal.md` - Journal do dia (preencher ao final)
 - `requirements.txt` - Dependências Python
+- `cli_automatizacoes.py` - CLI integrando os exercícios dos dias 2, 3 e 4
+
+### Exemplos de uso
+python
+``` 
+python cli_automatizacoes.py blog --tema "Python"
+python cli_automatizacoes.py sentimentos --arquivo reviews/reviews.txt
+python cli_automatizacoes.py resumir --pdf pdfs/arquivo.pdf --llm groq
+python cli_automatizacoes.py  # Menu interativo
+```
+
+### 📚 Arquivos de Aprendizado:
+- `GUIA_CLI.md` - Guia completo de conceitos e passo-a-passo de CLI
+- `template_cli.py` - Template com TODOs para você preencher
+- `exemplo_cli_simples.py` - Exemplo completo comentado para referência
+- `exercicios_cli.md` - Exercícios progressivos para praticar
+
+### 🎯 Arquivo de Transição:
+- `CONTEXTO_PROXIMO_DIA.md` - Guia completo para construir o Dia 7
 
 ### 🎯 Funcionalidades do CLI:
 
@@ -48,22 +66,49 @@ O CLI integrado deve permitir:
    - Mostra menu com opções numeradas
 
 ### 💡 Notas Importantes:
+- **Nível de Scaffolding:** Nível 2 (Intermediário) - Template com TODOs
 - **Baseado nos Dias 2-4:** Integrar os 3 scripts funcionais
-- **Foco:** Criar interface CLI profissional e intuitiva
-- **Biblioteca recomendada:** `argparse` ou `click` para CLI
+- **Foco:** Aprender criando, não copiando código pronto
+- **Metodologia:** Scaffolding + Progressive Disclosure (ver `../../METODOLOGIA_ENSINO.md`)
+- **Biblioteca:** `argparse` (built-in do Python, não precisa instalar)
 - **Boas práticas:** Tratamento de erros, mensagens claras, help text
 
+### 🎓 Como Usar Este Dia:
+
+1. **Leia primeiro:** `GUIA_CLI.md` para entender conceitos
+2. **Veja exemplo:** `exemplo_cli_simples.py` para ver estrutura completa
+3. **Use template:** `template_cli.py` como base e preencha TODOs
+4. **Pratique:** Complete exercícios em `exercicios_cli.md` se necessário
+5. **Siga checklist:** `checklist.md` tem guias passo-a-passo detalhados
+
 ### 🔗 Referências:
-- Plano completo: `../../1-plano_desenvolvimento_2meses_v2.md`
+
+**Documentação do Projeto:**
+- Metodologia de Ensino: `../../METODOLOGIA_ENSINO.md`
+- Template de Estrutura: `../../TEMPLATE_ESTRUTURA_DIA.md`
+- Plano completo: `../../1-Plano_Desenvolvimento.md`
 - Recursos: `../../3-recursos_e_links_uteis.md`
+
+**Scripts dos Dias Anteriores:**
 - Dia 2: `../Dia2/gerador_conteudo_blog.py`
-- Dia 3: `../Dia3/analisardor_sentimentos.py`
+- Dia 3: `../Dia3/analisador_sentimentos.py`
 - Dia 4: `../Dia4/resumidor_pdf.py`
+
+**Documentação Externa:**
 - Python argparse: https://docs.python.org/3/library/argparse.html
-- Python click: https://click.palletsprojects.com/
+- CLI Design Best Practices: https://clig.dev/
+- Python click (alternativa): https://click.palletsprojects.com/
 
 ---
 
 **Status:** 🟡 Em progresso  
-**Última atualização:** 29 Nov 2025
+**Nível de Scaffolding:** 2 (Intermediário)  
+**Última atualização:** 30 Nov 2025
+
+---
+
+## 🎯 Próximo Passo
+
+Após completar este dia, consulte `CONTEXTO_PROXIMO_DIA.md` para entender como construir o Dia 7 (Deploy + Documentação + Review).
+
 
