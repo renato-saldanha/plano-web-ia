@@ -1,11 +1,11 @@
-# ✅ Checklist - Dia 3 (Quarta-feira, 26 Nov 2024)
+# ✅ Checklist - Dia 3 (Quarta-feira, 26 Nov 2025)
 
 ## 🎯 Objetivo do Dia
 Criar Script 2 - Analisador de sentimentos de reviews comparando múltiplos LLMs (Groq, Gemini, Claude opcional)
 
 ---
 
-## 📋 FASE 1: REVISÃO E PREPARAÇÃO (15min - 17:20-17:35)
+## 📋 FASE 1: REVISÃO E PREPARAÇÃO (10min - 17:20-17:30)
 
 ### Revisão do Dia Anterior
 - [ X] Abrir journal do Dia 2
@@ -21,12 +21,12 @@ Criar Script 2 - Analisador de sentimentos de reviews comparando múltiplos LLMs
 - [ X] Definir objetivo do dia em 1 frase: "Criar analisador de sentimentos que compara múltiplos LLMs"
 - [ ] Pesquisar sobre análise de sentimentos com IA (5min - opcional)
 
-**Tempo estimado:** 15 minutos  
-**Quando:** 17:20-17:35
+**Tempo estimado:** 10 minutos  
+**Quando:** 17:20-17:30
 
 ---
 
-## 💻 FASE 2: DESENVOLVIMENTO (90min - 17:35-19:05)
+## 💻 FASE 2: DESENVOLVIMENTO (75min - 17:30-18:45)
 
 ### Tarefa 1: Criar Script Base com Groq
 - [ X] Criar arquivo `analisador_sentimentos.py`
@@ -70,18 +70,18 @@ Criar Script 2 - Analisador de sentimentos de reviews comparando múltiplos LLMs
 
 **Tempo estimado:** 15 minutos
 
-**Tempo total estimado:** 90 minutos  
-**Quando:** 17:35-19:05
+**Tempo total estimado:** 75 minutos  
+**Quando:** 17:30-18:45
 
 ---
 
-## 🍽️ PAUSA (19:05-19:30)
+## 🍽️ PAUSA (18:45-19:00)
 
 - [ X] Jantar/Descanso
 
 ---
 
-## 📚 FASE 3: TESTES E COMPARAÇÃO (30min - 19:30-20:00)
+## 📚 FASE 3: TESTES E COMPARAÇÃO (20min - 19:00-19:20)
 
 ### Testar com Múltiplos Reviews
 - [ X] Testar script com todos os 5 reviews usando Groq
@@ -97,12 +97,12 @@ Criar Script 2 - Analisador de sentimentos de reviews comparando múltiplos LLMs
 - [ X] Adicionar métricas: tempo de resposta, tokens usados, concordância
 - [ X] Salvar tabela em `resultado_comparacao/comparacao_llms.md`
 
-**Tempo estimado:** 30 minutos  
-**Quando:** 19:30-20:00
+**Tempo estimado:** 20 minutos  
+**Quando:** 19:00-19:20
 
 ---
 
-## 📝 FASE 4: FINALIZAÇÃO (30min - 20:00-20:30)
+## 📝 FASE 4: FINALIZAÇÃO (15min - 19:20-19:35)
 
 ### Git e Organização
 - [ X] Adicionar arquivos: `git add .`
@@ -122,14 +122,14 @@ Criar Script 2 - Analisador de sentimentos de reviews comparando múltiplos LLMs
 2. Adicionar função para extrair texto de PDF (usar biblioteca PyPDF2 ou pdfplumber)
 3. Testar com 2-3 PDFs diferentes e salvar resumos em arquivos
 
-**Tempo estimado:** 30 minutos  
-**Quando:** 20:00-20:30
+**Tempo estimado:** 15 minutos  
+**Quando:** 19:20-19:35
 
 ---
 
 ## 🎉 CONCLUSÃO
 
-**Total estimado:** 3 horas
+**Total estimado:** 2 horas
 
 ### ✅ Critérios de Sucesso:
 - [ X] Script `analisador_sentimentos.py` criado e funcionando

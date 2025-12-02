@@ -8,7 +8,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 **Projeto:** Plano de Desenvolvimento - 2 Meses em Web + IA  
 **Semana:** 1 de 8  
-**Dia:** 1 de 7 (Segunda-feira, 24 Nov 2024)  
+**Dia:** 1 de 7 (Segunda-feira, 24 Nov 2025)  
 **Diretório:** `Semanas/Semana1/Dia1/`
 
 ---
@@ -19,13 +19,13 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 - ✅ Dia 1: Setup APIs (Groq, Gemini, Claude) + Hello AI
 - ✅ Dia 2: Gerador de conteúdo para blog com Groq
 - ✅ Dia 3: Analisador de sentimentos comparando múltiplos LLMs
-- ✅ Dia 4: Estrutura criada (Resumidor de PDFs)
-- ✅ Dia 5: Estrutura criada (Refatoração + Documentação)
+- ✅ Dia 4: Resumidor de PDFs usando múltiplos LLMs
+- ✅ Dia 5: Refatoração + Documentação
+- ✅ Dia 6: CLI integrado unificando todos os scripts
+- ✅ Dia 7: Deploy no GitHub + README épico + Review
 
 ### O que está em progresso:
-- 🟡 Dia 3: Analisador de sentimentos (em desenvolvimento)
-- 🟡 Dia 4: Resumidor de PDFs (estrutura criada, aguardando implementação)
-- 🟡 Dia 5: Refatoração (estrutura criada, aguardando implementação)
+- Nenhum - Semana 1 completa! ✅
 
 ### O que falta fazer (hoje):
 - [ X] Completar checklist do Dia 1
@@ -79,9 +79,11 @@ Configurar ambiente e fazer primeira integração com IA (Groq)
 
 ### Próximos Dias:
 - ✅ Dia 2: Gerador de conteúdo para blog (concluído)
-- ✅ Dia 3: Analisador de sentimentos (em desenvolvimento)
-- ✅ Dia 4: Resumidor de PDFs (estrutura criada)
-- ✅ Dia 5: Refatoração + Documentação (estrutura criada)
+- ✅ Dia 3: Analisador de sentimentos (concluído)
+- ✅ Dia 4: Resumidor de PDFs (concluído)
+- ✅ Dia 5: Refatoração + Documentação (concluído)
+- ✅ Dia 6: CLI integrado (concluído)
+- ✅ Dia 7: Deploy + Review (concluído)
 
 ### Próxima Semana:
 - Semana 2: LangChain + RAG
@@ -135,6 +137,6 @@ Configurar ambiente e fazer primeira integração com IA (Groq)
 
 ---
 
-**Última atualização:** 24 Nov 2025  
-**Status:**  Conluído
+**Última atualização:** 30 Nov 2025  
+**Status:** ✅ Concluído
 

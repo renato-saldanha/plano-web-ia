@@ -151,19 +151,26 @@ Nível adequado garante aprendizado efetivo sem sobrecarga ou subcarga.
 
 ### 4. Criar Checklist Detalhado
 
+**⚠️ IMPORTANTE: Tempo Padronizado**
+
+**Todos os Dias:**
+- **Total:** 2h a 2h30min (média de 2h15min)
+
 **Estrutura sugerida:**
-- Fases pequenas (30-60min cada)
-- Cada fase com "Como fazer" e "Por que"
-- Referências aos guias criados
-- Tempo estimado realista
+- Fases proporcionais (15-45min cada)
+- Preparação/Revisão: 10-15min
+- Desenvolvimento/Exercícios: 90-120min (1h30min a 2h)
+- Testes/Refinamento: 20-30min
+- Finalização/Journal: 15-20min
 
 **Como fazer:**
-- Consultar `TEMPLATE_ESTRUTURA_DIA.md` seção "checklist.md"
+- Consultar `TEMPLATE_ESTRUTURA_DIA.md` seção "Métricas de Tempo Padrão"
 - Adaptar para objetivos específicos do dia
 - Incluir guias passo-a-passo quando necessário
+- Garantir que tempos somem entre 2h e 2h30min
 
 **Por que:**
-Checklist detalhado guia o aprendizado passo a passo.
+Checklist detalhado guia o aprendizado passo a passo. Tempos padronizados garantem consistência e que o dia seja completável dentro do período disponível.
 
 ---
 

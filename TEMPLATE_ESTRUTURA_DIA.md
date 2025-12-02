@@ -27,6 +27,22 @@ DiaX/
 
 ---
 
+## ⏰ Métricas de Tempo Padrão
+
+### ⚠️ IMPORTANTE: Tempos Padronizados
+
+**Todos os Dias (Segunda a Domingo):**
+- **Total estimado:** 2h a 2h30min (média de 2h15min)
+- **Distribuição sugerida:**
+  - Preparação/Revisão: 10-15min
+  - Desenvolvimento/Exercícios: 90-120min (1h30min a 2h)
+  - Testes/Refinamento: 20-30min
+  - Finalização/Journal: 15-20min
+
+**Nota:** Todos os dias seguem o mesmo padrão de tempo (2h-2h30min) para manter consistência e realismo no aprendizado. Ajuste as fases conforme necessário, mas mantenha o total dentro desta faixa.
+
+---
+
 ## 📝 Conteúdo de Cada Arquivo
 
 ### README.md
@@ -40,7 +56,7 @@ Este é o **[número] dia** do plano de desenvolvimento de 2 meses em Desenvolvi
 
 ### 📋 O que foi proposto:
 - **Objetivo do Dia:** [Objetivo claro e específico]
-- **Duração estimada:** [X] horas (meta realista: [Y]h)
+- **Duração estimada:** [2 horas para dias de semana OU 4-5 horas para fins de semana]
 - **Foco:** [Foco principal do aprendizado]
 
 ### 🗺️ Estrutura do Plano:
@@ -190,7 +206,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 ## 🎉 CONCLUSÃO
 
-**Total estimado:** [X] horas (meta realista: [Y]h)
+**Total estimado:** 2h a 2h30min
 
 ### ✅ Critérios de Sucesso:
 - [ ] [Critério 1]

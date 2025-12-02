@@ -9,22 +9,31 @@ Este CLI integra os 3 scripts criados nos dias anteriores:
 - Dia 3: Analisador de sentimentos
 - Dia 4: Resumidor de PDFs
 
-Uso planejado:
+Uso :
     python cli_automatizacoes.py blog --tema "Python"
     python cli_automatizacoes.py sentimentos --arquivo reviews/reviews.txt
     python cli_automatizacoes.py resumir --pdf pdfs/arquivo.pdf --llm groq
     python cli_automatizacoes.py  # Menu interativo
+Autor: Renato Saldanha
+Data: 30/11/2025
 """
 
-from Semanas.Semana1.Dia4.resumidor_pdf import resumir_pdf
-from Semanas.Semana1.Dia3.analisador_sentimentos import comparar_reviews_llm
-from Semanas.Semana1.Dia2.gerador_conteudo_blog import gerar_conteudo_tema
-import argparse
-import os
+
 import sys
-import logging
 from pathlib import Path
+
+raiz_projeto = Path(__file__).parent.parent.parent.parent
+sys.path.insert(0, str(raiz_projeto))
+
 from colorama import Fore, Back, Style, init
+import logging
+import os
+import argparse
+from Semanas.Semana1.Dia2.gerador_conteudo_blog import gerar_conteudo_tema
+from Semanas.Semana1.Dia3.analisador_sentimentos import comparar_reviews_llm
+from Semanas.Semana1.Dia4.resumidor_pdf import resumir_pdf
+
+
 
 init(autoreset=True)
 
@@ -33,9 +42,6 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     datefmt='%H:%M:%S',
 )
-
-raiz_projeto = Path(__file__).parent.parent.parent.parent
-sys.path.insert(0, str(raiz_projeto))
 
 
 def comando_blog(tema: str) -> None:
@@ -52,12 +58,15 @@ def comando_blog(tema: str) -> None:
     # Validar se tema não está vazio
     if not tema:
         tratar_erro(ValueError("Tema não pode estar vazio!"))
+        return
 
     # Chamar função do Dia 2 para gerar conteúdo
     try:
         # Função que gera conteúdo para um tema de blog
         resultado = gerar_conteudo_tema(tema)
-        logging.info(f"{Fore.YELLOW}{Style.DIM}Conteúdo gerado: {resultado}")
+        print(f"{Fore.GREEN}Conteúdo gerado: {resultado}")
+        print("Resultado salvo em: resultados/conteudo_blog.txt")
+        logging.info(f"{Fore.GREEN}Conteúdo gerado: {resultado}")
     except Exception as e:
         tratar_erro(e)
 
@@ -78,7 +87,9 @@ def comando_sentimentos(arquivo: str) -> None:
     # Chamar funções do Dia 3 para analisar sentimentos
     try:
         resultado = comparar_reviews_llm(arquivo)
-        logging.info(f"{Fore.YELLOW}{Style.DIM}Sentimento: {resultado}")
+        print(f"{Fore.GREEN}Sentimento: {resultado}")
+        print("Resultado salvo em: resultados/sentimentos.txt")
+        logging.info(f"{Fore.GREEN}Sentimento: {resultado}")
     except Exception as e:
         tratar_erro(e)
 
@@ -98,7 +109,9 @@ def comando_resumir(pdf: str, llm: str = "groq") -> None:
     # Chama função do Dia 4 para resumir o PDF
     try:
         resultado = resumir_pdf(pdf, llm)
-        logging.info(f"{Fore.YELLOW}{Style.DIM}Resumo: {resultado}")
+        print(f"{Fore.GREEN}Resumo: {resultado}")
+        print("Resultado salvo em: resultados/resumo.txt")
+        logging.info(f"{Fore.GREEN}Resumo: {resultado}")
     except Exception as e:
         tratar_erro(e)
 
@@ -115,13 +128,12 @@ def mostrar_menu() -> int:
     """
 
     # Mostra o menu
-    logging.info(f"{Fore.BLUE}{Style.BRIGHT}Escolha uma opção:")
-    logging.info(f"{Fore.BLUE}{Style.BRIGHT}  1. Gerar conteúdo para blog")
-    logging.info(
-        f"{Fore.BLUE}{Style.BRIGHT}  2. Analisar sentimentos de reviews")
-    logging.info(f"{Fore.BLUE}{Style.BRIGHT}  3. Resumir arquivo PDF")
-    logging.info(f"{Fore.BLUE}{Style.BRIGHT}  4. Sair")
-    logging.info(f"{Fore.BLUE}{Style.BRIGHT}-" * 60)
+    print(f"{Fore.BLUE}{Style.BRIGHT}Escolha uma opção:")
+    print(f"{Fore.BLUE}{Style.BRIGHT}  1. Gerar conteúdo para blog")
+    print(f"{Fore.BLUE}{Style.BRIGHT}  2. Analisar sentimentos de reviews")
+    print(f"{Fore.BLUE}{Style.BRIGHT}  3. Resumir arquivo PDF")
+    print(f"{Fore.BLUE}{Style.BRIGHT}  4. Sair")
+    print(f"{Fore.BLUE}{Style.BRIGHT}-" * 60)
     return int(input(f"{Fore.BLUE}{Style.BRIGHT}\nDigite o número da opção: "))
 
 
@@ -152,15 +164,17 @@ def processar_menu() -> None:
             case 3:
                 # Solicita o arquivo PDF e LLM
                 arquivo = input("Digite o caminho do arquivo PDF: ")
-                llm = input("Digite o LLM a ser usado (groq/gemini): ")
+                llm = ""
+                while llm not in ["groq", "gemini"]:
+                    llm = input("Digite o LLM a ser usado (groq/gemini): ")
                 comando_resumir(arquivo, llm)
             case 4:
                 # Sai do loop
-                logging.info(f"{Fore.GREEN}{Style.DIM}Até logo!")
+                print(f"{Fore.GREEN}{Style.DIM}Até logo!")
                 break
             case _:
-                logging.warning(f"{Back.YELLOW}{Fore.RED}Opção inválida!")
-                logging.warning(f"{Back.YELLOW}{Fore.RED}{Style.DIM}=" * 60)
+                print(f"{Fore.RED}Opção inválida!")
+                print(f"{Style.DIM}=" * 60)
 
 
 def criar_parser() -> argparse.ArgumentParser:
@@ -192,7 +206,8 @@ def criar_parser() -> argparse.ArgumentParser:
 
         parser_resumir = subparsers.add_parser('resumir', help="Resumir PDF")
         parser_resumir.add_argument("--pdf", required=True, help="Arquivo PDF")
-        parser_resumir.add_argument("--llm", required=True, help="LLM a ser usado", choices=["groq", "gemini"])
+        parser_resumir.add_argument(
+            "--llm", required=True, help="LLM a ser usado", choices=["groq", "gemini"])
 
         return parser
     except Exception as e:
@@ -230,17 +245,18 @@ def main() -> None:
                 case "resumir":
                     comando_resumir(args.pdf, args.llm)
                 case _:
-                    logging.warning(f"{Back.RED}Comando inválido!")
+                    print(f"{Fore.RED}Comando inválido!")
     except KeyboardInterrupt:
-        tratar_erro(KeyboardInterrupt)
+        print(f"{Fore.RED}Interrompido pelo usuário!")
+        sys.exit(1)
     except Exception as e:
         tratar_erro(e)
-    finally:
-        logging.info(f"{Fore.GREEN}Comando executado com sucesso!")
-        logging.info(f"{Fore.GREEN}{Style.DIM}Até logo!")
+
+    print(f"{Fore.GREEN}Comando executado com sucesso!")
+    print(f"{Fore.GREEN}{Style.DIM}Até logo!")
 
 
-def tratar_erro(erro: Exception | KeyboardInterrupt) -> None:
+def tratar_erro(erro: Exception) -> None:
     """
     Tratar erro
 
@@ -250,14 +266,14 @@ def tratar_erro(erro: Exception | KeyboardInterrupt) -> None:
     Returns:
         None
     """
-    if isinstance(erro, KeyboardInterrupt):
-        logging.error(f"{Back.RED}Interrompido pelo usuário!")
-    elif isinstance(erro, ValueError):
-        logging.error(f"{Back.RED}Verifique o valor informado: {erro.args[0]}")
+    if isinstance(erro, ValueError):
+        logging.error(f"{Fore.RED}Verifique o valor informado: {erro.args[0]}")
+        print(f"{Fore.RED}Verifique o valor informado: {erro.args[0]}")
     else:
-        logging.error(f"{Back.RED}Erro inesperado: {erro.args[0]}")
+        logging.error(f"{Fore.RED}Erro inesperado: {erro.args[0]}")
+        print(f"{Fore.RED}Erro inesperado: {erro.args[0]}")
 
-    logging.error("=" * 60)
+    print("=" * 60)
 
 
 if __name__ == "__main__":

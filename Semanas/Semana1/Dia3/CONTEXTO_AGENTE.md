@@ -8,7 +8,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 **Projeto:** Plano de Desenvolvimento - 2 Meses em Web + IA  
 **Semana:** 1 de 8  
-**Dia:** 3 de 7 (Quarta-feira, 26 Nov 2024)  
+**Dia:** 3 de 7 (Quarta-feira, 26 Nov 2025)  
 **Diretório:** `Semanas/Semana1/Dia3/`
 
 ---
@@ -18,13 +18,14 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 ### O que foi feito:
 - ✅ Dia 1: Setup APIs (Groq, Gemini, Claude) + Hello AI
 - ✅ Dia 2: Gerador de conteúdo para blog com Groq
-- ✅ Dia 4: Estrutura criada (Resumidor de PDFs)
-- ✅ Dia 5: Estrutura criada (Refatoração + Documentação)
+- ✅ Dia 3: Analisador de sentimentos comparando múltiplos LLMs
+- ✅ Dia 4: Resumidor de PDFs usando múltiplos LLMs
+- ✅ Dia 5: Refatoração + Documentação
+- ✅ Dia 6: CLI integrado unificando todos os scripts
+- ✅ Dia 7: Deploy no GitHub + README épico + Review
 
 ### O que está em progresso:
-- 🟡 Dia 3: Analisador de sentimentos comparando múltiplos LLMs
-- 🟡 Dia 4: Resumidor de PDFs (estrutura criada, aguardando implementação)
-- 🟡 Dia 5: Refatoração (estrutura criada, aguardando implementação)
+- Nenhum - Semana 1 completa! ✅
 
 ### O que falta fazer (hoje):
 - [ ] Criar script `analisador_sentimentos.py`
@@ -169,6 +170,6 @@ Review 5: Decepcionado. O produto não corresponde ao que foi prometido na descr
 
 ---
 
-**Última atualização:** 26 Nov 2025  
-**Status:** 🟡 Em progresso
+**Última atualização:** 30 Nov 2025  
+**Status:** ✅ Concluído
 

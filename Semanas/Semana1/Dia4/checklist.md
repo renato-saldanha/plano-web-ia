@@ -1,11 +1,11 @@
-# ✅ Checklist - Dia 4 (Quinta-feira, 27 Nov 2024)
+# ✅ Checklist - Dia 4 (Quinta-feira, 27 Nov 2025)
 
 ## 🎯 Objetivo do Dia
 Criar Script 3 - Resumidor de documentos PDF usando múltiplos LLMs (Groq, Gemini, Claude opcional)
 
 ---
 
-## 📋 FASE 1: REVISÃO E PREPARAÇÃO (15min - 17:20-17:35)
+## 📋 FASE 1: REVISÃO E PREPARAÇÃO (10min - 17:20-17:30)
 
 ### Revisão do Dia Anterior
 - [ X] Abrir journal do Dia 3
@@ -21,12 +21,12 @@ Criar Script 3 - Resumidor de documentos PDF usando múltiplos LLMs (Groq, Gemin
 - [ X] Definir objetivo do dia em 1 frase: "Criar resumidor de PDFs que usa múltiplos LLMs"
 - [ ] Pesquisar sobre extração de texto de PDFs (5min - opcional)
 
-**Tempo estimado:** 15 minutos  
-**Quando:** 17:20-17:35
+**Tempo estimado:** 10 minutos  
+**Quando:** 17:20-17:30
 
 ---
 
-## 💻 FASE 2: DESENVOLVIMENTO (90min - 17:35-19:05)
+## 💻 FASE 2: DESENVOLVIMENTO (75min - 17:30-18:45)
 
 ### Tarefa 1: Instalar Biblioteca e Criar Script Base 
 - [ X] Instalar biblioteca de extração de PDF: `pip install PyPDF2` ou `pip install pdfplumber`
@@ -72,18 +72,18 @@ Criar Script 3 - Resumidor de documentos PDF usando múltiplos LLMs (Groq, Gemin
 
 **Tempo estimado:** 20 minutos
 
-**Tempo total estimado:** 90 minutos  
-**Quando:** 17:35-19:05
+**Tempo total estimado:** 75 minutos  
+**Quando:** 17:30-18:45
 
 ---
 
-## 🍽️ PAUSA (19:05-19:30)
+## 🍽️ PAUSA (18:45-19:00)
 
 - [ X] Jantar/Descanso
 
 ---
 
-## 📚 FASE 3: TESTES E COMPARAÇÃO (30min - 19:30-20:00)
+## 📚 FASE 3: TESTES E COMPARAÇÃO (20min - 19:00-19:20)
 
 ### Testar com Múltiplos PDFs
 - [ X] Criar pasta `pdfs/` e adicionar 2-3 PDFs de teste
@@ -100,12 +100,12 @@ Criar Script 3 - Resumidor de documentos PDF usando múltiplos LLMs (Groq, Gemin
 - [ X] Salvar resumos de todos os PDFs testados
 - [ X] Adicionar metadados aos arquivos (data, LLM usado, tamanho original, tamanho resumo)
 
-**Tempo estimado:** 30 minutos  
-**Quando:** 19:30-20:00
+**Tempo estimado:** 20 minutos  
+**Quando:** 19:00-19:20
 
 ---
 
-## 📝 FASE 4: FINALIZAÇÃO (30min - 20:00-20:30)
+## 📝 FASE 4: FINALIZAÇÃO (15min - 19:20-19:35)
 
 ### Git e Organização
 - [ ] Adicionar arquivos: `git add .`
@@ -125,14 +125,14 @@ Criar Script 3 - Resumidor de documentos PDF usando múltiplos LLMs (Groq, Gemin
 2. Criar documentação completa (README principal, guias de uso)
 3. Organizar estrutura de pastas e preparar para projeto integrado (Dia 6-7)
 
-**Tempo estimado:** 30 minutos  
-**Quando:** 20:00-20:30
+**Tempo estimado:** 15 minutos  
+**Quando:** 19:20-19:35
 
 ---
 
 ## 🎉 CONCLUSÃO
 
-**Total estimado:** 3 horas
+**Total estimado:** 2 horas
 
 ### ✅ Critérios de Sucesso:
 - [ ] Script `resumidor_pdf.py` criado e funcionando

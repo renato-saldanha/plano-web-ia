@@ -14,7 +14,7 @@
 - [ X] Criar Função Principal e Comparação
 
 ## 🧠 O que Aprendi Hoje
-- **Conceito novo:** Manipulação do pdflumber, exceções de arquivos
+- **Conceito novo:** Manipulação do pdflumber, usar logging nas exceções de arquivos
 - **Tecnologia/Ferramenta:** Python, pdflumber
 - **Insight importante:** Limitar token via prompt não funciona em todos os motores
 - **LLM usado:** Groq/Gemini/Claude/GPT-4 (Groq e Gemini)  Groq por ser rápido e gratuíto e Gemini por ter bastante créditos(me surpreendeu com a qualidade e clareza nos resumos)

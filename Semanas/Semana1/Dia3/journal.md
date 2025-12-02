@@ -16,7 +16,7 @@
 - [ X] Feito bloco de criação da tabela markdown 
 
 ## 🧠 O que Aprendi Hoje
-- **Conceito novo:** Tentas gravar um novo arquivo por caminho relativo gera erro de permissão
+- **Conceito novo:** Tentar gravar um novo arquivo por caminho relativo gera erro de permissão
 - **Tecnologia/Ferramenta:** Gemini, Groq e 
 - **Insight importante:** Prestar atenção sempre nas validações de criação de pasta
 - **LLM usado:** Groq/Gemini/Claude (gemini-2.5-flash e llama-3.3-70b-versatile)

@@ -8,7 +8,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 **Projeto:** Plano de Desenvolvimento - 2 Meses em Web + IA  
 **Semana:** 1 de 8  
-**Dia:** 2 de 7 (Terça-feira, 25 Nov 2024)  
+**Dia:** 2 de 7 (Terça-feira, 25 Nov 2025)  
 **Diretório:** `Semanas/Semana1/Dia2/`
 
 ---
@@ -19,13 +19,13 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 - ✅ Dia 1: Setup APIs (Groq, Gemini, Claude) + Hello AI
 - ✅ Dia 2: Gerador de conteúdo para blog com Groq
 - ✅ Dia 3: Analisador de sentimentos comparando múltiplos LLMs
-- ✅ Dia 4: Estrutura criada (Resumidor de PDFs)
-- ✅ Dia 5: Estrutura criada (Refatoração + Documentação)
+- ✅ Dia 4: Resumidor de PDFs usando múltiplos LLMs
+- ✅ Dia 5: Refatoração + Documentação
+- ✅ Dia 6: CLI integrado unificando todos os scripts
+- ✅ Dia 7: Deploy no GitHub + README épico + Review
 
 ### O que está em progresso:
-- 🟡 Dia 3: Analisador de sentimentos (em desenvolvimento)
-- 🟡 Dia 4: Resumidor de PDFs (estrutura criada, aguardando implementação)
-- 🟡 Dia 5: Refatoração (estrutura criada, aguardando implementação)
+- Nenhum - Semana 1 completa! ✅
 
 ### O que falta fazer (Dia 2 - se ainda não concluído):
 - [ ] Completar script `gerador_conteudo_blog.py`

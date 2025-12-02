@@ -1,6 +1,6 @@
 # 📅 Semana 1: Fundamentos de IA Generativa
 
-**Período:** 24 Nov - 30 Nov 2024  
+**Período:** 24 Nov - 30 Nov 2025  
 **Objetivo:** Entender conceitos básicos de IA e criar primeiros scripts de automação
 
 ---
@@ -73,12 +73,12 @@ Semana1/
 **Projeto:** CLI de Automações com IA
 
 **Features:**
-- [ X] Gerador de conteúdo para blog
-- [ X] Analisador de sentimentos (comparando 3 LLMs)
-- [ X] Resumidor de documentos PDF
-- [ ] Interface CLI unificada
-- [ ] Documentação completa (README)
-- [ ] Comparação documentada de LLMs
+- [x] Gerador de conteúdo para blog ✅
+- [x] Analisador de sentimentos (comparando 3 LLMs) ✅
+- [x] Resumidor de documentos PDF ✅
+- [x] Interface CLI unificada ✅
+- [x] Documentação completa (README) ✅
+- [x] Comparação documentada de LLMs ✅
 
 ---
 
@@ -96,10 +96,10 @@ Semana1/
 - [x] Dia 1 completo (Setup) ✅
 - [x] Dia 2 completo (Gerador de conteúdo) ✅
 - [x] Dia 3 completo (Analisador de sentimentos) ✅
-- [x] Dia 4 criado (Resumidor de PDF) 📁
-- [x] Dia 5 criado (Refatoração) 📁
-- [ ] Dia 6 completo (CLI integrado)
-- [ ] Dia 7 completo (Deploy + Review)
+- [x] Dia 4 completo (Resumidor de PDF) ✅
+- [x] Dia 5 completo (Refatoração) ✅
+- [x] Dia 6 completo (CLI integrado) ✅
+- [x] Dia 7 completo (Deploy + Review) ✅
 
 ---
 
@@ -115,10 +115,11 @@ Semana1/
 
 ## Scripts Criados
 
-- Dia 1: D:\plano web+ia\Semanas\Semana1\Dia1\hello_ai_groq.py
-- Dia 2: D:\plano web+ia\Semanas\Semana1\Dia2\gerador_conteudo_blog.py
-- Dia 3: D:\plano web+ia\Semanas\Semana1\Dia3\analisardor_sentimentos.py
-- Dia 4: D:\plano web+ia\Semanas\Semana1\Dia4\resumidor_pdf.py
+- Dia 1: `hello_ai_groq.py` - Hello AI básico com Groq
+- Dia 2: `gerador_conteudo_blog.py` - Gerador de conteúdo para blog
+- Dia 3: `analisador_sentimentos.py` - Analisador comparando 3 LLMs
+- Dia 4: `resumidor_pdf.py` - Resumidor de documentos PDF
+- Dia 6: `cli_automatizacoes.py` - CLI integrado unificando todos os scripts
 
 ## Instalação 
 - No terminal digite: 
@@ -149,15 +150,21 @@ Semana1/
 ```
 
 ## Links Github:
-[Dia 1](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia1) <br>
-[Dia 2](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia2) <br>
-[Dia 3](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia3) <br>
-[Dia 4](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia4) <br>
-[Dia 5](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia5) <br>
+- [Dia 1](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia1)
+- [Dia 2](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia2)
+- [Dia 3](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia3)
+- [Dia 4](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia4)
+- [Dia 5](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia5)
+- [Dia 6](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia6)
+- [Dia 7](https://github.com/renato-saldanha/plano-web-ia/tree/main/Semanas/Semana1/Dia7)
 
 ## Tecnologias utilizadas:
-- Python 3.13
-- Cursor 2.0
+- Python 3.12+
+- Groq API
+- Google Gemini API
+- Anthropic Claude API
+- pdfplumber
+- python-dotenv
 
 ## Guia de uso:
 - Gerador de conteúdo (Dia 2): Basta alterar ou adicionar uma nova linha dentro do metodo "__main__" com um assunto diferente.
@@ -1118,7 +1125,6 @@ if tamanho_original == 0:
 
 **Última atualização:** 30 Nov 2025
 
-
-**Status:** 🟡 Em progresso  
-**Progresso:** 5/7 dias completos | 5/7 dias criados 
+**Status:** ✅ Completa  
+**Progresso:** 7/7 dias completos 
 

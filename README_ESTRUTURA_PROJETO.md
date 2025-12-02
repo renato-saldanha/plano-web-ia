@@ -194,5 +194,6 @@ A estrutura garante clareza porque:
 ---
 
 **Última atualização:** 30 Nov 2025  
-**Versão:** 1.0
+**Versão:** 1.1  
+**Status:** ✅ Atualizado
 

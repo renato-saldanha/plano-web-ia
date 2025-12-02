@@ -8,7 +8,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 **Projeto:** Plano de Desenvolvimento - 2 Meses em Web + IA  
 **Semana:** 1 de 8  
-**Dia:** 4 de 7 (Quinta-feira, 27 Nov 2024)  
+**Dia:** 4 de 7 (Quinta-feira, 27 Nov 2025)  
 **Diretório:** `Semanas/Semana1/Dia4/`
 
 ---
@@ -19,9 +19,13 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 - ✅ Dia 1: Setup APIs (Groq, Gemini, Claude) + Hello AI
 - ✅ Dia 2: Gerador de conteúdo para blog com Groq
 - ✅ Dia 3: Analisador de sentimentos comparando múltiplos LLMs
+- ✅ Dia 4: Resumidor de PDFs usando múltiplos LLMs
+- ✅ Dia 5: Refatoração + Documentação
+- ✅ Dia 6: CLI integrado unificando todos os scripts
+- ✅ Dia 7: Deploy no GitHub + README épico + Review
 
 ### O que está em progresso:
-- 🟡 Dia 4: Resumidor de documentos PDF usando múltiplos LLMs
+- Nenhum - Semana 1 completa! ✅
 
 ### O que falta fazer (hoje):
 - [ ] Criar script `resumidor_pdf.py`
@@ -175,6 +179,6 @@ Criar pasta `pdfs_teste/` e adicionar:
 
 ---
 
-**Última atualização:** 27 Nov 2025  
-**Status:** 🟡 Em progresso
+**Última atualização:** 30 Nov 2025  
+**Status:** ✅ Concluído
 

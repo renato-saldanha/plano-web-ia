@@ -110,20 +110,24 @@ def resumir_com_gemini(texto: str) -> str:
 
 
 # Função para resumir PDF
-def resumir_pdf(texto: str, caminho_arquivo: str, llm: str = ['groq', 'gemini']) -> dict:
+def resumir_pdf(caminho_arquivo: str, llm: str) -> str:
     """
     Resumir o texto do PDF usando o modelo de LLM especif icado.
 
     Args:
-        texto: str - O texto do PDF
         caminho_arquivo: str - O caminho do arquivo PDF
         llm: str - O modelo de LLM a ser usado
 
     Returns:
-        dict - O dicionário com o resumo do texto
+        str - O resumo do texto
     """
 
-    try:
+    try:    
+        texto = extrair_texto_pdf(caminho_arquivo)
+
+        if not texto:
+            raise Exception("Não foi possível extrair o texto do PDF.")
+
         match llm:
             case 'groq':
                 logging.info(f"Resumindo texto com Groq")
@@ -156,13 +160,8 @@ def comparar_resumos(caminho_arquivo: str) -> dict:
     logging.info(f"Iniciando comparação de resumos")
     logging.info("=" * 60 + "\n")
     try:
-        texto = extrair_texto_pdf(caminho_arquivo)
-
-        if not texto:
-            raise Exception("Não foi possível extrair o texto do PDF.")
-
-        resumo_groq = resumir_pdf(texto, caminho_arquivo, "groq")
-        resumo_gemini = resumir_pdf(texto, caminho_arquivo, "gemini")
+        resumo_groq = resumir_pdf(caminho_arquivo, "groq")
+        resumo_gemini = resumir_pdf(caminho_arquivo, "gemini")
 
         logging.info("=" * 60 + "\n")
         logging.info(f"Resumo Groq: {resumo_groq}")
@@ -286,11 +285,7 @@ def salvar_resumo_markdown(resumo: str, texto_original: str, llm_usado: str, cam
         salvar_arquivo(caminho_arquivo, texto_markdown)
 
         logging.info(
-            f"✅ Resumo {llm_usado.upper()} salvo com sucesso em: {caminho_arquivo}")
-    except PermissionError:
-        logging.warning(f"⚠️ Arquivo está aberto ou bloqueado: {caminho_arquivo}"
-                        "\n   Feche o arquivo no editor e tente novamente.")
-        return
+            f"✅ Resumo {llm_usado.upper()} salvo com sucesso em: {caminho_arquivo}")   
     except Exception as e:
         logging.error(f"❌ Erro ao salvar resumo em markdown: {e}")
         return

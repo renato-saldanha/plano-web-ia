@@ -1,4 +1,4 @@
-# ✅ Checklist - Dia 6 (Sábado, 29 Nov 2024)
+# ✅ Checklist - Dia 6 (Sábado, 29 Nov 2025)
 
 ## 🎯 Objetivo do Dia
 Criar CLI integrado unificando os 3 scripts dos dias anteriores em uma interface profissional e intuitiva.
@@ -273,11 +273,11 @@ Menu deve funcionar igual aos comandos de linha.
 - [ X] Push: `git push origin main`
 
 ### Journal e Planejamento
-- [ ] Abrir arquivo `journal.md`
-- [ ] Preencher journal com o que fez hoje
-- [ ] Anotar dificuldades encontradas
-- [ ] Anotar aprendizados sobre CLI e integração
-- [ ] Planejar 3 tarefas para amanhã (Domingo - Deploy + Review):
+- [ X] Abrir arquivo `journal.md`
+- [ X] Preencher journal com o que fez hoje
+- [ X] Anotar dificuldades encontradas
+- [ X] Anotar aprendizados sobre CLI e integração
+- [ X] Planejar 3 tarefas para amanhã (Domingo - Deploy + Review):
 
 **Seu planejamento:**
 1. Criar README épico com documentação completa do projeto
@@ -287,10 +287,10 @@ Menu deve funcionar igual aos comandos de linha.
 *(Veja mais exemplos em: `EXEMPLOS_TAREFAS.md`)*
 
 ### Revisão
-- [ ] Revisar código escrito hoje
-- [ ] Verificar se tudo está funcionando
-- [ ] Confirmar commit no GitHub
-- [ ] Preparar para Dia 7 (Deploy + Review)
+- [ X] Revisar código escrito hoje
+- [ X] Verificar se tudo está funcionando
+- [ X] Confirmar commit no GitHub
+- [ X] Preparar para Dia 7 (Deploy + Review)
 
 **Tempo estimado:** 30 minutos  
 **Quando:** Final do dia
@@ -299,18 +299,18 @@ Menu deve funcionar igual aos comandos de linha.
 
 ## 🎉 CONCLUSÃO
 
-**Total estimado:** 4-6 horas (meta realista: 3-5h)
+**Total estimado:** 4-5 horas
 
 ### ✅ Critérios de Sucesso:
-- [ ] CLI funcional com 3 comandos principais
-- [ ] Menu interativo funcionando
-- [ ] Todos os scripts integrados corretamente
-- [ ] Tratamento de erros unificado
-- [ ] Help text completo e claro
-- [ ] Testes básicos realizados
-- [ ] Código organizado e documentado
-- [ ] Commit feito no GitHub
-- [ ] Journal preenchido
+- [ X] CLI funcional com 3 comandos principais
+- [ X] Menu interativo funcionando
+- [ X] Todos os scripts integrados corretamente
+- [ X] Tratamento de erros unificado
+- [ X] Help text completo e claro
+- [ X] Testes básicos realizados
+- [ X] Código organizado e documentado
+- [ X] Commit feito no GitHub
+- [ X] Journal preenchido
 
 ### 🎯 Streak: 6/56 dias
 

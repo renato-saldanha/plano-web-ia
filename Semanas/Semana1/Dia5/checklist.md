@@ -1,11 +1,11 @@
-# ✅ Checklist - Dia 5 (Sexta-feira, 28 Nov 2024)
+# ✅ Checklist - Dia 5 (Sexta-feira, 28 Nov 2025)
 
 ## 🎯 Objetivo do Dia
 Refatorar scripts dos dias anteriores + Criar documentação completa
 
 ---
 
-## 📋 FASE 1: REVISÃO E PREPARAÇÃO (15min - 17:20-17:35)
+## 📋 FASE 1: REVISÃO E PREPARAÇÃO (10min - 17:20-17:30)
 
 ### Revisão do Dia Anterior
 - [ X] Abrir journal do Dia 4
@@ -25,12 +25,12 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 - [ X] Definir objetivo do dia em 1 frase: "Refatorar código e criar documentação completa"
 - [ X] Revisar conceitos de type hints e docstrings (5min - opcional)
 
-**Tempo estimado:** 15 minutos  
-**Quando:** 17:20-17:35
+**Tempo estimado:** 10 minutos  
+**Quando:** 17:20-17:30
 
 ---
 
-## 💻 FASE 2: REFATORAÇÃO (90min - 17:35-19:05)
+## 💻 FASE 2: REFATORAÇÃO (75min - 17:30-18:45)
 
 ### Tarefa 1: Refatorar Script Dia 2 (Gerador de Conteúdo)
 - [ X] Abrir `../Dia2/gerador_conteudo_blog.py`
@@ -41,7 +41,7 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 - [ X] Verificar se código está seguindo PEP 8
 - [ X] Testar script após refatoração
 
-**Tempo estimado:** 25 minutos
+**Tempo estimado:** 20 minutos
 
 ### Tarefa 2: Refatorar Script Dia 3 (Analisador de Sentimentos)
 - [ X] Abrir `../Dia3/analisardor_sentimentos.py`
@@ -52,7 +52,7 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 - [ X] Verificar se código está seguindo PEP 8
 - [ X] Testar script após refatoração
 
-**Tempo estimado:** 30 minutos
+**Tempo estimado:** 25 minutos
 
 ### Tarefa 3: Refatorar Script Dia 4 (Resumidor de PDFs)
 - [ X] Abrir `../Dia4/resumidor_pdf.py`
@@ -62,7 +62,7 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 - [ X] Verificar se código está seguindo PEP 8
 - [ X] Testar script após refatoração
 
-**Tempo estimado:** 25 minutos
+**Tempo estimado:** 20 minutos
 
 ### Tarefa 4: Criar Funções Utilitárias Comuns
 - [ X] Identificar código duplicado entre scripts (configuração de clientes, tratamento de erros)
@@ -84,7 +84,7 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 
 ---
 
-## 📚 FASE 3: DOCUMENTAÇÃO (30min - 19:30-20:00)
+## 📚 FASE 3: DOCUMENTAÇÃO (20min - 19:00-19:20)
 
 ### Criar README Principal da Semana 1
 - [ X] Criar arquivo `../README.md` na pasta Semana1
@@ -104,12 +104,12 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 - [ X] Adicionar exemplos de uso
 - [ X] Adicionar troubleshooting comum
 
-**Tempo estimado:** 30 minutos  
-**Quando:** 19:30-20:00
+**Tempo estimado:** 20 minutos  
+**Quando:** 19:00-19:20
 
 ---
 
-## 📝 FASE 4: FINALIZAÇÃO (30min - 20:00-20:30)
+## 📝 FASE 4: FINALIZAÇÃO (15min - 19:20-19:35)
 
 ### Organização e Preparação
 - [ X] Verificar estrutura de pastas está organizada
@@ -135,14 +135,14 @@ Refatorar scripts dos dias anteriores + Criar documentação completa
 2. Integrar os 3 scripts criados em uma interface de linha de comando
 3. Adicionar menu interativo e opções de configuração
 
-**Tempo estimado:** 30 minutos  
-**Quando:** 20:00-20:30
+**Tempo estimado:** 15 minutos  
+**Quando:** 19:20-19:35
 
 ---
 
 ## 🎉 CONCLUSÃO
 
-**Total estimado:** 3 horas
+**Total estimado:** 2 horas
 
 ### ✅ Critérios de Sucesso:
 - [ X] Scripts refatorados com type hints

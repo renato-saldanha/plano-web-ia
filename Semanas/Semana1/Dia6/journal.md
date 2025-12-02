@@ -24,7 +24,7 @@ Criar CLI integrado unificando os 3 scripts dos dias anteriores.
 
 ### Conceitos Novos
 - Importação de scripts de outros níveis de pasta usando o sys.path.insert
-- Utilizaçção do colorama para colorir as saídas
+- Utilização do colorama para colorir as saídas
 - Melhora no tratamento de erros
 
 ### Ferramentas Utilizadas

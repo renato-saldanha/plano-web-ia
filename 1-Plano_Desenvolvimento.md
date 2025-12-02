@@ -121,45 +121,35 @@ Desenvolver 3 projetos full-stack completos integrando IA generativa, demonstran
 ## 📅 3. CRONOGRAMA SEMANAL ADAPTADO (REALISTA - 2025)
 
 ### ⚠️ **EXPECTATIVA REALISTA: 80% de Aderência**
-- **Meta semanal ajustada:** 20-24 horas (não 24-28h)
+- **Meta diária:** 2h a 2h30min (média de 2h15min)
+- **Meta semanal ajustada:** 14-17.5 horas (7 dias × 2h-2h30min)
 - **Vida acontece:** OK perder 1-2 dias/semana
 - **Micro-sessões contam:** 30min é melhor que 0min
 - **Foco:** Consistência > Intensidade
 
-### Segunda a Sexta (17:20 - 20:30 = 3h10min/dia)
+### Todos os Dias (2h a 2h30min/dia - média de 2h15min)
 
-#### **Estrutura Diária Otimizada**
+#### **Estrutura Diária Padronizada**
 ```
 17:20 - 17:30 (10min) | Review do dia anterior + Configuração ambiente
-17:30 - 18:30 (60min) | FOCO INTENSO: Coding/Implementação (Pomodoro 25-5-25)
-18:30 - 18:55 (25min) | Jantar
-18:55 - 19:00 (5min)  | Pausa ativa (alongamento/caminhada rápida)
-19:00 - 20:00 (60min) | Aprendizado: Tutoriais/Documentação/Cursos
-20:00 - 20:30 (30min) | Prática hands-on + Commit GitHub + Planejamento próximo dia
+17:30 - 19:00 (90min) | FOCO INTENSO: Coding/Implementação (Pomodoro 25-5-25)
+19:00 - 19:15 (15min) | Pausa ativa (alongamento/caminhada rápida)
+19:15 - 19:45 (30min) | Aprendizado: Tutoriais/Documentação/Cursos
+19:45 - 20:00 (15min) | Prática hands-on + Commit GitHub + Planejamento próximo dia
 ```
 
-**Total segunda a sexta: ~15h (esperando 80% = 12h reais)**
-
-### Sábado (4-6 horas → Meta realista: 3-5h)
+**Alternativa para fins de semana (mesmo tempo total):**
 ```
-Manhã/Tarde (3-5h) | Projeto integrador da semana
-                   | - 60% Desenvolvimento do projeto principal
-                   | - 30% Experimentação e testes
-                   | - 10% Documentação e organização
+Manhã/Tarde (2h-2h30min) | Projeto integrador da semana
+                         | - 60% Desenvolvimento do projeto principal (75-90min)
+                         | - 30% Experimentação e testes (30-45min)
+                         | - 10% Documentação e organização (15-20min)
 ```
 
-### Domingo (4-6 horas → Meta realista: 3-5h)
-```
-Manhã/Tarde (3-5h) | Finalização + Review + Planejamento
-                   | - 50% Completar features pendentes
-                   | - 30% Estudar tópicos que travaram na semana
-                   | - 20% Preparar ambiente para próxima semana + Review
-```
+**Total por dia: 2h-2h30min (média de 2h15min)**
 
-**Total fim de semana: ~8h (esperando 80% = 6-7h reais)**
-
-### **TOTAL SEMANAL REALISTA: 20-24 horas (esperando 16-20h reais com 80% aderência)**
-### **TOTAL NO PERÍODO (8 semanas): 160-192 horas (ajustado de 192-224h)**
+### **TOTAL SEMANAL REALISTA: 14-17.5 horas (7 dias × 2h-2h30min)**
+### **TOTAL NO PERÍODO (8 semanas): 112-140 horas (ajustado para tempo padronizado)**
 
 ---
 
@@ -879,7 +869,7 @@ Arquivo diário: `YYYY-MM-DD.md`
 
 ### Weekly Review (Todo Domingo)
 Perguntas para reflexão:
-1. Quantas horas estudei esta semana? (meta: 20-24h, real: 16-20h OK!)
+1. Quantas horas estudei esta semana? (meta: 14-17.5h, real: 11-14h OK!)
 2. Qual foi minha maior realização?
 3. Qual foi minha maior dificuldade?
 4. O que farei diferente na próxima semana?

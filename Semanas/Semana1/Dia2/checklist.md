@@ -1,11 +1,11 @@
-# ✅ Checklist - Dia 2 (Terça-feira, 25 Nov 2024)
+# ✅ Checklist - Dia 2 (Terça-feira, 25 Nov 2025)
 
 ## 🎯 Objetivo do Dia
 Criar Script 1 - Gerador de conteúdo para blog usando Groq API
 
 ---
 
-## 📋 FASE 1: REVISÃO E PREPARAÇÃO (15min - 17:20-17:35)
+## 📋 FASE 1: REVISÃO E PREPARAÇÃO (10min - 17:20-17:30)
 
 ### Revisão do Dia Anterior
 - [ X] Abrir journal do Dia 1
@@ -20,12 +20,12 @@ Criar Script 1 - Gerador de conteúdo para blog usando Groq API
     3. Adicionar tratamento de erros e salvar resultado em arquivo .txt
 - [ X] Definir objetivo do dia em 1 frase: "Criar script que gera conteúdo de blog"
 
-**Tempo estimado:** 15 minutos  
-**Quando:** 17:20-17:35
+**Tempo estimado:** 10 minutos  
+**Quando:** 17:20-17:30
 
 ---
 
-## 💻 FASE 2: DESENVOLVIMENTO (90min - 17:35-19:05)
+## 💻 FASE 2: DESENVOLVIMENTO (75min - 17:30-18:45)
 
 ### Tarefa 1: Criar Script Base
 - [ X] Criar arquivo `gerador_conteudo_blog.py`
@@ -56,18 +56,18 @@ Criar Script 1 - Gerador de conteúdo para blog usando Groq API
 
 **Tempo estimado:** 15 minutos
 
-**Tempo total estimado:** 90 minutos  
-**Quando:** 17:35-19:05
+**Tempo total estimado:** 75 minutos  
+**Quando:** 17:30-18:45
 
 ---
 
-## 🍽️ PAUSA (19:05-19:30)
+## 🍽️ PAUSA (18:45-19:00)
 
 - [ X] Jantar/Descanso
 
 ---
 
-## 📚 FASE 3: APRENDIZADO E REFINAMENTO (30min - 19:30-20:00)
+## 📚 FASE 3: APRENDIZADO E REFINAMENTO (20min - 19:00-19:20)
 
 ### Prompt Engineering
 - [ X] Pesquisar sobre "Prompt Engineering para geração de conteúdo"
@@ -82,12 +82,12 @@ Criar Script 1 - Gerador de conteúdo para blog usando Groq API
 - [ X] Testar novamente com 1 tema
 - [ X] Verificar se conteúdo melhorou
 
-**Tempo estimado:** 30 minutos  
-**Quando:** 19:30-20:00
+**Tempo estimado:** 20 minutos  
+**Quando:** 19:00-19:20
 
 ---
 
-## 📝 FASE 4: FINALIZAÇÃO (30min - 20:00-20:30)
+## 📝 FASE 4: FINALIZAÇÃO (15min - 19:20-19:35)
 
 ### Git e Organização
 - [ X] Adicionar arquivos: `git add .`
@@ -102,14 +102,14 @@ Criar Script 1 - Gerador de conteúdo para blog usando Groq API
 - [ X] Planejar 3 tarefas para amanhã (Quarta-feira - Analisador de sentimentos):
   
 
-**Tempo estimado:** 30 minutos  
-**Quando:** 20:00-20:30
+**Tempo estimado:** 15 minutos  
+**Quando:** 19:20-19:35
 
 ---
 
 ## 🎉 CONCLUSÃO
 
-**Total estimado:** 3 horas
+**Total estimado:** 2 horas
 
 ### ✅ Critérios de Sucesso:
 - [ X] Script `gerador_conteudo_blog.py` criado e funcionando

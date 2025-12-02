@@ -1,11 +1,11 @@
-# ✅ Checklist - Dia 1 (Segunda-feira, 24 Nov 2024)
+# ✅ Checklist - Dia 1 (Segunda-feira, 24 Nov 2025)
 
 ## 🎯 Objetivo do Dia
 Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI"
 
 ---
 
-## 📋 FASE 1: LEITURA E PLANEJAMENTO (45-60min)
+## 📋 FASE 1: LEITURA E PLANEJAMENTO (15min)
 
 ### Leitura Inicial
 - [ X] Ler `plano_desenvolvimento_2meses_v2.md` completo
@@ -13,12 +13,12 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 - [ ] Escolher 1 das 4 opções de projeto final (ver plano, Semana 7)
 - [ X] Mentalizar o compromisso de 2 meses
 
-**Tempo estimado:** 45-60 minutos  
-**Quando:** Durante almoço ou antes do jantar
+**Tempo estimado:** 15 minutos  
+**Quando:** Durante almoço ou antes do jantar (pode ser feito fora do horário de estudo)
 
 ---
 
-## 🔧 FASE 2: SETUP TÉCNICO (70min - 17:20-18:30)
+## 🔧 FASE 2: SETUP TÉCNICO (45min - 17:20-18:05)
 
 ### Contas e APIs
 - [ X] Criar conta Groq (GRÁTIS!) → [console.groq.com](https://console.groq.com)
@@ -54,12 +54,12 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 - [ X] Criar arquivo `.env` (usar `.env.example` como template)
 - [ X] Adicionar `.env` ao `.gitignore`
 
-**Tempo estimado:** 70 minutos  
-**Quando:** 17:20-18:30
+**Tempo estimado:** 45 minutos  
+**Quando:** 17:20-18:05
 
 ---
 
-## 💻 FASE 3: PRIMEIRO CÓDIGO (60min - 19:00-20:00)
+## 💻 FASE 3: PRIMEIRO CÓDIGO (45min - 18:05-18:50)
 
 ### Hello AI com Groq
 - [ X] Abrir arquivo `hello_ai_groq.py`
@@ -81,12 +81,12 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 - [ X] Commit: `git commit -m "First AI integration with Groq - Hello AI 2025"`
 - [ X] Push: `git push origin main`
 
-**Tempo estimado:** 60 minutos  
-**Quando:** 19:00-20:00
+**Tempo estimado:** 45 minutos  
+**Quando:** 18:05-18:50
 
 ---
 
-## 📝 FASE 4: FINALIZAÇÃO (30min - 20:00-20:30)
+## 📝 FASE 4: FINALIZAÇÃO (15min - 18:50-19:05)
 
 ### Journal e Planejamento
 - [ X] Abrir arquivo `journal.md`
@@ -106,14 +106,14 @@ Setup inicial das APIs de IA (Groq, Gemini, Claude) + Primeiro código "Hello AI
 - [ X] Verificar se tudo está funcionando
 - [ X] Confirmar commit no GitHub
 
-**Tempo estimado:** 30 minutos  
-**Quando:** 20:00-20:30
+**Tempo estimado:** 15 minutos  
+**Quando:** 18:50-19:05
 
 ---
 
 ## 🎉 CONCLUSÃO
 
-**Total estimado:** 3-4 horas
+**Total estimado:** 2 horas
 
 ### ✅ Critérios de Sucesso:
 - [ X] Contas criadas (Groq, Gemini, opcional Claude)
