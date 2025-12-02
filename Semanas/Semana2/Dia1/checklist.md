@@ -206,9 +206,9 @@ Journal consolida aprendizado e cria registro pessoal do progresso. Reflexão aj
 **Quando:** Final do dia
 
 ### Git Commit
-- [ ] Adicionar arquivos: `git add .`
-- [ ] Commit: `git commit -m "feat: adiciona introdução ao LangChain - Dia 1 Semana 2"`
-- [ ] Push: `git push origin main`
+- [ X] Adicionar arquivos: `git add .`
+- [ X] Commit: `git commit -m "feat: adiciona introdução ao LangChain - Dia 1 Semana 2"`
+- [ X] Push: `git push origin main`
 
 **Tempo estimado:** 5 minutos (incluído no tempo acima)
 
@@ -219,12 +219,12 @@ Journal consolida aprendizado e cria registro pessoal do progresso. Reflexão aj
 **Total estimado:** 2h a 2h30min (média de 2h15min)
 
 ### ✅ Critérios de Sucesso:
-- [ ] LangChain instalado e funcionando
-- [ ] `exemplo_langchain_basico.py` executado com sucesso
-- [ ] Entendeu diferença entre código manual e LangChain
-- [ ] Completou pelo menos 2 exercícios guiados
-- [ ] Journal preenchido com reflexões
-- [ ] Commit feito no GitHub
+- [ X] LangChain instalado e funcionando
+- [ X] `exemplo_langchain_basico.py` executado com sucesso
+- [ X] Entendeu diferença entre código manual e LangChain
+- [ X] Completou pelo menos 2 exercícios guiados
+- [ X] Journal preenchido com reflexões
+- [ X] Commit feito no GitHub
 
 ### 🎯 Streak: 8/56 dias
 
