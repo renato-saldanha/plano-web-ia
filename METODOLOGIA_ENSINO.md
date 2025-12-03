@@ -78,10 +78,9 @@ Cada dia segue uma estrutura consistente que facilita o aprendizado:
 - Muitos exemplos e explicações
 
 #### Nível 2 - Intermediário (Dias 3-5)
-- `template.py` - Estrutura básica com TODOs
+- `template.py` -  - Template com TODOs para prática guiada
 - `GUIA_APRENDIZADO.md` - Conceitos teóricos + passo-a-passo
 - `exemplo_referencia.py` - Exemplo completo para consulta
-- `exercicios.md` - Exercícios guiados
 
 #### Nível 3 - Avançado (Dias 6-7)
 - `especificacoes.md` - Requisitos e objetivos
@@ -301,6 +300,7 @@ Um dia está bem estruturado quando:
 ## 📚 Recursos de Apoio
 
 ### Para Criadores de Conteúdo (Agentes IA)
+- **⚠️ DIRETRIZES IMPORTANTES:** `DIRETRIZES_AGENTES.md` - **LER PRIMEIRO** - Inclui regra sobre referências (julho 2025+)
 - **Guia completo:** `GUIAS/GUIA_CRIAR_NOVO_DIA.md` - Processo passo-a-passo
 - **Decisão de nível:** `GUIAS/GUIA_DECISAO_SCAFFOLDING.md` - Matriz de decisão
 - **Template de estrutura:** `TEMPLATE_ESTRUTURA_DIA.md` - Estrutura padrão
@@ -309,6 +309,7 @@ Um dia está bem estruturado quando:
 - Consultar dias anteriores para manter consistência
 - Incluir contexto para próximo dia
 - Seguir estrutura padrão de arquivos
+- **Usar referências de julho de 2025 para frente** (ver DIRETRIZES_AGENTES.md)
 
 ### Para Estudantes
 - Seguir fluxo de aprendizado sugerido

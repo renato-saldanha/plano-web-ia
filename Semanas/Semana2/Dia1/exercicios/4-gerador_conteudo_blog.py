@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
-from langchain_core.messages import HumanMessage
+from langchain_core.prompts import ChatPromptTemplate
 import time
 from datetime import datetime
 import logging
@@ -43,24 +43,22 @@ def gerar_conteudo_tema(tema: str):
 
     try:
         inicio_ms = time.perf_counter() * 1000
-
+        
+        # Criar o objeto LLM separadamente para poder acessar o modelo depois
         llm = ChatGroq(model="llama-3.3-70b-versatile")
-
-        if not llm:
-            raise ValueError(
-                "Não foi possível encontrar um modelo disponível."
-                "Verifique a API."
-            )
-
-        human_message = HumanMessage(content = prompt)
-        response = llm.invoke([human_message])
+        
+        chain = (
+            ChatPromptTemplate.from_template(prompt) 
+            | llm
+        )
+        response = chain.invoke({"tema": tema})
 
         fim_ms = time.perf_counter() * 1000
         tempo_resposta_ms = fim_ms - inicio_ms
         velocidade = response.usage_metadata.get("total_tokens", 0) / (tempo_resposta_ms/1000)
 
         print("=" * 60)
-        print(f"Modelo usado: {llm.model_name}")
+        print(f"Modelo usado: {llm.model_name}")  # Acessa através do objeto llm
         print(f"Tokens usados: {response.usage_metadata.get('total_tokens', 0)}")
         print(f"Tempo de resposta: {tempo_resposta_ms:.0f} ms "
                      f"({tempo_resposta_ms/1000:.3f} segundos)")
