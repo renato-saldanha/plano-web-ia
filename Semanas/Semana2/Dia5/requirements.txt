@@ -1,0 +1,56 @@
+# Dependências para Semana 2, Dia 5: Agents e Tools com LangChain
+# Data: 5 Dez 2025
+
+# ============================================================================
+# LANGCHAIN CORE
+# ============================================================================
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-community>=0.0.1
+
+# ============================================================================
+# INTEGRAÇÕES COM LLMS
+# ============================================================================
+langchain-groq>=0.0.1          # Groq (Llama 3) - rápido e gratuito
+langchain-google-genai>=0.0.1  # Google Gemini - tier gratuito generoso
+langchain-anthropic>=0.0.1     # Claude - melhor custo-benefício
+
+# ============================================================================
+# VECTOR DATABASES (reuso do Dia 4)
+# ============================================================================
+chromadb>=0.4.22               # Vector database local e simples
+faiss-cpu>=1.7.4              # Vector database do Facebook (rápido)
+# faiss-gpu>=1.7.4            # Alternativa GPU (comentado, requer CUDA)
+
+# ============================================================================
+# EMBEDDINGS (reuso do Dia 4)
+# ============================================================================
+sentence-transformers>=2.2.2   # HuggingFace embeddings (gratuito)
+# openai>=1.0.0                # OpenAI embeddings (pago, opcional)
+
+# ============================================================================
+# UTILIDADES
+# ============================================================================
+tiktoken>=0.5.2               # Tokenizer para contar tokens
+python-dotenv>=1.0.0          # Carregar variáveis de ambiente
+pydantic>=2.0.0               # Validação de dados
+
+# ============================================================================
+# DOCUMENT LOADERS (do Dia 3-4)
+# ============================================================================
+pypdf>=3.17.0                 # Carregar PDFs
+beautifulsoup4>=4.12.0        # Parse HTML
+lxml>=4.9.0                   # Parse XML
+
+# ============================================================================
+# NOTAS
+# ============================================================================
+# - Reutilize a base de dados vetorial criada no Dia 4 em ../Dia4/chroma_db
+# - Groq é a opção padrão para o Agent (gratuito); Gemini/Claude como fallback
+# - Ajuste ferramentas conforme testes do Agent (descrições claras ajudam)
+
+# ============================================================================
+# INSTALAÇÃO
+# ============================================================================
+# pip install -r requirements.txt
+

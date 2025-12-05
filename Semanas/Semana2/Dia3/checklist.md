@@ -60,16 +60,16 @@ Exemplo completo comentado ajuda a entender cada parte do RAG. Execução práti
 **Quando:** Após Fase 1
 
 ### Criar Primeiro Sistema RAG Próprio
-- [ ] Abrir arquivo `exercicios/1-rag_simples.py` OU `template.py` (TODO 1)
-- [ ] Completar função `rag_simples()` ou TODO 1: Sistema RAG básico
-  - [ ] Criar documento de texto simples
-  - [ ] Carregar documento usando Document Loader
-  - [ ] Dividir em chunks usando Text Splitter
-  - [ ] Criar sistema de busca simples
-  - [ ] Criar chain RAG (busca + LLM)
-  - [ ] Testar com pergunta simples
-- [ ] Testar sistema RAG criado
-- [ ] Modificar pergunta para ver diferença
+- [X] Abrir arquivo `exercicios/1-rag_simples.py` OU `template.py` (TODO 1)
+- [X] Completar função `rag_simples()` ou TODO 1: Sistema RAG básico
+  - [X] Criar documento de texto simples
+  - [X] Carregar documento usando Document Loader
+  - [X] Dividir em chunks usando Text Splitter
+  - [X] Criar sistema de busca simples
+  - [X] Criar chain RAG (busca + LLM)
+  - [X] Testar com pergunta simples
+- [X] Testar sistema RAG criado
+- [X] Modificar pergunta para ver diferença
 
 **Como fazer:**
 1. **Opção A:** Abra `exercicios/1-rag_simples.py` e complete a função
@@ -89,14 +89,14 @@ Prática guiada consolida aprendizado. Criar seu próprio sistema RAG ajuda a en
 ## 🔗 FASE 3: RAG COM DOCUMENTOS REAIS (60min)
 
 ### Carregar Documentos de Diferentes Formatos
-- [ ] Ler seção sobre Document Loaders no `GUIA_RAG_BASICO.md`
-- [ ] Completar `exercicios/2-rag_com_pdf.py` OU TODO 2 no `template.py`:
-  - [ ] Carregar documento PDF (se disponível)
-  - [ ] OU criar documento de texto mais complexo
-  - [ ] Dividir em chunks apropriados
-  - [ ] Criar sistema de busca
-  - [ ] Testar com perguntas sobre o documento
-- [ ] Entender diferenças entre loaders
+- [X] Ler seção sobre Document Loaders no `GUIA_RAG_BASICO.md`
+- [X] Completar `exercicios/2-rag_com_pdf.py` OU TODO 2 no `template.py`:
+  - [X] Carregar documento PDF (se disponível)
+  - [X] OU criar documento de texto mais complexo
+  - [X] Dividir em chunks apropriados
+  - [X] Criar sistema de busca
+  - [X] Testar com perguntas sobre o documento
+- [X] Entender diferenças entre loaders
 
 **Como fazer:**
 1. Consulte `GUIA_RAG_BASICO.md` para ver exemplos de loaders
@@ -112,14 +112,14 @@ Documentos reais são mais complexos. Praticar com diferentes formatos prepara p
 **Quando:** Após Fase 2
 
 ### Criar Sistema RAG Funcional Completo
-- [ ] Ler seção sobre chains RAG no `GUIA_RAG_BASICO.md`
-- [ ] Completar `exercicios/3-rag_completo.py` OU TODO 3 no `template.py`:
-  - [ ] Criar sistema RAG completo com múltiplos documentos
-  - [ ] Implementar busca inteligente
-  - [ ] Criar chain RAG otimizada
-  - [ ] Adicionar tratamento de erros
-  - [ ] Testar com perguntas complexas
-- [ ] Entender como melhorar qualidade das respostas
+- [X] Ler seção sobre chains RAG no `GUIA_RAG_BASICO.md`
+- [X] Completar `exercicios/3-rag_avancado.py` OU TODO 3 no `template.py`:
+  - [X] Criar sistema RAG completo com múltiplos documentos
+  - [X] Implementar busca inteligente
+  - [X] Criar chain RAG otimizada (STUFF e MAP-REDUCE)
+  - [X] Adicionar tratamento de erros (limpeza de arquivos temporários)
+  - [X] Testar com perguntas complexas
+- [X] Entender como melhorar qualidade das respostas
 
 **Como fazer:**
 1. Consulte `GUIA_RAG_BASICO.md` para ver exemplos de chains RAG completas
@@ -135,19 +135,16 @@ Sistema RAG completo consolida todos os conceitos aprendidos. Prática com casos
 **Quando:** Após carregar documentos
 
 ### Completar Exercícios Guiados
-- [ ] Abrir `exercicios.md` para ver instruções detalhadas
-- [ ] Completar Exercício 1: `exercicios/1-rag_simples.py`
-  - [ ] Criar sistema RAG básico
-  - [ ] Executar e testar: `python exercicios/1-rag_simples.py`
-- [ ] Completar Exercício 2: `exercicios/2-rag_com_pdf.py`
-  - [ ] Criar sistema RAG com documentos reais
-  - [ ] Executar e testar: `python exercicios/2-rag_com_pdf.py`
-- [ ] Completar Exercício 3: `exercicios/3-rag_completo.py`
-  - [ ] Criar sistema RAG completo
-  - [ ] Executar e testar: `python exercicios/3-rag_completo.py`
-- [ ] (Opcional) Exercício 4: `exercicios/4-rag_avancado.py`
-  - [ ] Melhorar sistema RAG com otimizações
-  - [ ] Executar e testar: `python exercicios/4-rag_avancado.py`
+- [ X] Abrir `exercicios.md` para ver instruções detalhadas
+- [ X] Completar Exercício 1: `exercicios/1-rag_simples.py`
+  - [ X] Criar sistema RAG básico
+  - [ X] Executar e testar: `python exercicios/1-rag_simples.py`
+- [ X] Completar Exercício 2: `exercicios/2-rag_com_pdf.py`
+  - [ X] Criar sistema RAG com documentos reais
+  - [ X] Executar e testar: `python exercicios/2-rag_com_pdf.py`
+- [ X] Completar Exercício 3: `exercicios/3-rag_avancado.py`
+  - [ X] Melhorar sistema RAG com otimizações
+  - [ X] Executar e testar: `python exercicios/3-rag_avancado.py`
 
 **Como fazer:**
 1. Abra `exercicios.md` para ver instruções detalhadas de cada exercício
@@ -168,16 +165,16 @@ Prática guiada consolida aprendizado. Exercícios progressivos constroem conhec
 ## 🔍 FASE 4: COMPARAÇÃO E REFLEXÃO (15min)
 
 ### Comparar Abordagens
-- [ ] Criar tabela comparativa:
-  - [ ] Geração simples (Dia 1) vs RAG básico
-  - [ ] Chain simples (Dia 2) vs Chain RAG
-  - [ ] Vantagens e desvantagens de cada abordagem
-- [ ] Identificar vantagens do RAG:
-  - [ ] Respostas baseadas em dados reais
-  - [ ] Menos alucinações
-  - [ ] Atualização fácil (adicionar documentos)
-  - [ ] Rastreabilidade (mostrar fonte)
-- [ ] Identificar casos onde RAG é especialmente útil
+- [ X] Criar tabela comparativa:
+  - [ X] Geração simples (Dia 1) vs RAG básico
+  - [ X] Chain simples (Dia 2) vs Chain RAG
+  - [ X] Vantagens e desvantagens de cada abordagem
+- [ X] Identificar vantagens do RAG:
+  - [ X] Respostas baseadas em dados reais
+  - [ X] Menos alucinações
+  - [ X] Atualização fácil (adicionar documentos)
+  - [ X] Rastreabilidade (mostrar fonte)
+- [ X] Identificar casos onde RAG é especialmente útil
 
 **Como fazer:**
 1. Abra um script do Dia 1 (geração simples) e um sistema RAG criado hoje lado a lado
@@ -192,20 +189,20 @@ Comparação ajuda a entender valor do RAG. Reflexão consolida aprendizado.
 **Quando:** Após Fase 3
 
 ### Preencher Journal
-- [ ] Abrir arquivo `journal.md`
-- [ ] Preencher seção "O que foi feito hoje"
-- [ ] Preencher seção "O que aprendi hoje"
-  - [ ] Conceitos novos aprendidos (RAG, Loaders, Splitters, Retrievers)
-  - [ ] Diferenças entre RAG e geração simples
-  - [ ] Vantagens identificadas
-- [ ] Preencher seção "Insights e Reflexões"
-  - [ ] O que funcionou bem?
-  - [ ] O que foi difícil?
-  - [ ] O que quer explorar mais?
-- [ ] Adicionar métricas do dia:
-  - [ ] Tempo total gasto
-  - [ ] Exercícios completados
-  - [ ] Sistemas RAG criados
+- [X ] Abrir arquivo `journal.md`
+- [ X] Preencher seção "O que foi feito hoje"
+- [ X] Preencher seção "O que aprendi hoje"
+  - [ X] Conceitos novos aprendidos (RAG, Loaders, Splitters, Retrievers)
+  - [ X] Diferenças entre RAG e geração simples
+  - [ X] Vantagens identificadas
+- [ X] Preencher seção "Insights e Reflexões"
+  - [ X] O que funcionou bem?
+  - [ X] O que foi difícil?
+  - [ X] O que quer explorar mais?
+- [ X] Adicionar métricas do dia:
+  - [ X] Tempo total gasto
+  - [ X] Exercícios completados
+  - [ X] Sistemas RAG criados
 
 **Como fazer:**
 1. Abra `journal.md` neste diretório
@@ -220,9 +217,9 @@ Journal consolida aprendizado e cria registro pessoal do progresso. Reflexão aj
 **Quando:** Final do dia
 
 ### Git Commit
-- [ ] Adicionar arquivos: `git add .`
-- [ ] Commit: `git commit -m "feat: adiciona RAG básico - Dia 3 Semana 2"`
-- [ ] Push: `git push origin main`
+- [ X] Adicionar arquivos: `git add .`
+- [ X] Commit: `git commit -m "feat: adiciona RAG básico - Dia 3 Semana 2"`
+- [ X] Push: `git push origin main`
 
 **Tempo estimado:** 5 minutos (incluído no tempo acima)
 
@@ -233,14 +230,14 @@ Journal consolida aprendizado e cria registro pessoal do progresso. Reflexão aj
 **Total estimado:** 2h a 2h30min (média de 2h25min)
 
 ### ✅ Critérios de Sucesso:
-- [ ] Entendeu conceito de RAG e por que usar
-- [ ] Entendeu componentes básicos (Loaders, Splitters, Retrievers)
-- [ ] Criou pelo menos 1 sistema RAG simples funcional
-- [ ] Criou chain RAG completa (busca + geração)
-- [ ] Completou pelo menos 3 exercícios guiados
-- [ ] Consegue explicar diferença entre RAG e geração simples
-- [ ] Journal preenchido com reflexões
-- [ ] Commit feito no GitHub
+- [X] Entendeu conceito de RAG e por que usar
+- [X] Entendeu componentes básicos (Loaders, Splitters, Retrievers)
+- [X] Criou pelo menos 1 sistema RAG simples funcional (3 exercícios completos)
+- [X] Criou chain RAG completa (busca + geração) - STUFF e MAP-REDUCE
+- [X] Completou pelo menos 3 exercícios guiados (1-rag_simples, 2-rag_com_pdf, 3-rag_avancado)
+- [X] Consegue explicar diferença entre RAG e geração simples
+- [ X] Journal preenchido com reflexões (parcialmente preenchido)
+- [ X] Commit feito no GitHub (verificar status)
 
 ### 🎯 Streak: 10/56 dias
 

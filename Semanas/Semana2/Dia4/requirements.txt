@@ -1,0 +1,64 @@
+# Dependências para Semana 2, Dia 4: RAG Avançado com Vector Databases
+# Data: 4 Dez 2025
+
+# ============================================================================
+# LANGCHAIN CORE
+# ============================================================================
+langchain>=0.1.0
+langchain-core>=0.1.0
+langchain-community>=0.0.1
+
+# ============================================================================
+# INTEGRAÇÕES COM LLMS
+# ============================================================================
+langchain-groq>=0.0.1          # Groq (Llama 3) - rápido e gratuito
+langchain-google-genai>=0.0.1  # Google Gemini - tier gratuito generoso
+langchain-anthropic>=0.0.1     # Claude - melhor custo-benefício
+
+# ============================================================================
+# VECTOR DATABASES (NOVO DIA 4)
+# ============================================================================
+chromadb>=0.4.22               # Vector database local e simples
+faiss-cpu>=1.7.4              # Vector database do Facebook (rápido)
+# faiss-gpu>=1.7.4            # Alternativa GPU (comentado, requer CUDA)
+
+# ============================================================================
+# EMBEDDINGS (NOVO DIA 4)
+# ============================================================================
+sentence-transformers>=2.2.2   # HuggingFace embeddings (gratuito)
+# openai>=1.0.0                # OpenAI embeddings (pago, opcional)
+
+# ============================================================================
+# UTILIDADES
+# ============================================================================
+tiktoken>=0.5.2               # Tokenizer para contar tokens
+python-dotenv>=1.0.0          # Carregar variáveis de ambiente
+pydantic>=2.0.0               # Validação de dados
+
+# ============================================================================
+# DOCUMENT LOADERS (do Dia 3)
+# ============================================================================
+pypdf>=3.17.0                 # Carregar PDFs
+beautifulsoup4>=4.12.0        # Parse HTML
+lxml>=4.9.0                   # Parse XML
+
+# ============================================================================
+# NOTAS
+# ============================================================================
+# - chromadb: Vector database local, gratuita, ótima para começar
+# - faiss-cpu: Mais rápido que Chroma, mas requer mais configuração
+# - sentence-transformers: Modelos de embeddings gratuitos da HuggingFace
+# - tiktoken: Necessário para contar tokens em alguns modelos
+
+# ============================================================================
+# INSTALAÇÃO
+# ============================================================================
+# pip install -r requirements.txt
+
+# ============================================================================
+# TROUBLESHOOTING
+# ============================================================================
+# Se chromadb der erro: pip install --upgrade chromadb
+# Se faiss-cpu der erro: pip install faiss-cpu --no-cache-dir
+# Se sentence-transformers demorar: Vai baixar modelos (300MB+), é normal
+
