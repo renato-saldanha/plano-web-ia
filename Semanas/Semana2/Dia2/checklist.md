@@ -209,9 +209,9 @@ Journal consolida aprendizado e cria registro pessoal do progresso. Reflexão aj
 **Quando:** Final do dia
 
 ### Git Commit
-- [ ] Adicionar arquivos: `git add .`
-- [ ] Commit: `git commit -m "feat: adiciona chains e LCEL - Dia 2 Semana 2"`
-- [ ] Push: `git push origin main`
+- [ X] Adicionar arquivos: `git add .`
+- [ X] Commit: `git commit -m "feat: adiciona chains e LCEL - Dia 2 Semana 2"`
+- [ X] Push: `git push origin main`
 
 **Tempo estimado:** 5 minutos (incluído no tempo acima)
 

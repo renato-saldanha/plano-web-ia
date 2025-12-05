@@ -120,6 +120,39 @@ Antes de finalizar qualquer guia ou exemplo:
 
 ---
 
+## 📋 Padrões de Consistência do Projeto
+
+### Arquivos Obrigatórios (Ordem Padrão)
+
+Todos os dias devem ter estes arquivos na ordem especificada:
+
+1. **README.md** - Contexto e objetivos do dia
+2. **CONTEXTO_AGENTE.md** - Informações técnicas detalhadas
+3. **checklist.md** - Tarefas práticas divididas em fases
+4. **journal.md** - Template para reflexão
+5. **requirements.txt** - Dependências Python (obrigatório sempre, mesmo que vazio)
+6. **CONTEXTO_PROXIMO_DIA.md** - Guia para construir próximo dia (obrigatório para TODOS os dias)
+
+**Por que esta ordem:** Segue o fluxo natural de aprendizado (contexto → detalhes → tarefas → reflexão → dependências → transição).
+
+### Níveis de Scaffolding
+
+**⚠️ IMPORTANTE:** Os níveis são determinados pelo **CONCEITO**, não pela posição temporal (dia/semana).
+
+**Regra de Decisão:**
+- **Nível 1:** Conceito completamente novo, primeira exposição
+- **Nível 2:** Conceito parcialmente conhecido, aplicação em novo contexto
+- **Nível 3:** Conceitos conhecidos, aplicação independente
+
+**Exemplos:**
+- Semana 1, Dia 1: Nível 1 (conceito novo: usar APIs diretamente)
+- Semana 2, Dia 1: Nível 1 (conceito novo: LangChain)
+- Semana 2, Dia 2: Nível 2 (conceito parcialmente conhecido: já sabe LangChain básico, agora aplica em chains)
+
+**Consulte:** `GUIAS/GUIA_DECISAO_SCAFFOLDING.md` para matriz de decisão detalhada.
+
+---
+
 ## 📚 Recursos de Referência
 
 ### Documentação Oficial (sempre verificar versões mais recentes):
@@ -129,6 +162,7 @@ Antes de finalizar qualquer guia ou exemplo:
 
 ### Arquivos de Referência no Projeto:
 - `METODOLOGIA_ENSINO.md` - Metodologia de ensino
+- `TEMPLATE_ESTRUTURA_DIA.md` - Estrutura padrão de um dia
 - `TEMPLATE_CONTEXTO_PROXIMO_DIA.md` - Template para transições
 - `GUIAS/GUIA_CRIAR_NOVO_DIA.md` - Processo de criação de dias
 - `GUIAS/GUIA_DECISAO_SCAFFOLDING.md` - Decisão de nível de scaffolding
@@ -136,5 +170,5 @@ Antes de finalizar qualquer guia ou exemplo:
 ---
 
 **Última atualização:** 2 Dez 2025  
-**Versão:** 1.0
+**Versão:** 2.0
 

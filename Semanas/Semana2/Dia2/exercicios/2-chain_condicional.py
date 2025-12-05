@@ -32,12 +32,16 @@ def conditional_chain():
         Chain que escolhe estratégia baseada em condição
     """
 
+    # Cria instância dos templates do prompt
+    short_template = ChatPromptTemplate.from_template("Resposta longa sobre {input}")
+    long_template = ChatPromptTemplate.from_template("Resposta curta sobre {input}")
+
     # Cria a chain para inputs longos
-    long_chain = (ChatPromptTemplate.from_template("Resposta longa sobre {input}")
+    long_chain = ( short_template
                   | llm
                   | StrOutputParser())
     # Cria a chain para inputs curtos
-    short_chain = (ChatPromptTemplate.from_template("Resposta curta sobre {input}")
+    short_chain = ( long_template
                    | llm
                    | StrOutputParser())
 

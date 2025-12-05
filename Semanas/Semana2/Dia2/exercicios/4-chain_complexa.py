@@ -41,17 +41,20 @@ def complex_chain():
     keywords_chain = (ChatPromptTemplate.from_template("Extraia as palavras-chave do seguinte resumo: {summary}. Retorne as palavras-chave em formato markdown.")
                       | llm | StrOutputParser())
 
+    text = {"summary": RunnablePassthrough()}
+
+    # Cria chain paralela
+    parallel_chain = RunnableParallel({            
+            "analysis": analysis_chain,
+            "keywords": keywords_chain
+        })
+
     # Cria a pipeline complexa
     content_pipeline = (
         generate_chain
         # Passa o resumo para a próxima chain
-        | {"summary": RunnablePassthrough()}
-        # Cria a chain paralela
-        | RunnableParallel({
-            # Passa o resumo para a chain de análise
-            "analysis": analysis_chain,
-            "keywords": keywords_chain
-        }))
+        | text
+        | parallel_chain)
 
     return content_pipeline
 

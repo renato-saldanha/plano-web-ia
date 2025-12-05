@@ -1,0 +1,10 @@
+
+            A engenharia de software com IA representa a evolução natural do desenvolvimento de sistemas, 
+            integrando técnicas de inteligência artificial para automatizar tarefas, melhorar a tomada de decisão e aumentar a eficiência no ciclo de vida do software. 
+            Em vez de depender apenas de abordagens tradicionais, esse campo combina princípios de engenharia com modelos modernos como LLMs, 
+            machine learning e agentes autônomos.
+            Um dos pilares dessa área é a automação inteligente. Ferramentas de IA já conseguem gerar código, revisar pull requests, 
+            detectar vulnerabilidades e até propor arquiteturas iniciais. Isso não substitui desenvolvedores, mas amplia sua capacidade produtiva,
+            reduz erros e acelera entregas. 
+            O profissional passa a assumir um papel mais estratégico e menos operacional.
+        

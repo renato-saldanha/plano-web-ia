@@ -13,6 +13,16 @@ Desenvolver 3 projetos full-stack completos integrando IA generativa, demonstran
 
 ### Metas Semanais Detalhadas
 
+### Método de Scaffolding com Limite Diário de 2h40
+- **Fase 0 – Preparação (5min):** abrir checklist do dia, conferir contexto do `README.md` e confirmar pré-requisitos.
+- **Fase 1 – Leitura guiada (20min):** leitura ativa de documentos e guias obrigatórios do dia, anotando dúvidas que serão respondidas na prática.
+- **Fase 2 – Construção guiada (90min):** seguir o `template.py` ou exercícios com apoio do exemplo de referência (scaffolding descrito por Murilo Abreu Inácio, 2023).
+- **Fase 3 – Consolidação (25min):** testes rápidos, checklist parcial e ajustes nas seções completadas do template/exercícios.
+- **Fase 4 – Registro e handoff (20min):** preencher checklist final, journal e `CONTEXTO_PROXIMO_DIA.md`.
+- **Buffer estratégico (10min):** espaço para resolver bloqueios sem extrapolar 2h40.
+
+Essa cadência aplica o conceito de scaffolding: começamos com suporte máximo na leitura guiada, reduzimos o apoio na construção e finalizamos com autonomia na documentação. Qualquer conceito que não caiba em uma única sessão deve ser dividido, mantendo a sequência Preparação → Leitura → Construção → Consolidação → Registro.
+
 #### **Semana 1-2: Fundamentos de IA Generativa para Desenvolvedores**
 - ✅ Completar 5 tutoriais sobre integração de APIs de IA (OpenAI GPT-4, Anthropic Claude 3.5, Google Gemini 2.0, Groq)
 - ✅ Criar 3 scripts Python de automação com IA (processamento de texto, análise de dados, geração de código)
@@ -121,35 +131,30 @@ Desenvolver 3 projetos full-stack completos integrando IA generativa, demonstran
 ## 📅 3. CRONOGRAMA SEMANAL ADAPTADO (REALISTA - 2025)
 
 ### ⚠️ **EXPECTATIVA REALISTA: 80% de Aderência**
-- **Meta diária:** 2h a 2h30min (média de 2h15min)
-- **Meta semanal ajustada:** 14-17.5 horas (7 dias × 2h-2h30min)
+- **Meta diária:** 2h30 a 2h40min (máximo absoluto)
+- **Meta semanal ajustada:** 17.5-18.7 horas (7 dias × 2h30-2h40)
 - **Vida acontece:** OK perder 1-2 dias/semana
 - **Micro-sessões contam:** 30min é melhor que 0min
 - **Foco:** Consistência > Intensidade
 
-### Todos os Dias (2h a 2h30min/dia - média de 2h15min)
+### Todos os Dias (máx. 2h40 por sessão)
 
 #### **Estrutura Diária Padronizada**
-```
-17:20 - 17:30 (10min) | Review do dia anterior + Configuração ambiente
-17:30 - 19:00 (90min) | FOCO INTENSO: Coding/Implementação (Pomodoro 25-5-25)
-19:00 - 19:15 (15min) | Pausa ativa (alongamento/caminhada rápida)
-19:15 - 19:45 (30min) | Aprendizado: Tutoriais/Documentação/Cursos
-19:45 - 20:00 (15min) | Prática hands-on + Commit GitHub + Planejamento próximo dia
-```
+| Bloco | Duração | Foco principal | Entregáveis obrigatórios |
+|-------|---------|----------------|---------------------------|
+| Preparação | 5min | Revisar `README.md`, checklist e ambiente | Checklist aberto e pré-requisitos confirmados |
+| Leitura guiada | 20min | Ler guias/documentos do dia e anotar dúvidas | Guias lidos + anotações curtas |
+| Construção guiada | 90min | Executar template/exercícios seguindo scaffolding | TODOs resolvidos ou marcados com dúvidas objetivas |
+| Consolidação | 25min | Testes rápidos, revisão de código, checklist parcial | Código executando + itens críticos verificados |
+| Registro e handoff | 20min | Checklist final, journal, `CONTEXTO_PROXIMO_DIA.md` | Journal preenchido + próximos passos definidos |
+| Buffer | 10min | Resolver bloqueios sem estourar o tempo | Só usar em emergências |
 
-**Alternativa para fins de semana (mesmo tempo total):**
-```
-Manhã/Tarde (2h-2h30min) | Projeto integrador da semana
-                         | - 60% Desenvolvimento do projeto principal (75-90min)
-                         | - 30% Experimentação e testes (30-45min)
-                         | - 10% Documentação e organização (15-20min)
-```
+**Total por dia: 2h40min (160min)**
 
-**Total por dia: 2h-2h30min (média de 2h15min)**
+**Alternativa para fins de semana:** manter a mesma sequência em horário mais confortável (manhã ou tarde). Nunca ultrapassar 2h40; se precisar de tempo extra, crie uma nova sessão em dia diferente.
 
-### **TOTAL SEMANAL REALISTA: 14-17.5 horas (7 dias × 2h-2h30min)**
-### **TOTAL NO PERÍODO (8 semanas): 112-140 horas (ajustado para tempo padronizado)**
+### **TOTAL SEMANAL REALISTA: 17.5-18.7 horas (7 dias × 2h30-2h40)**
+### **TOTAL NO PERÍODO (8 semanas): 140-150 horas (tempo padronizado)**
 
 ---
 
@@ -530,14 +535,14 @@ Arquivo diário: `YYYY-MM-DD.md`
 - **Comparar 3 LLMs diferentes** (nova habilidade crítica 2025)
 - Criar primeiros 3 scripts de automação
 
-**Dia a dia:**
-- **Segunda:** Setup Groq + Gemini + Claude API + Tutorial básico prompting
-- **Terça:** Script 1 - Gerador de conteúdo para blog (usar Groq - grátis)
-- **Quarta:** Script 2 - Analisador de sentimentos de reviews (comparar 3 LLMs)
-- **Quinta:** Script 3 - Resumidor de documentos PDF
-- **Sexta:** Refatorar scripts + Documentação + Comparação LLMs (qual melhor para quê?)
-- **Sábado:** Projeto integrado: CLI para múltiplas automações
-- **Domingo:** Deploy no GitHub + README épico + Review da semana
+**Sequência (7 sessões de ≤2h40):**
+1. **Dia 1:** Preparação + leitura completa do plano, abertura do checklist, criação de contas (Groq/Gemini/Claude) e journal inicial.
+2. **Dia 2:** Leitura rápida do guia de prompting + implementação do Script 1 (gerador de conteúdo) no template.
+3. **Dia 3:** Revisão do exemplo de referência + Script 2 (analisador de sentimentos) com comparação de 3 LLMs.
+4. **Dia 4:** Leitura sobre PDF loaders + Script 3 (resumidor) com testes curtos.
+5. **Dia 5:** Sessão dedicada a refatoração incremental, documentação e matriz comparativa de LLMs.
+6. **Dia 6:** Construção guiada do CLI integrando os 3 scripts (scaffolding nível 2).
+7. **Dia 7:** Revisão geral, README completo, checklist final e review semanal documentado.
 
 **Recursos:**
 - OpenAI Cookbook: Text Generation, Embeddings
@@ -556,14 +561,14 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Implementar RAG (Retrieval Augmented Generation) com vector DB
 - Criar chatbot com memória de contexto e busca semântica
 
-**Dia a dia:**
-- **Segunda:** LangChain basics + Chains (LCEL - LangChain Expression Language)
-- **Terça:** Vector databases (ChromaDB local - gratuito, ou Pinecone)
-- **Quarta:** Embeddings + Busca semântica
-- **Quinta:** RAG com documentos próprios (upload PDFs)
-- **Sexta:** Chatbot com histórico + memória
-- **Sábado:** Projeto: "Personal Knowledge Assistant" com RAG
-- **Domingo:** Testes + Documentação + Deploy + Comparação Chroma vs Pinecone
+**Sequência (7 sessões de ≤2h40):**
+1. **Dia 1:** Leitura do guia LangChain + recriação de uma chain simples usando LCEL puro.
+2. **Dia 2:** Estudo guiado de vector stores (Chroma local) e setup do ambiente.
+3. **Dia 3:** Implementar embeddings + busca semântica básica no template.
+4. **Dia 4:** RAG com documentos próprios (upload e ajustes do splitter).
+5. **Dia 5:** Implementar memória/histórico de chat usando RunnablePassthrough.
+6. **Dia 6:** Sessão de construção do "Personal Knowledge Assistant" com scaffolding nível 2.
+7. **Dia 7:** Testes, checklist focado em fontes citadas, documentação e comparação Chroma vs Pinecone.
 
 **Recursos:**
 - LangChain Documentation (Python)
@@ -583,14 +588,14 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Autenticação JWT + Rate limiting
 - Cobertura de testes 60% (realista)
 
-**Dia a dia:**
-- **Segunda:** FastAPI setup + Primeiros endpoints + Pydantic v2
-- **Terça:** Autenticação JWT completa
-- **Quarta:** Endpoint: /api/generate (text generation com streaming)
-- **Quinta:** Endpoint: /api/chat (conversação com histórico)
-- **Sexta:** Rate limiting + Error handling + Logging
-- **Sábado:** Projeto: API completa com 5 endpoints + testes (pytest)
-- **Domingo:** Documentação Swagger + Deploy Railway
+**Sequência (7 sessões de ≤2h40):**
+1. **Dia 1:** Leitura do guia FastAPI + criação do esqueleto com 1 endpoint simples.
+2. **Dia 2:** Implementar autenticação JWT e revisar checklist de segurança.
+3. **Dia 3:** Construir `/api/generate` com streaming e testes rápidos.
+4. **Dia 4:** Construir `/api/chat` com histórico e validar com exemplos.
+5. **Dia 5:** Adicionar rate limiting, tratamento de erros e logging estruturado.
+6. **Dia 6:** Foco em testes (pytest) + cobertura mínima de 60%.
+7. **Dia 7:** Configurar Swagger, checklist de deploy e publicar no Railway.
 
 **Recursos:**
 - FastAPI Documentation (atualizado 2024)
@@ -608,14 +613,14 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Comparar performance e DX: FastAPI (Python) vs Hono (Bun)
 - Entender trade-offs (escolher stack preferida para projeto final)
 
-**Dia a dia:**
-- **Segunda:** Bun setup + Hono framework (Express-like, mas 4x mais rápido)
-- **Terça:** Endpoints de IA em Bun + TypeScript
-- **Quarta:** Autenticação JWT + Prisma ORM (ou Drizzle)
-- **Quinta:** Streaming de respostas + Websockets
-- **Sexta:** Deploy Railway/Render + Load testing
-- **Sábado:** Projeto: API Bun completa (mesmos endpoints Semana 3)
-- **Domingo:** **Comparação prática:** Tabela FastAPI vs Bun+Hono (performance, DX, ecossistema) + Post LinkedIn/Dev.to
+**Sequência (7 sessões de ≤2h40):**
+1. **Dia 1:** Setup Bun + Hono e leitura do guia rápido de TypeScript server-side.
+2. **Dia 2:** Criar endpoints base equivalentes aos da Semana 3.
+3. **Dia 3:** Implementar autenticação JWT e integrar Prisma/Drizzle.
+4. **Dia 4:** Adicionar streaming/WebSockets + testes manuais.
+5. **Dia 5:** Configurar deploy (Railway/Render) e executar smoke tests.
+6. **Dia 6:** Paridade funcional com a API FastAPI (scaffolding nível 2).
+7. **Dia 7:** Produzir tabela comparativa + post curto (LinkedIn/Dev.to) documentando achados.
 
 **Recursos:**
 - Bun Documentation (bun.sh)
@@ -633,14 +638,14 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Vercel AI SDK 4.x para streaming
 - Interface de chat com IA (similar ChatGPT)
 
-**Dia a dia:**
-- **Segunda:** NextJS 15 setup + App Router + Turbopack
-- **Terça:** Vercel AI SDK 4.x + useChat hook
-- **Quarta:** Chat com streaming de respostas + loading states
-- **Quinta:** Server Actions para IA + React Server Components
-- **Sexta:** Otimizações (Suspense, streaming, caching)
-- **Sábado:** Projeto: ChatGPT Clone com Markdown + Syntax Highlighting
-- **Domingo:** Deploy Vercel + Testes + Lighthouse (meta: >80)
+**Sequência (7 sessões de ≤2h40):**
+1. **Dia 1:** Setup NextJS 15 + App Router com leitura guiada do release notes.
+2. **Dia 2:** Integrar Vercel AI SDK (`useChat`) e validar em ambiente local.
+3. **Dia 3:** Construir chat com streaming + estados de loading skeleton.
+4. **Dia 4:** Implementar Server Actions + componentes server/client combinados.
+5. **Dia 5:** Otimizações com Suspense, caching e testes de UX.
+6. **Dia 6:** Finalizar ChatGPT clone (Markdown + syntax highlighting) + testes guiados.
+7. **Dia 7:** Deploy na Vercel, checklist Lighthouse (>80) e documentação.
 
 **Recursos:**
 - Vercel AI SDK Docs (v4.x)
@@ -658,14 +663,14 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Suporte multimodal: texto + imagens + voz
 - Editor de texto com IA (Notion AI style)
 
-**Dia a dia:**
-- **Segunda:** TipTap editor + AI autocomplete
-- **Terça:** Geração de imagens (DALL-E 3 ou Flux via Replicate)
-- **Quarta:** Speech-to-Text (OpenAI Whisper API)
-- **Quinta:** Text-to-Speech (OpenAI TTS ou ElevenLabs)
-- **Sexta:** Análise de imagens (GPT-4 Vision)
-- **Sábado:** Projeto: "AI Content Studio" (Frontend) - 5 features integradas
-- **Domingo:** Polish UI/UX (Shadcn v2) + Responsividade + Animações (Framer Motion)
+**Sequência (7 sessões de ≤2h40):**
+1. **Dia 1:** Ler docs do TipTap + montar editor base com shortcuts.
+2. **Dia 2:** Implementar autocomplete por IA dentro do editor.
+3. **Dia 3:** Adicionar geração de imagens (DALL-E 3/Flux) com template guiado.
+4. **Dia 4:** Speech-to-Text (Whisper) + testes rápidos.
+5. **Dia 5:** Text-to-Speech ou playback de áudio + ajustes de UX.
+6. **Dia 6:** Consolidar o "AI Content Studio" com as 5 features (scaffolding nível 2).
+7. **Dia 7:** Polimento (Shadcn, responsividade, animações) + checklist de QA.
 
 **Recursos:**
 - TipTap Documentation
@@ -763,14 +768,14 @@ Arquivo diário: `YYYY-MM-DD.md`
 
 ---
 
-**🗓️ Cronograma Semana 7:**
-- **Segunda:** Arquitetura detalhada do projeto escolhido + Setup
-- **Terça:** Backend: Endpoints principais (60% completo)
-- **Quarta:** Backend: Endpoints restantes + Autenticação
-- **Quinta:** Frontend: Páginas principais + Routing
-- **Sexta:** Integração Frontend-Backend + Autenticação E2E
-- **Sábado:** Features: 3 features principais implementadas
-- **Domingo:** Testes E2E + Bug fixes prioritários + Review
+**Sequência (7 sessões de ≤2h40):**
+1. **Dia 1:** Arquitetura detalhada + setup mono-repo + checklist do produto escolhido.
+2. **Dia 2:** Backend (endpoints core) com testes unitários iniciais.
+3. **Dia 3:** Backend (autenticação + integrações externas) + hardening.
+4. **Dia 4:** Frontend (layout base + rotas) com dados mockados.
+5. **Dia 5:** Integração frontend-backend + auth E2E.
+6. **Dia 6:** Implementar 3 features principais guiadas pelo checklist de produto.
+7. **Dia 7:** Testes E2E, bugfix prioritário, review semanal e `CONTEXTO_PROXIMO_DIA`.
 
 **Entrega Semana 7:** Backend 100% + Frontend 80% + 3 features funcionando
 
@@ -784,14 +789,14 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Documentação profissional + Vídeo demo
 - Portfolio website atualizado
 
-**Dia a dia:**
-- **Segunda:** Completar 2 features restantes
-- **Terça:** Polish UI/UX + Responsividade + Loading states
-- **Quarta:** Testes E2E (Playwright) + Correção de bugs
-- **Quinta:** Deploy em produção (custom domain opcional)
-- **Sexta:** CI/CD pipeline (GitHub Actions) + Documentação técnica
-- **Sábado:** README épico + Vídeo demo (Loom) + Case study
-- **Domingo:** Portfolio website atualizado + Review geral dos 2 meses + Próximos passos
+**Sequência (7 sessões de ≤2h40):**
+1. **Dia 1:** Completar features restantes + checklist funcional.
+2. **Dia 2:** Polish UI/UX, responsividade e loading states.
+3. **Dia 3:** Testes E2E (Playwright) + correções críticas.
+4. **Dia 4:** Deploy em produção (Vercel + Railway/Render) + smoke tests.
+5. **Dia 5:** Configurar CI/CD (GitHub Actions) e documentar pipeline.
+6. **Dia 6:** README épico, vídeo demo (Loom) e case study.
+7. **Dia 7:** Atualizar portfólio, registrar review geral e planejar próximos passos.
 
 **Entregáveis finais:**
 - ✅ 8 repositórios no GitHub (1 por semana)

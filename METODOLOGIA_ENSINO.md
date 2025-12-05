@@ -46,6 +46,8 @@ Cada dia segue uma estrutura consistente que facilita o aprendizado:
 
 ### Arquivos Obrigatórios
 
+**⚠️ IMPORTANTE:** Todos os dias devem ter estes arquivos na ordem especificada:
+
 1. **README.md**
    - Contexto do dia
    - Objetivos de aprendizado
@@ -70,19 +72,50 @@ Cada dia segue uma estrutura consistente que facilita o aprendizado:
    - Dificuldades encontradas
    - Próximos passos
 
+5. **requirements.txt**
+   - Dependências Python do dia
+   - **Obrigatório sempre**, mesmo que vazio (para consistência e automação)
+   - Se não houver dependências, deixar arquivo vazio ou com comentário explicativo
+
+6. **CONTEXTO_PROXIMO_DIA.md**
+   - Guia para construir o próximo dia
+   - **Obrigatório para TODOS os dias** (garante transição clara entre dias)
+   - Usar `TEMPLATE_CONTEXTO_PROXIMO_DIA.md` como base
+
 ### Arquivos por Nível de Scaffolding
 
-#### Nível 1 - Iniciante (Dias 1-2)
+**⚠️ IMPORTANTE:** Os níveis de scaffolding são determinados pelo **CONCEITO**, não pela posição temporal (dia/semana). Cada conceito novo começa no Nível 1, independente de ser Dia 1 da Semana 1 ou Dia 1 da Semana 2.
+
+**Regra de Decisão:**
+- **Nível 1:** Conceito completamente novo, primeira exposição
+- **Nível 2:** Conceito parcialmente conhecido, aplicação em novo contexto
+- **Nível 3:** Conceitos conhecidos, aplicação independente
+
+**Exemplos práticos:**
+- Semana 1, Dia 1: Nível 1 (conceito novo: usar APIs diretamente)
+- Semana 2, Dia 1: Nível 1 (conceito novo: LangChain)
+- Semana 2, Dia 2: Nível 2 (conceito parcialmente conhecido: já sabe LangChain básico, agora aplica em chains)
+
+#### Nível 1 - Iniciante
+**Quando usar:** Conceitos completamente novos, primeira exposição
+
+**Arquivos adicionais:**
 - `exemplo_completo.py` - Código completo comentado linha por linha
 - `GUIA_PASSO_A_PASSO.md` - Tutorial muito detalhado
 - Muitos exemplos e explicações
 
-#### Nível 2 - Intermediário (Dias 3-5)
-- `template.py` -  - Template com TODOs para prática guiada
+#### Nível 2 - Intermediário
+**Quando usar:** Conceitos parcialmente conhecidos, aplicação em novo contexto
+
+**Arquivos adicionais:**
+- `template.py` - Template com TODOs para prática guiada
 - `GUIA_APRENDIZADO.md` - Conceitos teóricos + passo-a-passo
 - `exemplo_referencia.py` - Exemplo completo para consulta
 
-#### Nível 3 - Avançado (Dias 6-7)
+#### Nível 3 - Avançado
+**Quando usar:** Conceitos conhecidos, aplicação independente
+
+**Arquivos adicionais:**
 - `especificacoes.md` - Requisitos e objetivos
 - `GUIA_CONCEITOS.md` - Conceitos teóricos necessários
 - `exercicios.md` - Desafios independentes
@@ -227,7 +260,9 @@ Implemente o CLI completo seguindo as especificações acima.
 
 ### Contexto para Próximo Dia
 
-Cada dia finalizado deve incluir um arquivo **CONTEXTO_PROXIMO_DIA.md** (usar `TEMPLATE_CONTEXTO_PROXIMO_DIA.md` como base) que:
+**⚠️ OBRIGATÓRIO:** Cada dia finalizado **DEVE** incluir um arquivo **CONTEXTO_PROXIMO_DIA.md** (usar `TEMPLATE_CONTEXTO_PROXIMO_DIA.md` como base). Este arquivo é obrigatório para TODOS os dias, garantindo transição clara entre dias.
+
+O arquivo deve conter:
 
 1. **Resume o que foi aprendido hoje**
    - Conceitos principais
@@ -330,6 +365,6 @@ Esta metodologia deve ser revisada periodicamente:
 
 ---
 
-**Última atualização:** 30 Nov 2025  
-**Versão:** 1.0
+**Última atualização:** 2 Dez 2025  
+**Versão:** 2.0
 

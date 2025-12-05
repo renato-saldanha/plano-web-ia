@@ -1,0 +1,16 @@
+
+Python é uma linguagem de programação de alto nível criada por Guido van Rossum em 1991.
+A linguagem foi projetada com foco na legibilidade do código e produtividade do programador.
+
+Python suporta múltiplos paradigmas de programação, incluindo programação orientada a objetos,
+programação imperativa e programação funcional. Possui um sistema de tipos dinâmico e gerenciamento
+automático de memória.
+
+A linguagem é amplamente usada para desenvolvimento web, ciência de dados, inteligência artificial,
+automação de tarefas e muito mais. Python tem uma grande comunidade e ecossistema de bibliotecas.
+
+Algumas bibliotecas populares incluem:
+- NumPy: Para computação científica
+- Pandas: Para análise de dados
+- Django e Flask: Para desenvolvimento web
+- LangChain: Para aplicações com IA generativa

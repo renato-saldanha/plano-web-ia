@@ -46,12 +46,13 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 ## 📋 Estrutura de Arquivos
 
-### Arquivos Obrigatórios:
+### Arquivos Obrigatórios (ordem padrão):
 - `README.md` - Contexto e objetivos do dia
 - `CONTEXTO_AGENTE.md` - Este arquivo (contexto técnico)
 - `checklist.md` - Checklist detalhado com fases
 - `journal.md` - Template para reflexão
-- `requirements.txt` - Dependências Python
+- `requirements.txt` - Dependências Python (obrigatório sempre, mesmo que vazio)
+- `CONTEXTO_PROXIMO_DIA.md` - Guia para construir próximo dia (obrigatório para todos os dias)
 
 ### Arquivos de Aprendizado (Nível 2 - Intermediário):
 - `GUIA_CHAINS.md` - Guia completo sobre Chains e LCEL

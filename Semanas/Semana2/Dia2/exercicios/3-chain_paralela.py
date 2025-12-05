@@ -72,8 +72,10 @@ if __name__ == "__main__":
     """
 
     print("\nTestando chain paralela:")
-    # Cria a chain paralela
+    
+    # Cria a chain paralela    
     chain_par = parallel_chain()
+    
     # Invoca a chain paralela com o código de exemplo
     result = chain_par.invoke({
         "codebase": codebase,

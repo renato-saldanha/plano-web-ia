@@ -8,11 +8,12 @@ Este template deve ser usado como base para criar novos dias no plano de desenvo
 
 ```
 DiaX/
-├── README.md                    # Contexto e objetivos do dia
-├── CONTEXTO_AGENTE.md           # Informações técnicas detalhadas
-├── checklist.md                 # Tarefas práticas divididas em fases
-├── journal.md                   # Template para reflexão
-├── requirements.txt             # Dependências Python (se aplicável)
+├── README.md                    # Contexto e objetivos do dia (OBRIGATÓRIO)
+├── CONTEXTO_AGENTE.md           # Informações técnicas detalhadas (OBRIGATÓRIO)
+├── checklist.md                 # Tarefas práticas divididas em fases (OBRIGATÓRIO)
+├── journal.md                   # Template para reflexão (OBRIGATÓRIO)
+├── requirements.txt             # Dependências Python (OBRIGATÓRIO - mesmo que vazio)
+├── CONTEXTO_PROXIMO_DIA.md      # Guia para construir próximo dia (OBRIGATÓRIO)
 │
 ├── GUIA_APRENDIZADO.md          # Conceitos teóricos + passo-a-passo (Nível 2)
 ├── GUIA_CONCEITOS.md            # Conceitos teóricos resumidos (Nível 3)
@@ -21,25 +22,38 @@ DiaX/
 ├── exemplo_referencia.py         # Exemplo completo comentado (Nível 1-2)
 ├── especificacoes.md             # Requisitos e objetivos (Nível 3)
 │
-├── exercicios.md                 # Exercícios guiados e desafios
-└── CONTEXTO_PROXIMO_DIA.md      # Guia para construir próximo dia
+└── exercicios.md                 # Exercícios guiados e desafios
 ```
+
+**⚠️ IMPORTANTE - Ordem Padrão:**
+Os arquivos obrigatórios devem seguir esta ordem lógica de uso:
+1. README.md (contexto inicial)
+2. CONTEXTO_AGENTE.md (detalhes técnicos)
+3. checklist.md (tarefas práticas)
+4. journal.md (reflexão)
+5. requirements.txt (dependências)
+6. CONTEXTO_PROXIMO_DIA.md (transição)
+
+> **Regra de tempo:** se algum conceito ou exercício não couber em 160 minutos, divida-o em um novo dia seguindo o método de scaffolding (exposição guiada → prática assistida → autonomia).
 
 ---
 
 ## ⏰ Métricas de Tempo Padrão
 
-### ⚠️ IMPORTANTE: Tempos Padronizados
+### ⚠️ IMPORTANTE: Tempo Máximo = 2h40 (160min)
 
-**Todos os Dias (Segunda a Domingo):**
-- **Total estimado:** 2h a 2h30min (média de 2h15min)
-- **Distribuição sugerida:**
-  - Preparação/Revisão: 10-15min
-  - Desenvolvimento/Exercícios: 90-120min (1h30min a 2h)
-  - Testes/Refinamento: 20-30min
-  - Finalização/Journal: 15-20min
+| Fase | Duração | Atividades típicas | Saídas obrigatórias |
+|------|---------|--------------------|---------------------|
+| Preparação | 5min | Abrir checklist, revisar `README.md`, validar ambiente | Pré-requisitos marcados |
+| Leitura guiada | 20min | Ler guias/documentos do dia, destacar pontos-chave | Notas rápidas + dúvidas registradas |
+| Construção guiada | 90min | Trabalhar no `template.py`, exercícios ou código principal | TODOs resolvidos ou dúvidas comentadas |
+| Consolidação | 25min | Testes rápidos, refino e checklist parcial | Código executando + checklist atualizado |
+| Registro/handoff | 20min | Checklist final, journal, `CONTEXTO_PROXIMO_DIA.md` | Documentos preenchidos |
+| Buffer | 10min | Resolver imprevistos ou mover item para próximo dia | Deve permanecer livre se tudo der certo |
 
-**Nota:** Todos os dias seguem o mesmo padrão de tempo (2h-2h30min) para manter consistência e realismo no aprendizado. Ajuste as fases conforme necessário, mas mantenha o total dentro desta faixa.
+- **Total diário:** 160 minutos (não extrapole).
+- **Fins de semana:** mesma estrutura em horário alternativo.
+- **Conceito maior que 160 minutos?** Converta o excedente em um novo dia e ajuste o scaffolding (Nível 1 → 2 → 3).
 
 ---
 
@@ -56,7 +70,7 @@ Este é o **[número] dia** do plano de desenvolvimento de 2 meses em Desenvolvi
 
 ### 📋 O que foi proposto:
 - **Objetivo do Dia:** [Objetivo claro e específico]
-- **Duração estimada:** [2 horas para dias de semana OU 4-5 horas para fins de semana]
+- **Duração estimada:** [2h30-2h40 — mesmo tempo para fins de semana]
 - **Foco:** [Foco principal do aprendizado]
 
 ### 🗺️ Estrutura do Plano:
@@ -70,7 +84,9 @@ Este é o **[número] dia** do plano de desenvolvimento de 2 meses em Desenvolvi
 - `CONTEXTO_AGENTE.md` - Contexto detalhado para agentes IA
 - `checklist.md` - Checklist detalhado do dia
 - `journal.md` - Journal do dia (preencher ao final)
-- [Outros arquivos específicos do dia]
+- `requirements.txt` - Dependências Python (obrigatório, mesmo que vazio)
+- `CONTEXTO_PROXIMO_DIA.md` - Guia para construir próximo dia (obrigatório)
+- [Outros arquivos específicos do dia conforme nível de scaffolding]
 
 ### 🎯 O que você vai aprender:
 1. [Conceito/Habilidade 1]
@@ -130,7 +146,16 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 ## 📋 Estrutura de Arquivos
 
-[Listar arquivos do dia e seus propósitos]
+### Arquivos Obrigatórios (ordem padrão):
+- `README.md` - Contexto e objetivos do dia
+- `CONTEXTO_AGENTE.md` - Este arquivo (contexto técnico)
+- `checklist.md` - Checklist detalhado com fases
+- `journal.md` - Template para reflexão
+- `requirements.txt` - Dependências Python (obrigatório sempre, mesmo que vazio)
+- `CONTEXTO_PROXIMO_DIA.md` - Guia para construir próximo dia (obrigatório para todos os dias)
+
+### Arquivos de Aprendizado (conforme nível de scaffolding):
+[Listar arquivos específicos do nível: exemplo_completo.py, template.py, GUIA_APRENDIZADO.md, etc.]
 
 ---
 
@@ -206,7 +231,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 ## 🎉 CONCLUSÃO
 
-**Total estimado:** 2h a 2h30min
+**Total estimado:** 2h30 a 2h40min (inclui leitura, checklist e journal)
 
 ### ✅ Critérios de Sucesso:
 - [ ] [Critério 1]
@@ -415,7 +440,20 @@ DiaX+1/
 
 ## 🎓 Níveis de Scaffolding - Arquivos Específicos
 
+**⚠️ IMPORTANTE:** Os níveis de scaffolding são determinados pelo **CONCEITO**, não pela posição temporal (dia/semana). Cada conceito novo começa no Nível 1, independente de ser Dia 1 da Semana 1 ou Dia 1 da Semana 2.
+
+**Regra de Decisão:**
+- **Nível 1:** Conceito completamente novo, primeira exposição
+- **Nível 2:** Conceito parcialmente conhecido, aplicação em novo contexto
+- **Nível 3:** Conceitos conhecidos, aplicação independente
+
+**Exemplos práticos:**
+- Semana 1, Dia 1: Nível 1 (conceito novo: usar APIs diretamente)
+- Semana 2, Dia 1: Nível 1 (conceito novo: LangChain)
+- Semana 2, Dia 2: Nível 2 (conceito parcialmente conhecido: já sabe LangChain básico, agora aplica em chains)
+
 ### Nível 1: Iniciante
+**Quando usar:** Conceitos completamente novos, primeira exposição
 
 **Arquivos adicionais:**
 - `exemplo_completo.py` - Código completo comentado linha por linha
@@ -489,6 +527,7 @@ if __name__ == "__main__":
 ```
 
 ### Nível 2: Intermediário
+**Quando usar:** Conceitos parcialmente conhecidos, aplicação em novo contexto
 
 **Arquivos adicionais:**
 - `template.py` - Estrutura com TODOs
@@ -534,6 +573,7 @@ if __name__ == "__main__":
 ```
 
 ### Nível 3: Avançado
+**Quando usar:** Conceitos conhecidos, aplicação independente
 
 **Arquivos adicionais:**
 - `especificacoes.md` - Requisitos e objetivos
@@ -577,13 +617,14 @@ Implemente [objetivo] seguindo as especificações acima.
 - [ ] Criar journal.md
 - [ ] Definir nível de scaffolding (usar `GUIAS/GUIA_DECISAO_SCAFFOLDING.md`)
 - [ ] Criar arquivos específicos do nível escolhido
-- [ ] Criar CONTEXTO_PROXIMO_DIA.md usando `TEMPLATE_CONTEXTO_PROXIMO_DIA.md`
+- [ ] Criar CONTEXTO_PROXIMO_DIA.md usando `TEMPLATE_CONTEXTO_PROXIMO_DIA.md` (OBRIGATÓRIO para todos os dias)
+- [ ] Criar requirements.txt (OBRIGATÓRIO, mesmo que vazio)
 - [ ] Revisar consistência com dias anteriores
 
 **📚 Guia Completo:** Consulte `GUIAS/GUIA_CRIAR_NOVO_DIA.md` para processo passo-a-passo detalhado.
 
 ---
 
-**Última atualização:** 30 Nov 2025  
-**Versão:** 1.1
+**Última atualização:** 2 Dez 2025  
+**Versão:** 2.0
 
