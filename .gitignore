@@ -1,6 +1,8 @@
 /GUIAS/*
 /Semanas/Semana1/Dia4/resultado_comparacao/*
 /Semanas/Semana1/Dia4/resumos/*
+mcp_server/
+langgraph_workflow/
 resultado_blog/*
 
 __pycache__/

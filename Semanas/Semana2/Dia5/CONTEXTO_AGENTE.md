@@ -17,7 +17,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 ## 🎯 Estado Atual do Projeto
 
 ### O que foi feito:
-- ✅ Dia 1-4 (Semana 2): LangChain básico → Chains/LCEL → RAG básico → RAG avançado (Chroma + embeddings)
+- ✅ Dia 1-4 (Semana 2): LangChain básico → Chains/LCEL → RAG básico → RAG avançado (FAISS + embeddings)
 
 ### O que está em progresso:
 - 🟡 Dia 5: Agents e Tools — Agent ReAct usando RAG como tool
@@ -52,21 +52,22 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 ### Stack Tecnológica:
 - **Linguagem:** Python 3.12+
-- **Framework:** LangChain
+- **Framework:** LangChain v1.0 (`create_agent` como API oficial)
 - **LLMs:** Groq (Llama 3) preferencial; Gemini/Claude como alternativas
-- **Vector DB:** Chroma persistido em `../Dia4/chroma_db` (reutilizar)
+- **Vector DB:** FAISS persistido em `../Dia4/faiss_index` (reutilizar)
 - **Embeddings:** HuggingFace (`all-MiniLM-L6-v2`) já usados no Dia 4
 
 ### Configuração Necessária:
 - Ambiente virtual ativo (mesmo da semana).
+- LangChain >= 1.0.0 instalado.
 - Variáveis `.env`: `GROQ_API_KEY` (prioridade), `GOOGLE_API_KEY`, `ANTHROPIC_API_KEY`.
-- Persistência do RAG: diretório `../Dia4/chroma_db` existente (se não existir, reexecute scripts do Dia 4).
+- Persistência do RAG: diretório `../Dia4/faiss_index` existente (se não existir, reexecute scripts do Dia 4).
 
 ### Objetivo do Dia:
-Criar um Agent ReAct capaz de escolher ferramentas (calculator e RAG avançado) para responder perguntas, exibindo o raciocínio e reutilizando o vector store do Dia 4 como tool.
+Criar um Agent ReAct usando `create_agent` (API oficial v1.0) capaz de escolher ferramentas (calculator e RAG avançado) para responder perguntas, exibindo o raciocínio e reutilizando o vector store FAISS do Dia 4 como tool.
 
 ### Nível de Scaffolding:
-- **Nível 1 (Iniciante)** — conceito totalmente novo (Agents/Tools/ReAct).
+- **Nível 1 (Iniciante)** — conceito totalmente novo (Agents/Tools/ReAct/create_agent v1.0).
 - Referência: `GUIAS/GUIA_DECISAO_SCAFFOLDING.md`.
 - Entregáveis guiados: `exemplo_completo.py` comentado + `exercicios.md`.
 
@@ -75,9 +76,9 @@ Criar um Agent ReAct capaz de escolher ferramentas (calculator e RAG avançado) 
 ## 🗺️ Próximos Passos
 
 ### Imediato (hoje - 160min):
-1. Revisar `README.md` e `GUIA_AGENTS.md` (conceitos + ReAct).
-2. Criar tools (calculator simples + RAG como tool).
-3. Montar Agent ReAct com `create_react_agent` e executar queries de teste.
+1. Revisar `README.md` e `GUIA_AGENTS.md` (conceitos + ReAct + create_agent v1.0).
+2. Criar tools (calculator simples + RAG como tool) usando decorator `@tool`.
+3. Montar Agent ReAct com `create_agent` (v1.0) e executar queries de teste.
 4. Registrar aprendizados no journal e preparar `CONTEXTO_PROXIMO_DIA.md`.
 
 ### Próximo Dia (Dia 6):
@@ -88,10 +89,11 @@ Criar um Agent ReAct capaz de escolher ferramentas (calculator e RAG avançado) 
 
 ## 📚 Referências Rápidas
 
+- **LangChain v1.0 Release:** https://docs.langchain.com/oss/python/releases/langchain-v1
+- **create_agent Docs:** https://reference.langchain.com/python/langchain/agents/
 - Metodologia: `../../METODOLOGIA_ENSINO.md`
 - Scaffolding: `../../GUIAS/GUIA_DECISAO_SCAFFOLDING.md`
 - Dia 4: `../Dia4/GUIA_RAG_AVANCADO.md` (rever RAG usado como tool)
-- LangChain Agents: https://python.langchain.com/docs/modules/agents/
 - ReAct: https://arxiv.org/abs/2210.03629
 
 ---
