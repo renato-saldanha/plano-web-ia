@@ -1,0 +1,49 @@
+# Dependências para Semana 2, Dia 6: Projeto integrado (LangGraph)
+# Data: 6 Dez 2025
+
+# =============================================================================
+# CORE LANGCHAIN + LANGGRAPH
+# =============================================================================
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+langgraph>=0.1.0
+
+# =============================================================================
+# INTEGRAÇÕES COM LLMS
+# =============================================================================
+langchain-groq>=0.0.1          # Groq (Llama 3) - rápido e gratuito
+langchain-google-genai>=0.0.1  # Google Gemini - tier gratuito generoso
+langchain-anthropic>=0.0.1     # Claude - bom custo/benefício
+
+# =============================================================================
+# VECTOR DATABASES (reuso do Dia 4)
+# =============================================================================
+faiss-cpu>=1.7.4               # Vector store local (FAISS)
+# chromadb>=0.4.22             # Alternativa local (comentado)
+
+# =============================================================================
+# EMBEDDINGS (reuso do Dia 4)
+# =============================================================================
+sentence-transformers>=2.2.2   # HuggingFace embeddings (gratuito)
+
+# =============================================================================
+# UTILIDADES
+# =============================================================================
+python-dotenv>=1.0.0           # Carregar variáveis de ambiente
+pydantic>=2.0.0                # Validação
+tiktoken>=0.5.2                # Contagem de tokens (opcional)
+
+# =============================================================================
+# NOTAS
+# =============================================================================
+# - Preferir Python 3.12 para evitar avisos do Pydantic.
+# - Reutilizar o index FAISS salvo em ../Dia4/faiss_index (HuggingFace embeddings).
+# - Se o agent escolher tool errada, ajuste docstrings das tools (descrições claras).
+# - Invocação LangGraph: agent.invoke({"messages": [HumanMessage(...)]}, config={"recursion_limit": 8})
+
+# =============================================================================
+# INSTALAÇÃO
+# =============================================================================
+# pip install -r requirements.txt
+

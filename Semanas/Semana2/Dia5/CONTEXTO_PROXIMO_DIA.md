@@ -19,6 +19,22 @@
 
 ---
 
+## ✅ Checklist de progresso do aluno (preencher antes de usar o agente)
+- [ ] Concluí os exercícios do Dia 5 (`exercicios.md`, `3-agent-2-tools.py`, `2-rag-com-tool.py`, `1-calcular-tool.py`).
+- [ ] Rodei o `exemplo_completo.py` e validei o fluxo com calculator + RAG.
+- [ ] Anotei dificuldades encontradas:
+  - Principais travas:
+  - Pontos que precisam de revisão:
+- [ ] Tempo investido no Dia 5: ___ minutos.
+- [ ] Evidências/arquivos atualizados (links ou paths):
+
+Agente — uso desta seção:
+- Leia o checklist antes de responder.
+- Se houver itens em aberto ou dificuldades listadas, priorize explicação passo-a-passo e referências nos guias citados acima.
+- Se o tempo foi curto ou há lacunas, sugerir exercícios mínimos para fechar o gap antes do projeto integrado.
+
+---
+
 ## 🔗 Por que o Dia 6 é importante
 O Dia 6 é o **projeto integrado** da semana: consolidar chains, RAG e agents em uma aplicação completa (chat assistente com ferramentas). É a transição de exercícios isolados para um fluxo único e funcional.
 
