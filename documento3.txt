@@ -1,8 +1,0 @@
-
-            A arquitetura de software é a disciplina responsável por definir a estrutura fundamental de um sistema, incluindo seus componentes principais,
-            como eles se comunicam e quais decisões técnicas guiam a sua construção. 
-            Ela funciona como o “plano diretor” que orienta o desenvolvimento, garantindo que o software seja escalável, seguro e mantenível ao longo do tempo.
-            Um dos pilares da arquitetura é a separação de responsabilidades, que organiza o sistema em camadas, módulos ou serviços independentes. 
-            Isso facilita manutenção, testes e evolução, evitando que mudanças pequenas afetem todo o sistema. 
-            Padrões como MVC, hexagonal e DDD nascem justamente para estruturar essas responsabilidades de forma clara.
-        

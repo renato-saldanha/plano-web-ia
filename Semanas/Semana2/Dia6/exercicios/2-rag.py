@@ -9,10 +9,9 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from re import A
+from dotenv import load_dotenv
 from typing import Annotated
 
-from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
@@ -76,7 +75,6 @@ def calculator(expression: Annotated[str, "Expressão aritimética simple. Exemp
 def search_knowledges(answer: Annotated[str, "Pergunta que depende do documento Dia 4 FAISS"]):
     """
     Efetua busca no banco vetorizado utilizando FAISS.
-    Cria Chain para efetuar a busca no banco.
     Responde somente a perguntas relacionadas ao documento FAISS.
 
     Args: answer-> 'Me fale sobre Engenharia de Softwares'

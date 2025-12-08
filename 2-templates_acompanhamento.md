@@ -10,7 +10,7 @@
 ## ⏰ Horário de Estudo
 - Início: 17:30
 - Fim: 20:30
-- Total: 3 horas
+- Total: 160 minutos (inclui leitura, exercícios/testes e preenchimento de docs; sem autocomplete/IA no código)
 
 ## ✅ Realizações do Dia
 - [ ] 
@@ -57,6 +57,7 @@
 **Fui copiloto ou piloto?** (quem tomou decisões arquiteturais?)
 **Code review do código gerado:** Sim/Não/Parcial
 **Aprendi conceitos ou apenas copiei?** 
+**Respeitei os 160min sem autocomplete/IA no código (incluindo leitura/testes/docs)?** Sim/Não
 
 ---
 **Frase do dia:**

@@ -1,8 +1,0 @@
-
-            O Python é a linguagem dominante para inteligência artificial (IA) devido à sua simplicidade e vasta coleção de bibliotecas especializadas. 
-            Frameworks populares como o TensorFlow e o PyTorch facilitam a criação de modelos complexos de aprendizado de máquina e redes neurais. 
-            A sintaxe intuitiva do Python permite que os desenvolvedores se concentrem na lógica da IA em vez de detalhes de implementação de baixo nível. 
-            Bibliotecas adicionais como NumPy e Pandas oferecem ferramentas eficientes para manipulação e análise de dados, 
-            etapas cruciais no desenvolvimento de soluções de IA. 
-            Essa combinação de facilidade de uso e ecossistema robusto faz do Python a escolha ideal para o desenvolvimento de sistemas inteligentes.
-        

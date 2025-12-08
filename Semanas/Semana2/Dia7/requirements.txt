@@ -1,0 +1,51 @@
+# Dependências para Semana 2, Dia 7: QA/Polish do Knowledge Assistant
+# Data: 7 Dez 2025
+#
+# Nenhuma dependência nova em relação ao Dia 6. Reuso do mesmo ambiente.
+
+# =============================================================================
+# CORE LANGCHAIN + LANGGRAPH
+# =============================================================================
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-community>=0.2.0
+langgraph>=0.1.0
+
+# =============================================================================
+# INTEGRAÇÕES COM LLMS
+# =============================================================================
+langchain-groq>=0.0.1          # Groq (Llama 3) - rápido e gratuito
+langchain-google-genai>=0.0.1  # Google Gemini - tier gratuito generoso
+langchain-anthropic>=0.0.1     # Claude - bom custo/benefício
+
+# =============================================================================
+# VECTOR DATABASES (reuso do Dia 4)
+# =============================================================================
+faiss-cpu>=1.7.4               # Vector store local (FAISS)
+# chromadb>=0.4.22             # Alternativa local (comentado)
+
+# =============================================================================
+# EMBEDDINGS (reuso do Dia 4)
+# =============================================================================
+sentence-transformers>=2.2.2   # HuggingFace embeddings (gratuito)
+
+# =============================================================================
+# UTILIDADES
+# =============================================================================
+python-dotenv>=1.0.0           # Carregar variáveis de ambiente
+pydantic>=2.0.0                # Validação
+tiktoken>=0.5.2                # Contagem de tokens (opcional)
+
+# =============================================================================
+# NOTAS
+# =============================================================================
+# - Preferir Python 3.12 para evitar avisos do Pydantic.
+# - Reutilizar o index FAISS salvo em ../Dia4/faiss_index (HuggingFace embeddings).
+# - Ajustar docstrings das tools para reduzir escolhas erradas.
+# - Invocação LangGraph: agent.invoke({"messages": [HumanMessage(...)]}, config={"recursion_limit": 8})
+
+# =============================================================================
+# INSTALAÇÃO
+# =============================================================================
+# pip install -r requirements.txt
+
