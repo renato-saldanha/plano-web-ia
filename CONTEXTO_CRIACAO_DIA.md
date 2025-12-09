@@ -5,6 +5,7 @@ Contexto obrigatório:
 - Estrutura-base: `TEMPLATE_ESTRUTURA_DIA.md` (README, CONTEXTO_AGENTE, checklist, journal, requirements, CONTEXTO_PROXIMO_DIA + artefatos do nível de scaffolding).
 - Metodologia: `METODOLOGIA_ENSINO.md` e `GUIA_DECISAO_SCAFFOLDING.md` para definir Nível 1/2/3. Explique por que o nível foi escolhido.
 - Leia o CONTEXTO_PROXIMO_DIA.md do dia anterior e use-o como briefing obrigatório antes de definir objetivo, nível de scaffolding e referências do novo dia.
+- Opcionalmente, revisar `journal.md` do dia anterior para identificar dificuldades enfrentadas pelo aluno e ajustar o nível de scaffolding ou adicionar reforço nos pontos problemáticos.
 - **Stack LangChain:** Usar LangChain Ultima versão com **LangGraph** (API moderna). Na ultima versão, `AgentExecutor` e `create_react_agent` clássicos foram descontinuados; use `langgraph.prebuilt.create_react_agent` e decorator `@tool` para ferramentas. Agents invocam com `.invoke({"messages": [HumanMessage(...)]})`. Recomendar Python 3.12 para evitar warnings de Pydantic (3.14 ainda não é plenamente suportado). Verificar [documentação oficial LangGraph](https://python.langchain.com/docs/langgraph) para padrões atuais. Usar como Contexto a documentação oficial: https://docs.langchain.com/oss/python/langchain/overview.
 
 Ao criar o Dia X+1, entregue:
