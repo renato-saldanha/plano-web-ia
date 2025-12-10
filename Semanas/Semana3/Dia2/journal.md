@@ -8,23 +8,22 @@ Implementar autenticação JWT básica (login/refresh), middleware de segurança
 ## ✅ O que foi feito hoje?
 
 ### Manhã/Tarde
-- [ ] Estudei conceitos de JWT no GUIA_APRENDIZADO.md
-- [ ] Implementei endpoint `/login` com geração de tokens
-- [ ] Implementei endpoint `/refresh` para renovação
-- [ ] Protegi endpoint `/chat` com dependency de autenticação
+- [ X] Estudei conceitos de JWT no GUIA_APRENDIZADO.md
+- [ X] Implementei endpoint `/login` com geração de tokens
+- [ X] Implementei endpoint `/refresh` para renovação
+- [ X] Protegi endpoint `/chat` com dependency de autenticação
 - [ ] Testei fluxo completo com curl/httpie
 
 ### Detalhes das Tarefas
-_(Preencher ao longo do dia)_
 
----
 
 ## 🎓 O que aprendi hoje?
 
 ### Conceitos Novos
-- 
-- 
-- 
+- Rate Limiter - Limita acessos excessivos, protegente de ataques de força bruta.
+- Middleware de Segurança - Habilita a restrição de acesso à API somente pelas origens permitidas.
+- JWT com refresh token e blacklist - Validação básica de token JWT com blacklist usada para efetuar o logout.
+- BCrypt - Encryptador de textos para dar segurança as senhas.
 
 ### Ferramentas Utilizadas
 - Python
@@ -34,18 +33,18 @@ _(Preencher ao longo do dia)_
 - 
 
 ### Desafios Enfrentados
-- 
-- 
+- Configuração do middleware. Estava sendo chamado no local errado, peguei como base o exemplo do exercicio.
+- Assimilar onde cada algoritmo se encaixa. Estudando e praticando para acostumar.
 
 ---
 
 ## 💡 Insights e Reflexões
 
 ### O que funcionou bem?
-- 
+- Rate Limiter funcinou bem
 
 ### O que poderia ser melhorado?
-- 
+- Praticar mais para ter mais expertise.
 
 ### Próximos Passos
 - 
@@ -54,10 +53,9 @@ _(Preencher ao longo do dia)_
 
 ## 📊 Métricas do Dia
 
-- **Tempo total:** ___ minutos (meta: 160)
-- **Commits:** ___
+- **Tempo total:** 170 minutos (meta: 160)
+- **Commits:** 2
 - **Testes manuais:** `/login`, `/refresh`, `/chat` protegido
-- **Outras métricas:** ___
 
 ---
 
