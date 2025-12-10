@@ -69,15 +69,15 @@ if not JWT_SECRET_KEY:
     raise Exception("Favor verificar a JWT_SECRET_KEY")
 
 JWT_ALGORITHM = os.getenv("ALGORITHM")
-if not JWT_SECRET_KEY:
+if not JWT_ALGORITHM:
     raise Exception("Favor verificar o JWT_ALGORITHM")
 
 ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
-if not JWT_SECRET_KEY:
+if not ACCESS_TOKEN_EXPIRE_MINUTES:
     raise Exception("Favor verificar o ACCESS_TOKEN_EXPIRE_MINUTES")
 
 REFRESH_TOKEN_EXPIRE_DAYS = os.getenv("REFRESH_TOKEN_EXPIRE_DAYS")
-if not JWT_SECRET_KEY:
+if not REFRESH_TOKEN_EXPIRE_DAYS:
     raise Exception("Favor verificar o REFRESH_TOKEN_EXPIRE_DAYS")
 
 
