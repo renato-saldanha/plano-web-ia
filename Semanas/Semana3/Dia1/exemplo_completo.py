@@ -57,7 +57,7 @@ async def lifespan(app: FastAPI):
     # Startup
     logger.info("%s iniciado (versão %s)", APP_NAME, APP_VERSION)
     llm_key_present = any(
-        os.getenv(key) for key in ("GROQ_API_KEY", "GOOGLE_API_KEY", "ANTHROPIC_API_KEY")
+        os.getenv(key) for key in ("GROQ_API_KEY", "GOOGLE_API_KEY", "OPENAI_API_KEY")
     )
     if not llm_key_present:
         logger.info("Rodando em modo eco (nenhuma chave LLM encontrada).")
