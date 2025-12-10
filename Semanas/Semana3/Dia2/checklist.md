@@ -17,13 +17,13 @@ Implementar autenticação JWT básica (login/refresh), middleware de segurança
 ## 📋 FASE 1: Preparação (5 min)
 
 ### 1.1 Revisar contexto
-- [ ] **[LEIA]** Abrir e ler `README.md` deste diretório (2 min)
-- [ ] **[LEIA]** Verificar se entendeu a conexão com Dia 1
+- [ X] **[LEIA]** Abrir e ler `README.md` deste diretório (2 min)
+- [ X] **[LEIA]** Verificar se entendeu a conexão com Dia 1
 
 ### 1.2 Preparar ambiente
-- [ ] **[EXECUTE]** Ativar venv: `.\venv\Scripts\activate` (Windows) ou `source venv/bin/activate` (Linux/Mac)
-- [ ] **[EXECUTE]** Instalar dependências: `pip install -r requirements.txt`
-- [ ] **[EXECUTE]** Verificar instalação: `pip list | grep -E "jose|passlib"`
+- [ X] **[EXECUTE]** Ativar venv: `.\venv\Scripts\activate` (Windows) ou `source venv/bin/activate` (Linux/Mac)
+- [ X] **[EXECUTE]** Instalar dependências: `pip install -r requirements.txt`
+- [ X] **[EXECUTE]** Verificar instalação: `pip list | grep -E "jose|passlib"`
 
 **Tempo estimado:** 5 minutos  
 **Saída esperada:** Ambiente pronto com python-jose e passlib instalados

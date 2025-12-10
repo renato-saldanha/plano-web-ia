@@ -27,12 +27,24 @@ Uso:
 #
 # Dica: Consulte GUIA_APRENDIZADO.md seção 4.1
 
-from fastapi import FastAPI, Depends, HTTPException, status
+import os
+import bcrypt
+import re
+
+from fastapi import FastAPI, Depends, HTTPException, Request, status
 from fastapi.security import OAuth2PasswordBearer
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-# TODO: Adicione os imports que faltam aqui
-
+from pydantic import BaseModel, Field
+from jose import JWTError, jwt
+from datetime import datetime, timedelta, timezone
+from typing import Optional
+from passlib.context import CryptContext
+from dotenv import load_dotenv
+from starlette.status import HTTP_401_UNAUTHORIZED
+from starlette.middleware.base import BaseHTTPMiddleware
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
 
 # ============================================================================
@@ -49,10 +61,24 @@ from pydantic import BaseModel
 # TODO: Carregar variáveis de ambiente
 # load_dotenv()
 
-SECRET_KEY = "chave_temporaria_mude_isso"  # TODO: Use os.getenv()
-ALGORITHM = "HS256"  # TODO: Use os.getenv()
-ACCESS_TOKEN_EXPIRE_MINUTES = 30  # TODO: Use os.getenv()
-REFRESH_TOKEN_EXPIRE_DAYS = 7  # TODO: Use os.getenv()
+# Carrega o .env
+load_dotenv()
+
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+if not JWT_SECRET_KEY:
+    raise Exception("Favor verificar a JWT_SECRET_KEY")
+
+JWT_ALGORITHM = os.getenv("ALGORITHM")
+if not JWT_SECRET_KEY:
+    raise Exception("Favor verificar o JWT_ALGORITHM")
+
+ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
+if not JWT_SECRET_KEY:
+    raise Exception("Favor verificar o ACCESS_TOKEN_EXPIRE_MINUTES")
+
+REFRESH_TOKEN_EXPIRE_DAYS = os.getenv("REFRESH_TOKEN_EXPIRE_DAYS")
+if not JWT_SECRET_KEY:
+    raise Exception("Favor verificar o REFRESH_TOKEN_EXPIRE_DAYS")
 
 
 # ============================================================================
@@ -64,6 +90,22 @@ REFRESH_TOKEN_EXPIRE_DAYS = 7  # TODO: Use os.getenv()
 
 # TODO: Configurar pwd_context
 
+# Funções auxiliares para hash e verificação
+def hash_password(password: str) -> str:
+    """Hash de senha usando bcrypt diretamente"""
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+def verify_password(password: str, hashed: str) -> bool:
+    """Verifica senha usando bcrypt diretamente"""
+    try:
+        return bcrypt.checkpw(password.encode('utf-8'), hashed.encode('utf-8'))
+    except Exception:
+        return False
+
+pwd_context = CryptContext(
+    schemes=["bcrypt"],
+    deprecated="auto",
+)
 
 # ============================================================================
 # CONFIGURAÇÃO DO FASTAPI (já pronto)
@@ -74,14 +116,39 @@ app = FastAPI(
     version="1.0.0"
 )
 
+
+class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    """
+    Classe que define um middleware que adiciona headers de segurança
+    """
+
+    async def dispatch(self, request, call_next):
+        response = await call_next(request)
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame_options"] = "DENY"
+        response.headers["X-XSS-Protection"] = "1; mode=block"
+        return response
+
+
+ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://localhost"
+]
+
 # CORS (já configurado do Dia 1)
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Em produção, especifique origens
+    CORSMiddleware,    
+    allow_origins=[ALLOWED_ORIGINS],  # Em produção, especifique origens
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.add_middleware(SecurityHeadersMiddleware)
+
+# Configuração de Rate Limiter báscio, Max 5/Min
+limiter = Limiter(key_func = get_remote_address)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
 # ============================================================================
@@ -95,8 +162,9 @@ app.add_middleware(
 # Dica: Consulte GUIA_APRENDIZADO.md seção 4.3
 
 class Token(BaseModel):
-    # TODO: Adicione os campos aqui
-    pass
+    access_token: str = Field(description="Token de acesso")
+    refresh_token: str = Field(description="Token de atualização")
+    token_type: str = Field(description="Tipo de token", default="bearer")
 
 
 # ============================================================================
@@ -110,13 +178,12 @@ class Token(BaseModel):
 # - refresh_token: str
 
 class LoginRequest(BaseModel):
-    # TODO: Adicione os campos aqui
-    pass
+    username: str = Field(description="Login de usuário")
+    password: str = Field(description="Senha do usuário")
 
 
 class RefreshRequest(BaseModel):
-    # TODO: Adicione o campo aqui
-    pass
+    refresh_token: str = Field(description="Token de atualização")
 
 
 # ============================================================================
@@ -133,11 +200,11 @@ class RefreshRequest(BaseModel):
 def create_access_token(data: dict, expires_delta=None) -> str:
     """
     Cria um access token JWT.
-    
+
     Args:
         data: Dados a incluir no token (ex: {"sub": "username"})
         expires_delta: Tempo de expiração (opcional)
-    
+
     Returns:
         str: Token JWT codificado
     """
@@ -146,7 +213,17 @@ def create_access_token(data: dict, expires_delta=None) -> str:
     # 2. Calcular expire (datetime.utcnow() + timedelta)
     # 3. to_encode.update({"exp": expire, "type": "access"})
     # 4. return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    pass
+    
+    to_encode = data.copy()
+    time_utc = datetime.now(timezone.utc) 
+    time_delta = timedelta(days = int(ACCESS_TOKEN_EXPIRE_MINUTES)) 
+    expire = (time_utc + time_delta)
+    to_encode.update({
+        "exp": int(expire.timestamp()),
+        "type": "access",
+    })
+
+    return jwt.encode(to_encode, JWT_SECRET_KEY, algorithm = JWT_ALGORITHM)
 
 
 # ============================================================================
@@ -161,15 +238,24 @@ def create_access_token(data: dict, expires_delta=None) -> str:
 def create_refresh_token(data: dict) -> str:
     """
     Cria um refresh token JWT.
-    
+
     Args:
         data: Dados a incluir no token
-    
+
     Returns:
         str: Token JWT codificado
     """
-    # TODO: Implementar
-    pass
+    
+    to_encode = data.copy()
+    time_utc = datetime.now(timezone.utc)
+    time_delta = timedelta(days = int(REFRESH_TOKEN_EXPIRE_DAYS))
+    expire = (time_utc + time_delta)
+    to_encode.update({
+        "exp": int(expire.timestamp()),
+        "type": "refresh",
+    })
+
+    return jwt.encode(to_encode, JWT_SECRET_KEY, algorithm = JWT_ALGORITHM)
 
 
 # ============================================================================
@@ -186,20 +272,46 @@ def create_refresh_token(data: dict) -> str:
 def verify_token(token: str, expected_type: str = "access") -> dict:
     """
     Verifica e decodifica um token JWT.
-    
+
     Args:
         token: Token JWT a verificar
         expected_type: Tipo esperado ("access" ou "refresh")
-    
+
     Returns:
         dict: Payload do token
-    
+
     Raises:
         HTTPException: Se token inválido ou expirado
     """
     # TODO: Implementar
     # Use try/except para capturar JWTError
-    pass
+    
+    try:
+        if is_token_blacklisted(token):
+            raise HTTPException(
+                status_code = HTTP_401_UNAUTHORIZED,
+                description = "Token revogado."
+            )
+
+        payload = jwt.decode(token, JWT_SECRET_KEY, algorithms = [JWT_ALGORITHM])
+
+        token_type = payload.get("type")
+        if token_type != expected_type:
+            raise HTTPException(
+                status_code = HTTP_401_UNAUTHORIZED,
+                description = f"Tipo de token inválido. Esperado {expected_type}, temos {token_type}"
+            )
+        
+        return payload
+    except JWTError as j:
+        raise HTTPException(
+            status_code = HTTP_401_UNAUTHORIZED,
+            description = f"Não foi possível validar o token: {str(j)}",
+            headers = {"WWW-Authenticate": "Bearer"}
+        )
+    except Exception as e:
+        raise Exception(f"Erro inesperado: {e}")
+
 
 
 # ============================================================================
@@ -212,6 +324,8 @@ def verify_token(token: str, expected_type: str = "access") -> dict:
 # TODO: Configurar oauth2_scheme
 
 
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl = "login")
+
 # ============================================================================
 # TODO 10: DEPENDENCY get_current_user
 # ============================================================================
@@ -223,13 +337,13 @@ def verify_token(token: str, expected_type: str = "access") -> dict:
 #
 # Dica: Consulte GUIA_APRENDIZADO.md seção 4.6
 
-async def get_current_user(token: str = None) -> dict:  # TODO: Adicionar Depends
+async def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:  
     """
     Dependency que extrai e valida o usuário atual do token.
-    
+
     Args:
         token: Token JWT extraído do header Authorization
-    
+
     Returns:
         dict: Informações do usuário autenticado
     """
@@ -238,7 +352,19 @@ async def get_current_user(token: str = None) -> dict:  # TODO: Adicionar Depend
     # 2. username = payload.get("sub")
     # 3. if not username: raise HTTPException 401
     # 4. return {"username": username, "payload": payload}
-    pass
+    
+    payload = verify_token(token, expected_type = "access")
+    username = payload.get("sub")
+    if not username: 
+        raise HTTPException(
+                status_code = HTTP_401_UNAUTHORIZED,
+                detail = "Usuário não autorizado."
+            )
+    
+    return {
+        "username": username,
+        "payload": payload,
+    }
 
 
 # ============================================================================
@@ -249,9 +375,28 @@ async def get_current_user(token: str = None) -> dict:  # TODO: Adicionar Depend
 FAKE_USER = {
     "username": "admin",
     # TODO: Descomente a linha abaixo após configurar pwd_context
-    # "hashed_password": pwd_context.hash("admin123")
-    "hashed_password": "senha_hash_aqui"  # Temporário
+    "hashed_password": pwd_context.hash("admin123"),
+    # "hashed_password": "senha_hash_aqui"  # Temporário
 }
+
+def validate_password_strength(password: str) -> bool:
+    """
+    Valida se a senha atende aos requisitos:
+    - Mínimo 8 caracteres
+    - Pelo menos 1 letra maiúscula
+    - Pelo menos 1 letra minúscula
+    - Pelo menos 1 número
+    """
+
+    if len(password) < 8:
+        return False
+    if not re.search(r"[A-Z]", password):
+        return False
+    if not re.search(r"[a-z]", password):
+        return False
+    if not re.search(r"\d", password):
+        return False
+    return True
 
 
 # ============================================================================
@@ -266,11 +411,13 @@ FAKE_USER = {
 #
 # Dica: Consulte GUIA_APRENDIZADO.md seção 4.7
 
+
 @app.post("/login", response_model=Token)
-async def login(request: LoginRequest):
+@limiter.limit("5/minute") # Máximo 5 tentativas por minuto
+async def login(request: Request, login_data: LoginRequest):
     """
     Autentica usuário e retorna tokens JWT.
-    
+
     Credenciais de teste:
     - username: admin
     - password: admin123
@@ -281,7 +428,26 @@ async def login(request: LoginRequest):
     # 3. Se inválido: raise HTTPException 401
     # 4. Criar tokens com create_access_token e create_refresh_token
     # 5. Retornar Token(access_token=..., refresh_token=...)
-    pass
+
+    if login_data.username != FAKE_USER["username"]:
+        raise HTTPException(
+            status_code = status.HTTP_401_UNAUTHORIZED,
+            detail = "Usuário inválido."
+        )
+
+    if not pwd_context.verify(login_data.password, FAKE_USER["hashed_password"]):
+        raise HTTPException(
+            status_code = status.HTTP_401_UNAUTHORIZED,
+            description = "Senha inválida."
+        )
+
+    access_token = create_access_token(data={"sub": login_data.username})
+    refresh_token = create_refresh_token(data={"sub": login_data.username})
+
+    return Token(
+        access_token = access_token,
+        refresh_token = refresh_token,
+    )    
 
 
 # ============================================================================
@@ -306,7 +472,23 @@ async def refresh(request: RefreshRequest):
     # 2. username = payload.get("sub")
     # 3. Criar novos tokens
     # 4. Retornar Token
-    pass
+    payload = verify_token(request.refresh_token, expected_type = "refresh")
+    
+    if not payload:
+        raise HTTPException(
+            status_code = status.HTTP_401_UNAUTHORIZED,
+            description = "Não foi possível validar o token."
+        )
+
+    username = payload.get("sub")
+
+    access_token = create_access_token(data = {"sub": username})
+    refresh_token = create_refresh_token(data = {"sub": username})
+
+    return Token(
+        access_token = access_token,
+        refresh_token = refresh_token,
+    )
 
 
 # ============================================================================
@@ -319,16 +501,17 @@ async def refresh(request: RefreshRequest):
 # Dica: Apenas adicione o parâmetro com Depends
 
 @app.get("/chat")
-async def chat():  # TODO: Adicionar current_user: dict = Depends(get_current_user)
+    # TODO: Adicionar current_user: dict = Depends(get_current_user)
+async def chat(current_user: dict = Depends(get_current_user)):  
     """
     Endpoint de chat protegido por autenticação.
-    
+
     Requer header: Authorization: Bearer <access_token>
     """
     # TODO: Modificar para usar current_user
     return {
         "message": "Esta rota deve estar protegida!",
-        # "user": current_user["username"]  # Descomente após implementar
+        "user": current_user["username"]  # Descomente após implementar
     }
 
 
@@ -341,11 +524,34 @@ async def health():
     return {"status": "healthy", "auth": "jwt"}
 
 
+@app.post("/logout")
+async def logout(
+    token: str = Depends(oauth2_scheme),
+    current_user: dict = Depends(get_current_user)
+):
+    """
+    Invalida o token atual (logout).
+    """
+
+    blacklist_token(token)
+    return {"message": "Logou efetuado!"}
+
+
+# Blacklist
+token_blacklist: set = set()
+
+def is_token_blacklisted(token: str) -> bool:
+    """Verifica se token está na blacklist."""
+    return token in token_blacklist
+
+def blacklist_token(token: str) -> None:
+    """Adiciona token à blacklist."""
+    token_blacklist.add(token)
+    
+
 # ============================================================================
 # EXECUÇÃO
 # ============================================================================
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-
-
