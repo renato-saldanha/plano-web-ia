@@ -14,17 +14,26 @@ Resumo do estado, stack e próximos passos para o Dia 7 (QA/polish).
 
 ## 🎯 Estado Atual do Projeto
 ### O que foi feito
-- ✅ Dia 4: RAG avançado com FAISS (`../Dia4/faiss_index`).
+- ✅ Dia 4: RAG avançado com Vector Databases (FAISS/Chroma).
 - ✅ Dia 5: Tools/agents com LangChain (`GUIA_AGENTS.md`).
 - ✅ Dia 6: Agent LangGraph com calculator + RAG (`template.py`, `exemplo_referencia.py`).
+- ✅ Dia 7: Sistema completo com PGVector, indexação automática e comparação STUFF/MapReduce.
+
+### O que foi implementado (Dia 7)
+- ✅ Migração para PGVector com PostgreSQL
+- ✅ Indexação automática de produtos da tabela SQL
+- ✅ Comparação STUFF vs MapReduce implementada
+- ✅ Tools com docstrings melhoradas (`search_knowledges`, `calculator`)
+- ✅ Agent ReAct funcional com logging completo
+- ✅ Sistema de alternância entre LLMs (Groq/OpenAI)
 
 ### O que está em progresso (hoje)
-- 🟡 QA e polish do Knowledge Assistant: descrições das tools, mensagens de erro, testes adicionais e registro de evidências.
+- 🟡 Documentação e handoff final
 
 ### O que falta fazer (hoje)
-- [ ] Revisar docstrings e mensagens de erro das tools (quando usar / quando não usar).
-- [ ] Rodar smoke tests adicionais (cálculo, RAG, pergunta mista, caso ambíguo) e registrar outputs.
-- [ ] Documentar passos mínimos de uso e próximos passos no handoff.
+- [ ] Atualizar documentação com exemplos de uso
+- [ ] Registrar evidências de testes no journal
+- [ ] Preparar handoff para Dia 8
 
 ---
 
@@ -40,17 +49,23 @@ Resumo do estado, stack e próximos passos para o Dia 7 (QA/polish).
 ---
 
 ## 🔑 Informações Importantes
--### Stack Tecnológica
+
+### Stack Tecnológica
 - **Linguagem:** Python 3.12 (recomendada)
 - **Orquestração:** LangChain Agents (`langchain.agents.create_agent`) + `@tool`
-- **LLM sugerido:** Groq (Llama 3) via `langchain-groq`; fallback Gemini/Claude
-- **Vector store:** FAISS em `../Dia4/faiss_index`
-- **Observabilidade:** `verbose=True`, inspeção de `messages` e `recursion_limit` 6-10 para debugging
+- **LLM:** Groq (Llama 3.1 8B) e OpenAI (GPT-4o-mini) via `langchain-groq` e `langchain-openai`
+- **Vector store:** PGVector (PostgreSQL com extensão pgvector)
+- **Banco de dados:** PostgreSQL com tabela `produtos`
+- **Observabilidade:** Inspeção de `messages` e `recursion_limit` 10 para debugging
 
 ### Configuração Necessária
-- `.env` com `GROQ_API_KEY` (ou `GOOGLE_API_KEY`/`ANTHROPIC_API_KEY`) carregado.
-- Garantir acesso ao index FAISS (`../Dia4/faiss_index`); recriar com scripts do Dia 4 se ausente.
-- Dependências: ver `requirements.txt` (igual ao Dia 6).
+- **`.env` com:**
+  - `GROQ_API_KEY` e/ou `OPENAI_API_KEY`
+  - `DATABASE_NAME=postgresql://usuario:senha@localhost:5432/nome_banco`
+- **PostgreSQL:**
+  - Extensão `pgvector` instalada
+  - Tabela `produtos` criada (veja estrutura no README.md)
+- **Dependências:** ver `requirements.txt` (inclui `langchain-postgres`, `psycopg2`)
 
 ### Objetivo do Dia
 Polir o Knowledge Assistant: reforçar descrições das tools, validar decisões de tool, melhorar mensagens de erro e registrar evidências para handoff.
@@ -59,9 +74,9 @@ Polir o Knowledge Assistant: reforçar descrições das tools, validar decisões
 
 ## 🗺️ Próximos Passos
 ### Imediato (hoje)
-1. Revisar descrições das tools no `template.py`/`exemplo_referencia.py` e alinhar prompt base.  
-2. Rodar smoke tests extras: (a) só cálculo; (b) só RAG conceitual; (c) pergunta mista; (d) entrada ambígua/ruidosa.  
-3. Registrar no journal outputs, raciocínio e ajustes feitos; atualizar `CONTEXTO_PROXIMO_DIA.md`.
+1. ✅ Revisar descrições das tools - **CONCLUÍDO**
+2. ✅ Rodar smoke tests extras - **CONCLUÍDO** (ver `exercicios/1-rag_completo.py`)
+3. Registrar no journal outputs e raciocínio; atualizar `CONTEXTO_PROXIMO_DIA.md` com handoff.
 
 ### Próximo Dia (Dia 8 — início Semana 3: FastAPI + IA)
 - Criar esqueleto FastAPI (Python 3.12 + Pydantic v2), endpoint simples e checklist de segurança.  

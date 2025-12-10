@@ -162,17 +162,56 @@ pip install groq google-generativeai anthropic python-dotenv pdfplumber
 Crie arquivo `.env` na raiz do projeto:
 
 ```env
+# API Keys
 GROQ_API_KEY=sua_chave_groq_aqui
 GEMINI_API_KEY=sua_chave_gemini_aqui
 ANTHROPIC_API_KEY=sua_chave_anthropic_aqui
+OPENAI_API_KEY=sua_chave_openai_aqui
+
+# Banco de Dados (para Semana 2+)
+DATABASE_NAME=postgresql://usuario:senha@localhost:5432/nome_banco
 ```
 
 **⚠️ IMPORTANTE:** Nunca commite o arquivo `.env`! Ele está no `.gitignore`.
 
-### Passo 5: Verificar Instalação
+### Passo 5: Configurar PostgreSQL (Semana 2+)
 
+Para usar funcionalidades da Semana 2 (RAG com PGVector):
+
+1. **Instalar PostgreSQL:**
+   - [Download PostgreSQL](https://www.postgresql.org/download/)
+
+2. **Instalar extensão pgvector:**
+   ```sql
+   CREATE EXTENSION IF NOT EXISTS vector;
+   ```
+
+3. **Criar tabela produtos (para exemplo do Dia 7):**
+   ```sql
+   CREATE TABLE produtos (
+       id SERIAL PRIMARY KEY,
+       nome TEXT NOT NULL,
+       descricao TEXT,
+       preco NUMERIC(10, 2),
+       estoque INTEGER,
+       categoria TEXT,
+       sku TEXT,
+       ativo BOOLEAN DEFAULT true,
+       criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+       atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
+   ```
+
+### Passo 6: Verificar Instalação
+
+**Teste Semana 1:**
 ```bash
 python Semanas/Semana1/Dia1/hello_ai_groq.py
+```
+
+**Teste Semana 2 (requer PostgreSQL):**
+```bash
+python Semanas/Semana2/Dia7/exercicios/1-rag_completo.py
 ```
 
 Se funcionar, instalação está completa! ✅
@@ -257,25 +296,36 @@ plano-web-ia/
 │   └── ...
 │
 └── Semanas/
-    └── Semana1/
-        ├── README.md            # Visão geral da semana
-        ├── Dia1/                # Setup APIs
-        │   ├── hello_ai_groq.py
-        │   └── ...
-        ├── Dia2/                # Gerador de conteúdo
-        │   ├── gerador_conteudo_blog.py
-        │   └── ...
-        ├── Dia3/                # Analisador de sentimentos
-        │   ├── analisador_sentimentos.py
-        │   └── ...
-        ├── Dia4/                # Resumidor de PDFs
-        │   ├── resumidor_pdf.py
-        │   └── ...
-        ├── Dia5/                # Refatoração
-        ├── Dia6/                # CLI integrado
-        │   ├── cli_automatizacoes.py
-        │   └── ...
-        └── Dia7/                # Deploy + Review
+    ├── Semana1/                 # Fundamentos de IA Generativa
+    │   ├── README.md
+    │   ├── Dia1/                # Setup APIs
+    │   │   ├── hello_ai_groq.py
+    │   │   └── ...
+    │   ├── Dia2/                # Gerador de conteúdo
+    │   │   ├── gerador_conteudo_blog.py
+    │   │   └── ...
+    │   ├── Dia3/                # Analisador de sentimentos
+    │   │   ├── analisador_sentimentos.py
+    │   │   └── ...
+    │   ├── Dia4/                # Resumidor de PDFs
+    │   │   ├── resumidor_pdf.py
+    │   │   └── ...
+    │   ├── Dia5/                # Refatoração
+    │   ├── Dia6/                # CLI integrado
+    │   │   ├── cli_automatizacoes.py
+    │   │   └── ...
+    │   └── Dia7/                # Deploy + Review
+    │
+    └── Semana2/                 # LangChain + RAG
+        ├── README.md
+        ├── Dia1-3/              # Fundamentos LangChain
+        ├── Dia4/                # RAG Avançado (FAISS/Chroma)
+        ├── Dia5/                # Agents
+        ├── Dia6/                # LangGraph
+        └── Dia7/                # Knowledge Assistant Completo
+            ├── exercicios/
+            │   └── 1-rag_completo.py  # Sistema RAG com PGVector
+            └── ...
 ```
 
 ---
@@ -289,14 +339,25 @@ plano-web-ia/
 - **groq** - API do Groq para LLMs
 - **google-generativeai** - API do Google Gemini
 - **anthropic** - API do Anthropic Claude
+- **langchain** - Framework para aplicações com LLMs
+- **langchain-groq** - Integração LangChain com Groq
+- **langchain-openai** - Integração LangChain com OpenAI
+- **langchain-postgres** - Vector store PGVector para PostgreSQL
+- **langchain-huggingface** - Embeddings com HuggingFace
 - **python-dotenv** - Gerenciamento de variáveis de ambiente
 - **pdfplumber** - Extração de texto de PDFs
+- **psycopg2** - Driver PostgreSQL para Python
 - **argparse** - Criação de CLI (built-in)
 
 ### APIs Externas
 - [Groq API](https://console.groq.com/) - LLM rápido e gratuito
 - [Google Gemini API](https://makersuite.google.com/app/apikey) - LLM do Google
 - [Anthropic Claude API](https://console.anthropic.com/) - LLM da Anthropic
+- [OpenAI API](https://platform.openai.com/) - GPT models
+
+### Banco de Dados
+- **PostgreSQL** - Banco de dados relacional
+- **pgvector** - Extensão PostgreSQL para vector similarity search
 
 ### Ferramentas
 - **Git** - Controle de versão
@@ -353,18 +414,71 @@ plano-web-ia/
 
 ---
 
+## 📅 Semana 2 - LangChain + RAG ✅
+
+### O que foi feito:
+
+**Dia 1-3 - Fundamentos LangChain** ✅
+- Introdução ao LangChain e LCEL (LangChain Expression Language)
+- Criação de chains básicas
+- Integração com múltiplos LLMs (Groq, OpenAI)
+
+**Dia 4 - RAG Avançado** ✅
+- Vector databases (FAISS, Chroma)
+- Embeddings com HuggingFace
+- Busca semântica e retrieval
+
+**Dia 5 - Agents** ✅
+- Criação de tools com `@tool`
+- Agents ReAct com LangChain
+- Integração de múltiplas ferramentas
+
+**Dia 6 - LangGraph** ✅
+- Orquestração de workflows complexos
+- Integração de agents com RAG
+
+**Dia 7 - Knowledge Assistant Completo** ✅
+- Sistema RAG completo com PGVector
+- Indexação automática de produtos do PostgreSQL
+- Comparação STUFF vs MapReduce
+- Agent ReAct com múltiplas tools
+
+### Funcionalidades Principais da Semana 2:
+
+#### 1. Sistema RAG com PGVector
+- **Script:** `Semanas/Semana2/Dia7/exercicios/1-rag_completo.py`
+- **Descrição:** Sistema completo de RAG usando PostgreSQL com extensão pgvector
+- **Features:**
+  - Indexação automática de produtos da tabela SQL
+  - Busca semântica com embeddings
+  - Comparação de métodos STUFF vs MapReduce
+  - Agent ReAct com tools integradas
+- **Uso:**
+  ```bash
+  python Semanas/Semana2/Dia7/exercicios/1-rag_completo.py
+  ```
+
+#### 2. Tools e Agents
+- **Tools disponíveis:**
+  - `search_knowledges`: Busca semântica na base de conhecimento
+  - `calculator`: Resolução de expressões aritméticas
+- **Agent ReAct:** Escolha automática de tools baseada na pergunta
+
+### Estatísticas da Semana 2:
+- **Scripts criados:** 10+
+- **Vector stores testados:** FAISS, Chroma, PGVector
+- **Agents criados:** 3+
+- **Status:** ✅ Completa
+
+---
+
 ## 🎯 Próximos Passos
 
-### Semana 2: LangChain + RAG
-- Introdução ao LangChain
-- Criação de chains
-- Retrieval-Augmented Generation (RAG)
-- Integração com vector databases
-
-### Semana 3: FastAPI + Backend
+### Semana 3: FastAPI + Backend 🟡
 - Criação de APIs REST
 - Endpoints para automações
 - Autenticação e segurança
+- Integração com sistemas de IA
 
 ### Semana 4-8: [Continuar conforme plano]
 - Bun + Hono
@@ -414,5 +528,5 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 ---
 
-**Última atualização:** 30 Nov 2025
+**Última atualização:** 7 Dez 2025
 
