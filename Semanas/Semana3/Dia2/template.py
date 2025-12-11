@@ -37,7 +37,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from jose import JWTError, jwt
 from datetime import datetime, timedelta, timezone
-from typing import Optional
 from passlib.context import CryptContext
 from dotenv import load_dotenv
 from starlette.status import HTTP_401_UNAUTHORIZED
