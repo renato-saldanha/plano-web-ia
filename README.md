@@ -32,6 +32,7 @@
 - [Semana 1](#-semana-1)
 - [Próximos Passos](#-próximos-passos)
 - [Contribuindo](#-contribuindo)
+- [Criando Novos Dias](#️-criando-novos-dias)
 - [Licença](#-licença)
 
 ---
@@ -502,6 +503,151 @@ Contribuições são bem-vindas! Para contribuir:
 - Use mensagens de commit descritivas
 - Adicione documentação para novas features
 - Teste antes de fazer commit
+
+---
+
+## 🛠️ Criando Novos Dias
+
+Se você fez fork deste projeto e deseja criar novos dias seguindo a metodologia do plano, este guia explica como fazer isso.
+
+### 📋 Visão Geral
+
+O projeto utiliza uma metodologia de ensino baseada em **Scaffolding** e **Progressive Disclosure**, onde cada dia segue uma estrutura padronizada de 160 minutos (2h40) dividida em fases específicas.
+
+### 📚 Documentos Essenciais
+
+Antes de criar um novo dia, leia os seguintes documentos na raiz do projeto:
+
+1. **`CONTEXTO_CRIACAO_DIA.md`** ⭐ - **LEIA PRIMEIRO**
+   - Instruções completas para agentes IA criarem novos dias
+   - Define a metodologia e estrutura obrigatória
+   - Especifica os arquivos necessários e níveis de scaffolding
+
+2. **`METODOLOGIA_ENSINO.md`**
+   - Explica a metodologia de ensino aplicada
+   - Detalha os níveis de scaffolding (1, 2, 3)
+   - Define a estrutura padrão de um dia
+
+3. **`TEMPLATE_ESTRUTURA_DIA.md`**
+   - Template completo com exemplos de cada arquivo
+   - Estrutura de pastas e nomenclatura
+   - Exemplos de código para cada nível de scaffolding
+
+4. **`GUIAS/GUIA_DECISAO_SCAFFOLDING.md`**
+   - Matriz de decisão para escolher o nível de scaffolding
+   - Exemplos práticos de quando usar cada nível
+   - Checklist de decisão
+
+5. **`1-Plano_Desenvolvimento.md`**
+   - Plano macro completo do projeto
+   - Contexto de cada semana e dia
+   - Sequência lógica de aprendizado
+
+### 🎯 Processo de Criação
+
+#### Passo 1: Entender o Contexto
+
+1. Leia o **`CONTEXTO_PROXIMO_DIA.md`** do dia anterior
+   - Este arquivo contém o briefing obrigatório para criar o próximo dia
+   - Explica o que foi aprendido e o que será feito no próximo dia
+
+2. Revise o **`journal.md`** do dia anterior (opcional)
+   - Identifica dificuldades enfrentadas
+   - Ajuda a ajustar o nível de scaffolding se necessário
+
+#### Passo 2: Definir Estrutura do Dia
+
+Cada dia deve ter os seguintes arquivos **obrigatórios** (na ordem especificada):
+
+```
+DiaX/
+├── README.md                    # Contexto e objetivos do dia
+├── CONTEXTO_AGENTE.md           # Informações técnicas detalhadas
+├── checklist.md                 # Tarefas práticas divididas em fases
+├── journal.md                   # Template para reflexão
+├── requirements.txt             # Dependências Python (obrigatório, mesmo que vazio)
+└── CONTEXTO_PROXIMO_DIA.md      # Guia para construir próximo dia (obrigatório)
+```
+
+**Arquivos adicionais** conforme o nível de scaffolding:
+
+- **Nível 1 (Iniciante):** `exemplo_completo.py`, `GUIA_PASSO_A_PASSO.md`
+- **Nível 2 (Intermediário):** `template.py`, `GUIA_APRENDIZADO.md`, `exemplo_referencia.py`, `exercicios.md`
+- **Nível 3 (Avançado):** `especificacoes.md`, `GUIA_CONCEITOS.md`, `exercicios.md`
+
+#### Passo 3: Seguir a Estrutura de Tempo
+
+Cada dia deve ter exatamente **160 minutos** (2h40) divididos em:
+
+| Fase | Duração | Descrição |
+|------|---------|-----------|
+| **Preparação** | 5min | Abrir checklist, revisar README.md, validar ambiente |
+| **Leitura guiada** | 20min | Ler guias/documentos do dia, destacar pontos-chave |
+| **Construção guiada** | 90min | Trabalhar no template.py, exercícios ou código principal |
+| **Consolidação** | 25min | Testes rápidos, refino e checklist parcial |
+| **Registro/handoff** | 20min | Checklist final, journal, CONTEXTO_PROXIMO_DIA.md |
+| **Buffer** | 10min | Resolver imprevistos ou mover item para próximo dia |
+
+**⚠️ IMPORTANTE:** Se alguma atividade exceder 160 minutos, divida em um novo dia.
+
+#### Passo 4: Usar Agentes IA (Recomendado)
+
+O arquivo **`CONTEXTO_CRIACAO_DIA.md`** foi criado especificamente para ser usado com agentes IA (como Cursor, Claude, ChatGPT). 
+
+**Como usar:**
+
+1. Abra o arquivo `CONTEXTO_CRIACAO_DIA.md` no seu agente IA
+2. Forneça o contexto do dia anterior (leia `CONTEXTO_PROXIMO_DIA.md`)
+3. O agente seguirá as instruções e criará todos os arquivos necessários
+4. Revise e ajuste conforme necessário
+
+**Exemplo de prompt para agente IA:**
+
+```
+Usando o CONTEXTO_CRIACAO_DIA.md como guia, crie o Dia 5 da Semana 3.
+Leia primeiro o Semanas/Semana3/Dia4/CONTEXTO_PROXIMO_DIA.md para entender o contexto.
+```
+
+### 📝 Checklist de Criação
+
+Antes de considerar um dia completo, verifique:
+
+- [ ] Todos os arquivos obrigatórios foram criados
+- [ ] `README.md` tem objetivo claro e duração de 160min
+- [ ] `checklist.md` está dividido nas 6 fases (totalizando 160min)
+- [ ] `CONTEXTO_PROXIMO_DIA.md` foi criado (obrigatório para todos os dias)
+- [ ] Nível de scaffolding foi definido e justificado
+- [ ] Arquivos do scaffolding correspondem ao nível escolhido
+- [ ] Referências aos guias estão explícitas no checklist
+- [ ] `requirements.txt` foi criado (mesmo que vazio)
+- [ ] Código segue padrões do projeto (PEP 8 para Python)
+
+### 🎓 Níveis de Scaffolding
+
+**⚠️ IMPORTANTE:** Os níveis são determinados pelo **CONCEITO**, não pela posição temporal.
+
+- **Nível 1:** Conceito completamente novo, primeira exposição
+- **Nível 2:** Conceito parcialmente conhecido, aplicação em novo contexto
+- **Nível 3:** Conceitos conhecidos, aplicação independente
+
+**Exemplo:**
+- Semana 1, Dia 1: Nível 1 (conceito novo: usar APIs diretamente)
+- Semana 2, Dia 1: Nível 1 (conceito novo: LangChain)
+- Semana 2, Dia 2: Nível 2 (conceito parcialmente conhecido: já sabe LangChain básico)
+
+### 🔗 Recursos Adicionais
+
+- **Estrutura de exemplo:** Veja `Semanas/Semana3/Dia4/` como referência completa
+- **Templates:** Use `TEMPLATE_ESTRUTURA_DIA.md` como base
+- **Metodologia:** Consulte `METODOLOGIA_ENSINO.md` para entender a filosofia
+
+### 💡 Dicas
+
+1. **Sempre leia o `CONTEXTO_PROXIMO_DIA.md` do dia anterior** antes de criar um novo dia
+2. **Use agentes IA** para acelerar a criação seguindo `CONTEXTO_CRIACAO_DIA.md`
+3. **Mantenha consistência** com a estrutura dos dias anteriores
+4. **Teste o checklist** para garantir que cabe em 160 minutos
+5. **Crie o `CONTEXTO_PROXIMO_DIA.md`** no final de cada dia (obrigatório)
 
 ---
 
