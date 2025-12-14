@@ -10,11 +10,11 @@ Implementar sistema de histórico de conversas para o endpoint `/api/chat`, perm
 ## 📋 FASE 1: Preparação (5min)
 
 ### Configuração Inicial
-- [ ] Abrir `README.md` e ler contexto do dia
-- [ ] Revisar `CONTEXTO_AGENTE.md` para entender objetivo técnico
-- [ ] Ativar ambiente virtual Python (venv)
-- [ ] Verificar se variáveis de ambiente do Dia 3 estão configuradas (JWT, API keys)
-- [ ] Abrir `checklist.md` (este arquivo) para acompanhar progresso
+- [ X] Abrir `README.md` e ler contexto do dia
+- [ X] Revisar `CONTEXTO_AGENTE.md` para entender objetivo técnico
+- [ X] Ativar ambiente virtual Python (venv)
+- [ X] Verificar se variáveis de ambiente do Dia 3 estão configuradas (JWT, API keys)
+- [ X] Abrir `checklist.md` (este arquivo) para acompanhar progresso
 
 **Como fazer:**
 1. Navegar até `Semanas/Semana3/Dia4/`
@@ -33,10 +33,10 @@ Garantir ambiente configurado antes de começar evita bloqueios durante a implem
 ## 📋 FASE 2: Leitura Guiada (20min)
 
 ### Leitura de Documentação
-- [ ] Ler `GUIA_APRENDIZADO.md` (seção 1: Conceitos de Histórico)
-- [ ] Ler `GUIA_APRENDIZADO.md` (seção 2: Armazenamento em Memória)
-- [ ] Ler `GUIA_APRENDIZADO.md` (seção 3: Integração com LLM)
-- [ ] Consultar `exemplo_referencia.py` para entender estrutura esperada
+- [ X] Ler `GUIA_APRENDIZADO.md` (seção 1: Conceitos de Histórico)
+- [ X] Ler `GUIA_APRENDIZADO.md` (seção 2: Armazenamento em Memória)
+- [ X] Ler `GUIA_APRENDIZADO.md` (seção 3: Integração com LLM)
+- [ X] Consultar `exemplo_referencia.py` para entender estrutura esperada
 - [ ] Anotar dúvidas sobre persistência e formato de dados
 
 **Como fazer:**
@@ -57,9 +57,9 @@ Entender conceitos antes de implementar reduz erros e aumenta qualidade do códi
 ### Implementação do Sistema de Histórico
 
 #### Subfase 3.1: Estrutura de Dados (15min)
-- [ ] Abrir `template.py`
-- [ ] Criar modelos Pydantic: `Message`, `Conversation`, `ConversationList`
-- [ ] Definir estrutura de armazenamento (dict em memória ou função helper)
+- [x] Abrir `template.py`
+- [x] Criar modelos Pydantic: `Message`, `ConversationSummary`
+- [x] Definir estrutura de armazenamento (dict em memória)
 
 **Como fazer:**
 1. Consultar `exemplo_referencia.py` para ver modelos esperados
@@ -74,10 +74,10 @@ Modelos bem definidos facilitam validação e manutenção do código.
 ---
 
 #### Subfase 3.2: Funções de Armazenamento (20min)
-- [ ] Implementar `get_or_create_conversation(user_id, conversation_id=None)`
-- [ ] Implementar `add_message(user_id, conversation_id, role, content)`
-- [ ] Implementar `get_messages(user_id, conversation_id)`
-- [ ] Implementar `list_conversations(user_id)`
+- [x] Implementar `get_or_create_conversation(user_id, conversation_id=None)` ⚠️ **COM BUGS** (linhas 244, 247)
+- [x] Implementar `add_message(user_id, conversation_id, role, content)` ✅
+- [x] Implementar `get_messages(user_id, conversation_id)` ✅
+- [x] Implementar `list_conversations(user_id)` ⚠️ **COM BUG** (linha 322)
 
 **Como fazer:**
 1. Seguir TODOs em `template.py`
@@ -92,11 +92,12 @@ Funções auxiliares encapsulam lógica de armazenamento, facilitando testes e m
 ---
 
 #### Subfase 3.3: Modificar Endpoint /api/chat (25min)
-- [ ] Adicionar parâmetro `conversation_id` (opcional) ao `ChatRequest`
-- [ ] Recuperar histórico da conversa (se existir)
-- [ ] Construir lista de mensagens com histórico + nova mensagem
-- [ ] Enviar contexto completo ao LLM usando `ChatPromptTemplate` ou lista de `HumanMessage`/`AIMessage`
-- [ ] Salvar resposta do LLM no histórico
+- [x] Adicionar parâmetro `conversation_id` (opcional) ao `ChatRequest` ✅
+- [x] Recuperar histórico da conversa (se existir) ✅
+- [x] Construir lista de mensagens com histórico + nova mensagem ✅
+- [x] Enviar contexto completo ao LLM usando lista de `HumanMessage`/`AIMessage` ✅
+- [x] Salvar resposta do LLM no histórico ✅
+- ⚠️ **BUGS:** Linha 361 (escape), Linha 559 (retorno de objeto)
 
 **Como fazer:**
 1. Modificar modelo `ChatRequest` para incluir `conversation_id: Optional[str]`
@@ -112,9 +113,9 @@ Manter histórico permite ao LLM ter contexto completo da conversa, melhorando r
 ---
 
 #### Subfase 3.4: Novos Endpoints (20min)
-- [ ] Criar `GET /conversations` para listar conversas do usuário
-- [ ] Criar `GET /conversations/{conversation_id}/messages` para recuperar histórico
-- [ ] Criar `POST /conversations` (opcional) para criar nova conversa explicitamente
+- [x] Criar `GET /conversations` para listar conversas do usuário ✅
+- [x] Criar `GET /conversations/{conversation_id}/messages` para recuperar histórico ✅
+- [ ] Criar `POST /conversations` (opcional) - **NÃO IMPLEMENTADO** (opcional)
 
 **Como fazer:**
 1. Seguir TODOs em `template.py` para novos endpoints
@@ -129,12 +130,12 @@ Endpoints RESTful permitem gerenciar conversas de forma clara e padronizada.
 ---
 
 #### Subfase 3.5: Testes Manuais Básicos (10min)
-- [ ] Testar login e obter token
-- [ ] Enviar mensagem ao `/api/chat` sem `conversation_id` (cria nova)
-- [ ] Enviar segunda mensagem com mesmo `conversation_id`
-- [ ] Verificar se LLM recebe contexto da primeira mensagem
-- [ ] Listar conversas via `GET /conversations`
-- [ ] Recuperar mensagens via `GET /conversations/{id}/messages`
+- [ X] Testar login e obter token
+- [ X] Enviar mensagem ao `/api/chat` sem `conversation_id` (cria nova)
+- [ X] Enviar segunda mensagem com mesmo `conversation_id`
+- [ X] Verificar se LLM recebe contexto da primeira mensagem
+- [ X] Listar conversas via `GET /conversations`
+- [ X] Recuperar mensagens via `GET /conversations/{id}/messages`
 
 **Como fazer:**
 1. Usar `/docs` do FastAPI ou curl/Postman
@@ -151,12 +152,12 @@ Testes manuais rápidos garantem que implementação básica funciona antes de c
 ## 📋 FASE 4: Consolidação (25min)
 
 ### Validação e Ajustes
-- [ ] Revisar código implementado no `template.py`
-- [ ] Verificar se TODOs foram resolvidos
-- [ ] Testar fluxo completo: criar conversa → enviar 3-4 mensagens → verificar histórico
-- [ ] Verificar tratamento de erros (conversation_id inválido, etc.)
-- [ ] Validar que streaming funciona com histórico
-- [ ] Atualizar checklist parcial (marcar itens concluídos)
+- [ X] Revisar código implementado no `template.py`
+- [ X] Verificar se TODOs foram resolvidos
+- [ X] Testar fluxo completo: criar conversa → enviar 3-4 mensagens → verificar histórico
+- [ X] Verificar tratamento de erros (conversation_id inválido, etc.)
+- [ X] Validar que streaming funciona com histórico
+- [ X] Atualizar checklist parcial (marcar itens concluídos)
 
 **Como fazer:**
 1. Executar servidor: `uvicorn template:app --reload`
@@ -174,14 +175,14 @@ Consolidação garante que funcionalidades básicas estão operacionais antes do
 ## 📋 FASE 5: Registro e Handoff (20min)
 
 ### Documentação
-- [ ] Preencher `journal.md` com aprendizados do dia
-- [ ] Atualizar `checklist.md` marcando todas as fases concluídas
-- [ ] Preencher `CONTEXTO_PROXIMO_DIA.md` descrevendo:
+- [ X] Preencher `journal.md` com aprendizados do dia
+- [ X] Atualizar `checklist.md` marcando todas as fases concluídas
+- [ X] Preencher `CONTEXTO_PROXIMO_DIA.md` descrevendo:
   - O que foi implementado hoje
   - Conceitos aprendidos
   - Dificuldades enfrentadas
   - O que será feito no Dia 5 (rate limiting, erros, logging)
-- [ ] Fazer commit do código (se usando git)
+- [X ] Fazer commit do código (se usando git)
 
 **Como fazer:**
 1. Abrir `journal.md` e preencher seções: "O que aprendi", "Desafios", "Próximos passos"

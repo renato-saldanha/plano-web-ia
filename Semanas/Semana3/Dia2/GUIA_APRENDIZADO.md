@@ -322,21 +322,21 @@ FAKE_USER = {
 
 @app.post("/login", response_model=Token)
 async def login(request: LoginRequest):
-    # Verificar usuário (em produção: consultar banco)
+    # Verifica usuário (em produção: consultar banco)
     if request.username != FAKE_USER["username"]:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid username or password"
         )
     
-    # Verificar senha
+    # Verifica senha
     if not pwd_context.verify(request.password, FAKE_USER["hashed_password"]):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid username or password"
         )
     
-    # Gerar tokens
+    # Gera tokens
     access_token = create_access_token(data={"sub": request.username})
     refresh_token = create_refresh_token(data={"sub": request.username})
     
