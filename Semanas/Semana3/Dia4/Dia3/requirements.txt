@@ -1,0 +1,29 @@
+# Dependências do Dia 3 - Streaming + LLM
+# Instalar com: pip install -r requirements.txt
+
+# Framework web
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# Validação de dados
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# Variáveis de ambiente
+python-dotenv>=1.0.0
+
+# JWT (herdado do Dia 2)
+python-jose[cryptography]>=3.3.0
+
+# LangChain / LangGraph (API moderna)
+langchain>=0.3.0
+langgraph>=0.2.0
+langchain-openai>=0.2.0
+
+# Streaming / SSE
+httpx>=0.25.0
+sse-starlette>=1.8.0
+
+# Opcional para testes
+anyio>=4.0.0
+

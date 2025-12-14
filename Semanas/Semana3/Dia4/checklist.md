@@ -200,9 +200,9 @@ Registro documenta progresso e facilita retomada no próximo dia.
 ## 📋 FASE 6: Buffer (10min)
 
 ### Espaço para Imprevistos
-- [ ] Se houver tempo, refatorar código ou adicionar validações extras
-- [ ] Se houver bloqueios, anotar no journal para revisar depois
-- [ ] Se tudo correu bem, buffer fica livre
+- [X ] Se houver tempo, refatorar código ou adicionar validações extras
+- [X ] Se houver bloqueios, anotar no journal para revisar depois
+- [X ] Se tudo correu bem, buffer fica livre
 
 **Por que:**
 Buffer previne extrapolação do tempo e dá flexibilidade para resolver imprevistos.
@@ -217,12 +217,12 @@ Buffer previne extrapolação do tempo e dá flexibilidade para resolver imprevi
 **Total estimado:** 160min no total (inclui leitura dos documentos, execução de exercícios/testes e preenchimento de checklist + journal, **sem usar autocomplete/IA para gerar código**)
 
 ### ✅ Critérios de Sucesso:
-- [ ] Sistema de histórico armazena mensagens por usuário e conversa
-- [ ] Endpoint `/api/chat` usa histórico para manter contexto
-- [ ] Endpoints `/conversations` e `/conversations/{id}/messages` funcionam
-- [ ] LLM recebe contexto completo da conversa
-- [ ] Código testado manualmente e funcionando
-- [ ] `journal.md` e `CONTEXTO_PROXIMO_DIA.md` preenchidos
+- [ X] Sistema de histórico armazena mensagens por usuário e conversa
+- [ X] Endpoint `/api/chat` usa histórico para manter contexto
+- [ X] Endpoints `/conversations` e `/conversations/{id}/messages` funcionam
+- [ X] LLM recebe contexto completo da conversa
+- [ X] Código testado manualmente e funcionando
+- [ X] `journal.md` e `CONTEXTO_PROXIMO_DIA.md` preenchidos
 
 ### 🎯 Streak: X/56 dias
 
