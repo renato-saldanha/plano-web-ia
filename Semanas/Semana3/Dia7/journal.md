@@ -68,7 +68,7 @@ _(Preencher ao longo do dia)_
 - 
 
 ### Próximos Passos
-- Semana 4: Backend Alternativo - Bun + Hono (JavaScript/TypeScript)
+- Semana 4: IA Avançada + Governança + MLFlow (Python)
 
 ---
 

@@ -1,60 +1,39 @@
-# test_chat.ps1
-# Script para testar o endpoint /chat
+# test_login.ps1
+# Script para testar o endpoint /login
 
-$TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTc2NjM3NDIyOCwidHlwZSI6ImFjY2VzcyJ9.ODsB6ax9cIeeiCyG2Ufk71Kj8ezW1oQsmXsfm1CoNHw"
-$API_URL = "http://localhost:8000/chat"
+$API_URL = "http://localhost:8000/login"
 
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "  TESTE DO ENDPOINT /chat" -ForegroundColor Cyan
+Write-Host "  TESTE DO ENDPOINT /login" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host ""
 
 # ============================================
-# 1. TESTE SIMPLES DO CHAT
+# 1. TESTE DE RATE LIMITING
 # ============================================
-Write-Host "1. Teste simples do chat..." -ForegroundColor Yellow
-
-$headers = @{
-    "Authorization" = "Bearer $TOKEN"
-    "Content-Type" = "application/json"
-}
-
-$chatBody = @{
-    message = "Olá! Como você está?"
-    stream = $false  # Resposta completa, não streaming
-} | ConvertTo-Json
-
-try {
-    $response = Invoke-RestMethod -Uri $API_URL -Method POST -Body $chatBody -Headers $headers
-    Write-Host "   Chat funcionando!" -ForegroundColor Green
-    Write-Host "   Conversation ID: $($response.conversation_id)" -ForegroundColor Gray
-    Write-Host "   Resposta: $($response.reply.Substring(0, [Math]::Min(100, $response.reply.Length)))..." -ForegroundColor Gray
-    Write-Host ""
-} catch {
-    Write-Host "   Erro no chat: $_" -ForegroundColor Red
-    Write-Host ""
-}
-
-# ============================================
-# 2. TESTE DE RATE LIMITING
-# ============================================
-Write-Host "2. Testando Rate Limiting (31 requisições)..." -ForegroundColor Yellow
+Write-Host "1. Testando Rate Limiting (6 requisições)..." -ForegroundColor Yellow
 Write-Host ""
 
 $successCount = 0
 $rateLimitCount = 0
 $errorCount = 0
 
-$simpleChatBody = @{
-    message = "test"
-    stream = $false
+# Headers necessários para JSON
+$headers = @{
+    "Content-Type" = "application/json"
+}
+
+# Body correto para login (apenas username e password)
+$loginBody = @{
+    username = "admin"
+    password = "admin123"
 } | ConvertTo-Json
 
-for ($i = 1; $i -le 31; $i++) {
+for ($i = 1; $i -le 6; $i++) {
     Write-Host -NoNewline "   Requisição $($i.ToString().PadLeft(2)): "
     
     try {
-        $response = Invoke-WebRequest -Uri $API_URL -Method POST -Body $simpleChatBody -Headers $headers -ErrorAction Stop
+        $response = Invoke-WebRequest -Uri $API_URL -Method POST -Body $loginBody -Headers $headers -ErrorAction Stop
         $statusCode = $response.StatusCode
         
         if ($statusCode -eq 200) {

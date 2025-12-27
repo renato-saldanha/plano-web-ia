@@ -20,7 +20,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 - ✅ Dia 2: Autenticação JWT completa (login, refresh, proteção de rotas)
 - ✅ Dia 3: Streaming de respostas com SSE e integração LLM
 - ✅ Dia 4: Sistema de histórico de conversas (persistência em memória, gerenciamento de threads)
-- ✅ Dia 5: Rate limiting por usuário, tratamento de erros e logging estruturado
+- ✅ Dia 5: Rate limiting por usuário + Logging estruturado
 
 ### O que está em progresso:
 - 🟡 Dia 6: Testes automatizados (pytest) com cobertura mínima de 60%
@@ -47,10 +47,10 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 - `requirements.txt` - Dependências Python (obrigatório sempre, mesmo que vazio)
 - `CONTEXTO_PROXIMO_DIA.md` - Guia para construir próximo dia (obrigatório para todos os dias)
 
-### Arquivos de Aprendizado (Nível 2):
-- `template.py` - Código do Dia 5 (herdado, sem modificações, apenas para referência)
-- `GUIA_APRENDIZADO.md` - Conceitos teóricos + passo-a-passo sobre pytest, TestClient, fixtures e cobertura
-- `exemplo_referencia.py` - Código completo do Dia 5 + testes completos como referência
+### Arquivos de Aprendizado (Nível 1):
+- `exemplo_completo.py` - Código completo com testes + exception handlers básicos
+- `GUIA_PASSO_A_PASSO.md` - Tutorial detalhado sobre pytest (Nível 1)
+- `template.py` - Template com TODOs para testes + exception handlers básicos
 - `exercicios.md` - Exercícios de teste para validar implementação
 
 ### Estrutura de Testes:
@@ -83,14 +83,14 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
   - `OPENAI_API_KEY` (pode ser mockado nos testes)
 
 ### Objetivo do Dia:
-Implementar testes automatizados completos para a API, garantindo que todas as funcionalidades críticas (autenticação, chat, rate limiting, exception handling) estão funcionando corretamente e alcançando cobertura mínima de 60%.
+Implementar testes automatizados e exception handlers básicos para a API, garantindo que funcionalidades críticas estão funcionando corretamente e alcançando cobertura mínima de 60%.
 
 ---
 
 ## 🗺️ Próximos Passos
 
 ### Imediato (hoje):
-1. Ler `GUIA_APRENDIZADO.md` para entender conceitos de pytest, TestClient e fixtures
+1. Ler `GUIA_PASSO_A_PASSO.md` para entender conceitos de pytest, TestClient e fixtures
 2. Configurar ambiente de testes (instalar pytest, pytest-cov, pytest-asyncio)
 3. Criar `tests/conftest.py` com fixtures compartilhadas
 4. Implementar testes de autenticação em `tests/test_auth.py`

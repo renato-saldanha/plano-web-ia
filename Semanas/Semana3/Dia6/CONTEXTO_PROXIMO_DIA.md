@@ -131,9 +131,9 @@ Dividir em fases:
 ## 📚 Recursos de Preparação
 
 ### O que revisar antes de começar:
-- [ ] Código do Dia 6 (`template.py` ou `exemplo_referencia.py`)
-- [ ] Testes passando (garantir que API está funcionando)
-- [ ] Variáveis de ambiente configuradas localmente
+- [ x] Código do Dia 6 (`template.py` ou `exemplo_referencia.py`)
+- [ x] Testes passando (garantir que API está funcionando)
+- [ x] Variáveis de ambiente configuradas localmente
 
 ### Recursos úteis para ler:
 - FastAPI OpenAPI: https://fastapi.tiangolo.com/tutorial/metadata/

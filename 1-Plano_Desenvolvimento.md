@@ -13,13 +13,13 @@ Desenvolver 3 projetos full-stack completos integrando IA generativa, demonstran
 
 ### Metas Semanais Detalhadas
 
-### Método de Scaffolding com Limite Diário de 2h40
+### Método de Scaffolding com Limite Diário de 2h (120min)
 - **Fase 0 – Preparação (5min):** abrir checklist do dia, conferir contexto do `README.md` e confirmar pré-requisitos.
 - **Fase 1 – Leitura guiada (20min):** leitura ativa de documentos e guias obrigatórios do dia, anotando dúvidas que serão respondidas na prática.
 - **Fase 2 – Construção guiada (90min):** seguir o `template.py` ou exercícios com apoio do exemplo de referência (scaffolding descrito por Murilo Abreu Inácio, 2023).
 - **Fase 3 – Consolidação (25min):** testes rápidos, checklist parcial e ajustes nas seções completadas do template/exercícios.
 - **Fase 4 – Registro e handoff (20min):** preencher checklist final, journal e `CONTEXTO_PROXIMO_DIA.md`.
-- **Buffer estratégico (10min):** espaço para resolver bloqueios sem extrapolar 2h40.
+- **Buffer estratégico (5min):** espaço para resolver bloqueios sem extrapolar 2h (120min).
 
 Essa cadência aplica o conceito de scaffolding: começamos com suporte máximo na leitura guiada, reduzimos o apoio na construção e finalizamos com autonomia na documentação. Qualquer conceito que não caiba em uma única sessão deve ser dividido, mantendo a sequência Preparação → Leitura → Construção → Consolidação → Registro.
 
@@ -31,12 +31,12 @@ Essa cadência aplica o conceito de scaffolding: começamos com suporte máximo 
 - **Métrica:** 100% dos tutoriais concluídos + 1 projeto funcional + comparação documentada
 
 #### **Semana 3-4: Backend Avançado + IA**
-- ✅ Implementar 4 endpoints REST em FastAPI/Bun integrando IA generativa
+- ✅ Implementar 4 endpoints REST em FastAPI integrando IA generativa
 - ✅ Criar sistema de autenticação JWT completo
 - ✅ Desenvolver 2 automações de backend (ex: geração automática de relatórios, processamento de documentos)
 - ✅ Implementar tratamento de erros e rate limiting para APIs de IA
-- ✅ Comparar FastAPI (Python) vs Hono+Bun (performance e DX)
-- **Métrica:** API funcional com 60% de cobertura de testes (realista)
+- ✅ Hugging Face + Transfer Learning + Governança de IA + MLFlow
+- **Métrica:** API funcional com 60% de cobertura de testes (realista) OU modelo fine-tuned + sistema de governança
 
 #### **Semana 5-6: Frontend Moderno + Integração com IA**
 - ✅ Construir 3 interfaces NextJS 15 consumindo APIs de IA
@@ -131,29 +131,29 @@ Essa cadência aplica o conceito de scaffolding: começamos com suporte máximo 
 ## 📅 3. CRONOGRAMA SEMANAL ADAPTADO (REALISTA - 2025)
 
 ### ⚠️ **EXPECTATIVA REALISTA: 80% de Aderência**
-- **Meta diária:** 2h30 a 2h40min (máximo absoluto)
-- **Meta semanal ajustada:** 17.5-18.7 horas (7 dias × 2h30-2h40)
+- **Meta diária:** 2h (120min) (máximo absoluto)
+- **Meta semanal ajustada:** 14 horas (7 dias × 2h)
 - **Vida acontece:** OK perder 1-2 dias/semana
 - **Micro-sessões contam:** 30min é melhor que 0min
 - **Foco:** Consistência > Intensidade
 
-### Todos os Dias (máx. 2h40 por sessão)
+### Todos os Dias (máx. 2h (120min) por sessão)
 
 #### **Estrutura Diária Padronizada**
 | Bloco | Duração | Foco principal | Entregáveis obrigatórios |
 |-------|---------|----------------|---------------------------|
 | Preparação | 5min | Revisar `README.md`, checklist e ambiente | Checklist aberto e pré-requisitos confirmados |
-| Leitura guiada | 20min | Ler guias/documentos do dia e anotar dúvidas | Guias lidos + anotações curtas |
-| Construção guiada | 90min | Executar template/exercícios seguindo scaffolding | TODOs resolvidos ou marcados com dúvidas objetivas |
-| Consolidação | 25min | Testes rápidos, revisão de código, checklist parcial | Código executando + itens críticos verificados |
-| Registro e handoff | 20min | Checklist final, journal, `CONTEXTO_PROXIMO_DIA.md` | Journal preenchido + próximos passos definidos |
-| Buffer | 10min | Resolver bloqueios sem estourar o tempo | Só usar em emergências |
+| Leitura guiada | 15min | Ler guias/documentos do dia (foco no essencial) e anotar dúvidas | Guias lidos + anotações curtas |
+| Construção guiada | 60min | Executar template/exercícios seguindo scaffolding (MVP) | TODOs resolvidos ou marcados com dúvidas objetivas |
+| Consolidação | 20min | Testes rápidos, revisão de código, checklist parcial | Código executando + itens críticos verificados |
+| Registro e handoff | 15min | Checklist final, journal, `CONTEXTO_PROXIMO_DIA.md` | Journal preenchido + próximos passos definidos |
+| Buffer | 5min | Resolver bloqueios sem estourar o tempo | Só usar em emergências |
 
-**Total por dia: 2h40min (160min)**
+**Total por dia: 2h (120min)**
 
-**Alternativa para fins de semana:** manter a mesma sequência em horário mais confortável (manhã ou tarde). Nunca ultrapassar 2h40; se precisar de tempo extra, crie uma nova sessão em dia diferente.
+**Alternativa para fins de semana:** manter a mesma sequência em horário mais confortável (manhã ou tarde). Nunca ultrapassar 2h (120min); se precisar de tempo extra, crie uma nova sessão em dia diferente.
 
-### **TOTAL SEMANAL REALISTA: 17.5-18.7 horas (7 dias × 2h30-2h40)**
+### **TOTAL SEMANAL REALISTA: 14 horas (7 dias × 2h)**
 ### **TOTAL NO PERÍODO (8 semanas): 140-150 horas (tempo padronizado)**
 
 ---
@@ -535,7 +535,7 @@ Arquivo diário: `YYYY-MM-DD.md`
 - **Comparar 3 LLMs diferentes** (nova habilidade crítica 2025)
 - Criar primeiros 3 scripts de automação
 
-**Sequência (7 sessões de ≤2h40):**
+**Sequência (7 sessões de ≤2h (120min)):**
 1. **Dia 1:** Preparação + leitura completa do plano, abertura do checklist, criação de contas (Groq/Gemini/Claude) e journal inicial.
 2. **Dia 2:** Leitura rápida do guia de prompting + implementação do Script 1 (gerador de conteúdo) no template.
 3. **Dia 3:** Revisão do exemplo de referência + Script 2 (analisador de sentimentos) com comparação de 3 LLMs.
@@ -561,7 +561,7 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Implementar RAG (Retrieval Augmented Generation) com vector DB
 - Criar chatbot com memória de contexto e busca semântica
 
-**Sequência (7 sessões de ≤2h40):**
+**Sequência (7 sessões de ≤2h (120min)):**
 1. **Dia 1:** Leitura do guia LangChain + recriação de uma chain simples usando LCEL puro.
 2. **Dia 2:** Estudo guiado de vector stores (Chroma local) e setup do ambiente.
 3. **Dia 3:** Implementar embeddings + busca semântica básica no template.
@@ -588,7 +588,7 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Autenticação JWT + Rate limiting
 - Cobertura de testes 60% (realista)
 
-**Sequência (7 sessões de ≤2h40):**
+**Sequência (7 sessões de ≤2h (120min)):**
 1. **Dia 1:** Leitura do guia FastAPI + criação do esqueleto com 1 endpoint simples.
 2. **Dia 2:** Implementar autenticação JWT e revisar checklist de segurança.
 3. **Dia 3:** Construir `/api/generate` com streaming e testes rápidos.
@@ -606,28 +606,344 @@ Arquivo diário: `YYYY-MM-DD.md`
 
 ---
 
-### 🔹 **SEMANA 4 (16-22 Dez): Backend Alternativo - Bun + Hono (JavaScript)**
+### 🔹 **SEMANA 4 (16-22 Dez): IA Avançada + Governança + MLFlow** 🧠
+
+**✅ Esta semana está alinhada com `METODOLOGIA_ENSINO.md`**
 
 **Objetivos:**
-- Alternativa ultra-rápida: Bun runtime + Hono framework
-- Comparar performance e DX: FastAPI (Python) vs Hono (Bun)
-- Entender trade-offs (escolher stack preferida para projeto final)
+- Explorar modelos open-source com Hugging Face
+- Entender Transfer Learning e fine-tuning básico
+- Implementar governança de IA (segurança, ética, compliance)
+- Gerenciar ciclo de vida de modelos com MLFlow
+- Aplicar estratégias de produtos digitais com IA
 
-**Sequência (7 sessões de ≤2h40):**
-1. **Dia 1:** Setup Bun + Hono e leitura do guia rápido de TypeScript server-side.
-2. **Dia 2:** Criar endpoints base equivalentes aos da Semana 3.
-3. **Dia 3:** Implementar autenticação JWT e integrar Prisma/Drizzle.
-4. **Dia 4:** Adicionar streaming/WebSockets + testes manuais.
-5. **Dia 5:** Configurar deploy (Railway/Render) e executar smoke tests.
-6. **Dia 6:** Paridade funcional com a API FastAPI (scaffolding nível 2).
-7. **Dia 7:** Produzir tabela comparativa + post curto (LinkedIn/Dev.to) documentando achados.
+**💡 Por que esta semana:**
+- ✅ Mantém foco em Python (não precisa aprender JavaScript)
+- ✅ Mais relevante para carreira em IA (Hugging Face é padrão)
+- ✅ Diferencial competitivo (governança + MLFlow)
+- ✅ Alinhado com plano DIO (Nível 2-3)
+- ✅ Aplicável diretamente no projeto final (Semana 7-8)
+
+---
+
+#### **Dia 1: Hugging Face - Fundamentos e Modelos**
+**Duração:** 120min (2h)  
+**Nível de Scaffolding:** **Nível 1** (conceito completamente novo: Hugging Face)
+
+**Arquivos Obrigatórios:**
+- ✅ `README.md` - Contexto e objetivos
+- ✅ `CONTEXTO_AGENTE.md` - Informações técnicas detalhadas
+- ✅ `checklist.md` - Tarefas divididas em 6 fases (120min)
+- ✅ `journal.md` - Template para reflexão
+- ✅ `requirements.txt` - Dependências Python
+- ✅ `CONTEXTO_PROXIMO_DIA.md` - Guia para Dia 2
+
+**Arquivos Nível 1 (Iniciante):**
+- ✅ `exemplo_completo.py` - Código completo comentado linha por linha
+- ✅ `GUIA_PASSO_A_PASSO.md` - Tutorial muito detalhado
+
+**Estrutura de Tempo (120min):**
+- **Preparação (5min):** Revisar checklist, contexto do README.md
+- **Leitura guiada (15min):** Ler `GUIA_PASSO_A_PASSO.md` + Hugging Face Docs
+- **Construção guiada (60min):** Seguir `exemplo_completo.py` e `template.py` (se houver)
+- **Consolidação (20min):** Testes rápidos, checklist parcial
+- **Registro/handoff (15min):** Journal + `CONTEXTO_PROXIMO_DIA.md`
+- **Buffer (5min):** Resolver bloqueios
+
+**Objetivos:**
+- Entender o ecossistema Hugging Face (Hub, Transformers, Datasets)
+- Explorar modelos pré-treinados (BERT, GPT-2, T5)
+- Carregar e usar modelos localmente
+
+**Entregáveis:**
+- ✅ Script Python usando Hugging Face Transformers
+- ✅ Comparação: Hugging Face vs APIs (quando usar cada um)
+- ✅ Anotações sobre modelos disponíveis
 
 **Recursos:**
-- Bun Documentation (bun.sh)
-- Hono Framework Docs
-- YouTube: "Bun vs Node Performance 2025"
+- 🔗 [Hugging Face Docs](https://huggingface.co/docs/transformers)
+- 🔗 [Hugging Face Hub](https://huggingface.co/models)
+- 📺 YouTube: "Hugging Face Transformers Tutorial 2025"
 
-**Entrega:** API Bun em produção + Comparação documentada + Artigo
+---
+
+#### **Dia 2: Hugging Face - Fine-tuning Básico**
+**Duração:** 120min (2h)  
+**Nível de Scaffolding:** **Nível 2** (conceito parcialmente conhecido: já sabe Hugging Face básico, agora aplica fine-tuning)
+
+**Arquivos Obrigatórios:**
+- ✅ `README.md` - Contexto e objetivos
+- ✅ `CONTEXTO_AGENTE.md` - Informações técnicas detalhadas
+- ✅ `checklist.md` - Tarefas divididas em 6 fases (120min)
+- ✅ `journal.md` - Template para reflexão
+- ✅ `requirements.txt` - Dependências Python
+- ✅ `CONTEXTO_PROXIMO_DIA.md` - Guia para Dia 3
+
+**Arquivos Nível 2 (Intermediário):**
+- ✅ `template.py` - Template com TODOs para prática guiada
+- ✅ `GUIA_APRENDIZADO.md` - Conceitos teóricos + passo-a-passo
+- ✅ `exemplo_referencia.py` - Exemplo completo para consulta
+
+**Estrutura de Tempo (120min):**
+- **Preparação (5min):** Revisar código do Dia 1
+- **Leitura guiada (15min):** Ler `GUIA_APRENDIZADO.md` + Fine-tuning Tutorial
+- **Construção guiada (60min):** Trabalhar no `template.py` com TODOs
+- **Consolidação (20min):** Comparar modelo original vs fine-tuned
+- **Registro/handoff (15min):** Journal + `CONTEXTO_PROXIMO_DIA.md`
+- **Buffer (5min):** Resolver bloqueios
+
+**Objetivos:**
+- Entender conceitos de Transfer Learning
+- Fine-tuning de modelo para tarefa específica
+- Avaliar performance do modelo ajustado
+
+**Entregáveis:**
+- ✅ Modelo fine-tuned funcional
+- ✅ Script de treinamento documentado
+- ✅ Métricas de avaliação
+
+**Recursos:**
+- 🔗 [Hugging Face Fine-tuning Guide](https://huggingface.co/docs/transformers/training)
+- 🔗 [Hugging Face Datasets](https://huggingface.co/docs/datasets)
+- 📺 YouTube: "Fine-tuning BERT Tutorial 2025"
+
+---
+
+#### **Dia 3: Web Scraping + Preparação de Dados**
+**Duração:** 120min (2h)  
+**Nível de Scaffolding:** **Nível 2** (conceito parcialmente conhecido: já sabe Python, agora aplica em web scraping)
+
+**Arquivos Obrigatórios:**
+- ✅ `README.md` - Contexto e objetivos
+- ✅ `CONTEXTO_AGENTE.md` - Informações técnicas detalhadas
+- ✅ `checklist.md` - Tarefas divididas em 6 fases (120min)
+- ✅ `journal.md` - Template para reflexão
+- ✅ `requirements.txt` - Dependências Python
+- ✅ `CONTEXTO_PROXIMO_DIA.md` - Guia para Dia 4
+
+**Arquivos Nível 2 (Intermediário):**
+- ✅ `template.py` - Template com TODOs para prática guiada
+- ✅ `GUIA_APRENDIZADO.md` - Conceitos teóricos + passo-a-passo
+- ✅ `exemplo_referencia.py` - Exemplo completo para consulta
+
+**Estrutura de Tempo (120min):**
+- **Preparação (5min):** Revisar conceitos de dados
+- **Leitura guiada (15min):** Ler `GUIA_APRENDIZADO.md` + Web Scraping Ético
+- **Construção guiada (60min):** Trabalhar no `template.py` com TODOs
+- **Consolidação (20min):** Testar pipeline completo
+- **Registro/handoff (15min):** Journal + `CONTEXTO_PROXIMO_DIA.md`
+- **Buffer (5min):** Resolver bloqueios
+
+**Objetivos:**
+- Coletar dados da web para treinamento
+- Limpar e preparar dados para ML
+- Criar pipeline de dados
+
+**Entregáveis:**
+- ✅ Script de web scraping funcional
+- ✅ Pipeline de preparação de dados
+- ✅ Dataset limpo e pronto para uso
+
+**Recursos:**
+- 🔗 [BeautifulSoup Documentation](https://www.crummy.com/software/BeautifulSoup/)
+- 🔗 [Scrapy Documentation](https://scrapy.org/)
+- 📺 YouTube: "Web Scraping Python Tutorial 2025"
+
+---
+
+#### **Dia 4: Governança de IA - Fundamentos**
+**Duração:** 120min (2h)  
+**Nível de Scaffolding:** **Nível 1** (conceito completamente novo: Governança de IA)
+
+**Arquivos Obrigatórios:**
+- ✅ `README.md` - Contexto e objetivos
+- ✅ `CONTEXTO_AGENTE.md` - Informações técnicas detalhadas
+- ✅ `checklist.md` - Tarefas divididas em 6 fases (120min)
+- ✅ `journal.md` - Template para reflexão
+- ✅ `requirements.txt` - Dependências Python
+- ✅ `CONTEXTO_PROXIMO_DIA.md` - Guia para Dia 5
+
+**Arquivos Nível 1 (Iniciante):**
+- ✅ `exemplo_completo.py` - Código completo comentado linha por linha
+- ✅ `GUIA_PASSO_A_PASSO.md` - Tutorial muito detalhado
+
+**Estrutura de Tempo (120min):**
+- **Preparação (5min):** Revisar segurança da Semana 3
+- **Leitura guiada (15min):** Ler `GUIA_PASSO_A_PASSO.md` + Governança de IA
+- **Construção guiada (60min):** Seguir `exemplo_completo.py`
+- **Consolidação (20min):** Testar sistema de governança
+- **Registro/handoff (15min):** Journal + `CONTEXTO_PROXIMO_DIA.md`
+- **Buffer (5min):** Resolver bloqueios
+
+**Objetivos:**
+- Entender princípios de governança de IA
+- Implementar segurança básica (variáveis de ambiente, logging)
+- Criar política de uso de IA
+
+**Entregáveis:**
+- ✅ Sistema de logging de IA implementado
+- ✅ Política de governança documentada
+- ✅ Checklist de segurança e ética
+
+**Recursos:**
+- 🔗 [AI Governance Framework (Microsoft)](https://www.microsoft.com/en-us/ai/responsible-ai)
+- 🔗 [GDPR para Desenvolvedores](https://gdpr.eu/)
+- 📺 YouTube: "AI Governance for Developers 2025"
+
+---
+
+#### **Dia 5: MLFlow - Gerenciamento de Modelos**
+**Duração:** 120min (2h)  
+**Nível de Scaffolding:** **Nível 1** (conceito completamente novo: MLFlow)
+
+**Arquivos Obrigatórios:**
+- ✅ `README.md` - Contexto e objetivos
+- ✅ `CONTEXTO_AGENTE.md` - Informações técnicas detalhadas
+- ✅ `checklist.md` - Tarefas divididas em 6 fases (120min)
+- ✅ `journal.md` - Template para reflexão
+- ✅ `requirements.txt` - Dependências Python
+- ✅ `CONTEXTO_PROXIMO_DIA.md` - Guia para Dia 6
+
+**Arquivos Nível 1 (Iniciante):**
+- ✅ `exemplo_completo.py` - Código completo comentado linha por linha
+- ✅ `GUIA_PASSO_A_PASSO.md` - Tutorial muito detalhado
+
+**Estrutura de Tempo (120min):**
+- **Preparação (5min):** Revisar modelo do Dia 2
+- **Leitura guiada (15min):** Ler `GUIA_PASSO_A_PASSO.md` + MLFlow Docs
+- **Construção guiada (60min):** Seguir `exemplo_completo.py`
+- **Consolidação (20min):** Comparar versões de modelos
+- **Registro/handoff (15min):** Journal + `CONTEXTO_PROXIMO_DIA.md`
+- **Buffer (5min):** Resolver bloqueios
+
+**Objetivos:**
+- Entender ciclo de vida de modelos ML
+- Implementar tracking de experimentos com MLFlow
+- Versionar modelos e métricas
+
+**Entregáveis:**
+- ✅ Pipeline de treinamento com MLFlow integrado
+- ✅ Modelo versionado no MLFlow
+- ✅ Dashboard de experimentos funcionando
+
+**Recursos:**
+- 🔗 [MLFlow Documentation](https://mlflow.org/docs/latest/index.html)
+- 🔗 [MLFlow Tutorials](https://mlflow.org/docs/latest/tutorials-and-examples/index.html)
+- 📺 YouTube: "MLFlow Tutorial Python 2025"
+
+---
+
+#### **Dia 6: Estratégias em Produtos Digitais com IA**
+**Duração:** 120min (2h)  
+**Nível de Scaffolding:** **Nível 3** (conceitos conhecidos, aplicação independente)
+
+**Arquivos Obrigatórios:**
+- ✅ `README.md` - Contexto e objetivos
+- ✅ `CONTEXTO_AGENTE.md` - Informações técnicas detalhadas
+- ✅ `checklist.md` - Tarefas divididas em 6 fases (120min)
+- ✅ `journal.md` - Template para reflexão
+- ✅ `requirements.txt` - Dependências Python (pode estar vazio)
+- ✅ `CONTEXTO_PROXIMO_DIA.md` - Guia para Dia 7
+
+**Arquivos Nível 3 (Avançado):**
+- ✅ `especificacoes.md` - Requisitos e objetivos
+- ✅ `GUIA_CONCEITOS.md` - Conceitos teóricos necessários
+- ✅ `exercicios.md` - Desafios independentes
+
+**Estrutura de Tempo (120min):**
+- **Preparação (5min):** Revisar projetos anteriores
+- **Leitura guiada (15min):** Ler `GUIA_CONCEITOS.md` + Case studies
+- **Construção guiada (60min):** Trabalhar em `especificacoes.md` e `exercicios.md`
+- **Consolidação (20min):** Validar estratégia
+- **Registro/handoff (15min):** Journal + `CONTEXTO_PROXIMO_DIA.md`
+- **Buffer (5min):** Resolver bloqueios
+
+**Objetivos:**
+- Entender como aplicar IA em produtos reais
+- Criar estratégia de produto com IA
+- Definir métricas de sucesso
+
+**Entregáveis:**
+- ✅ Estratégia de produto com IA documentada
+- ✅ Análise de custos (Hugging Face vs APIs)
+- ✅ Roadmap de features
+
+**Recursos:**
+- 🔗 [Product Strategy with AI (a16z)](https://a16z.com/tag/ai/)
+- 📺 YouTube: "AI Product Strategy 2025"
+- 📚 Livro: "The AI Product Manager's Handbook"
+
+---
+
+#### **Dia 7: Integração e Projeto Consolidado**
+**Duração:** 120min (2h)  
+**Nível de Scaffolding:** **Nível 3** (conceitos conhecidos, aplicação independente)
+
+**Arquivos Obrigatórios:**
+- ✅ `README.md` - Contexto e objetivos
+- ✅ `CONTEXTO_AGENTE.md` - Informações técnicas detalhadas
+- ✅ `checklist.md` - Tarefas divididas em 6 fases (120min)
+- ✅ `journal.md` - Template para reflexão
+- ✅ `requirements.txt` - Dependências Python
+- ✅ `CONTEXTO_PROXIMO_DIA.md` - Guia para Semana 5
+
+**Arquivos Nível 3 (Avançado):**
+- ✅ `especificacoes.md` - Requisitos e objetivos do projeto
+- ✅ `GUIA_CONCEITOS.md` - Conceitos teóricos necessários
+- ✅ `exercicios.md` - Desafios independentes
+
+**Estrutura de Tempo (120min):**
+- **Preparação (5min):** Revisar toda a semana
+- **Leitura guiada (15min):** Revisar documentação criada
+- **Construção guiada (60min):** Trabalhar em projeto integrado
+- **Consolidação (20min):** Testes end-to-end
+- **Registro/handoff (15min):** Journal + `CONTEXTO_PROXIMO_DIA.md` + Artigo
+- **Buffer (5min):** Resolver bloqueios
+
+**Objetivos:**
+- Integrar todos os conceitos da semana
+- Criar projeto demonstrativo
+- Documentar aprendizados
+
+**Entregáveis:**
+- ✅ Projeto completo integrando todos os conceitos
+- ✅ README documentado
+- ✅ Artigo técnico publicado (Dev.to ou LinkedIn)
+
+**Recursos:**
+- 🔗 [Hugging Face Model Hub](https://huggingface.co/models)
+- 🔗 [MLFlow Model Serving](https://mlflow.org/docs/latest/models.html)
+
+---
+
+**✅ Checklist de Conformidade com Metodologia:**
+
+**Arquivos Obrigatórios (Todos os Dias):**
+- [x] README.md
+- [x] CONTEXTO_AGENTE.md
+- [x] checklist.md (dividido em 6 fases: 5+15+60+20+15+5 = 120min)
+- [x] journal.md
+- [x] requirements.txt
+- [x] CONTEXTO_PROXIMO_DIA.md
+
+**Níveis de Scaffolding Definidos:**
+- [x] Dia 1: Nível 1 (Hugging Face - novo)
+- [x] Dia 2: Nível 2 (Fine-tuning - parcialmente conhecido)
+- [x] Dia 3: Nível 2 (Web Scraping - parcialmente conhecido)
+- [x] Dia 4: Nível 1 (Governança - novo)
+- [x] Dia 5: Nível 1 (MLFlow - novo)
+- [x] Dia 6: Nível 3 (Estratégias - conceitos conhecidos)
+- [x] Dia 7: Nível 3 (Integração - conceitos conhecidos)
+
+**Estrutura de Tempo:**
+- [x] Todos os dias: 120min exatos
+- [x] Fases: 5+15+60+20+15+5 = 120min
+- [x] Buffer de 5min incluído
+
+**Transição Entre Dias:**
+- [x] CONTEXTO_PROXIMO_DIA.md em todos os dias
+- [x] Cada dia constrói sobre o anterior
+- [x] Referências claras entre dias
 
 ---
 
@@ -638,7 +954,7 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Vercel AI SDK 4.x para streaming
 - Interface de chat com IA (similar ChatGPT)
 
-**Sequência (7 sessões de ≤2h40):**
+**Sequência (7 sessões de ≤2h (120min)):**
 1. **Dia 1:** Setup NextJS 15 + App Router com leitura guiada do release notes.
 2. **Dia 2:** Integrar Vercel AI SDK (`useChat`) e validar em ambiente local.
 3. **Dia 3:** Construir chat com streaming + estados de loading skeleton.
@@ -663,7 +979,7 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Suporte multimodal: texto + imagens + voz
 - Editor de texto com IA (Notion AI style)
 
-**Sequência (7 sessões de ≤2h40):**
+**Sequência (7 sessões de ≤2h (120min)):**
 1. **Dia 1:** Ler docs do TipTap + montar editor base com shortcuts.
 2. **Dia 2:** Implementar autocomplete por IA dentro do editor.
 3. **Dia 3:** Adicionar geração de imagens (DALL-E 3/Flux) com template guiado.
@@ -710,7 +1026,7 @@ Arquivo diário: `YYYY-MM-DD.md`
 
 **Stack 2025:**
 - Frontend: NextJS 15 + TipTap v2 (rich text editor) + Tailwind v4
-- Backend: Bun + Hono (ultra-rápido)
+- Backend: FastAPI (Python) - mantém consistência com Semana 3
 - IA: GPT-4o (texto) + DALL-E 3 (imagens) + Claude (long-form)
 - DB: Supabase (PostgreSQL + Auth)
 - Deploy: Vercel + Railway
@@ -768,7 +1084,7 @@ Arquivo diário: `YYYY-MM-DD.md`
 
 ---
 
-**Sequência (7 sessões de ≤2h40):**
+**Sequência (7 sessões de ≤2h (120min)):**
 1. **Dia 1:** Arquitetura detalhada + setup mono-repo + checklist do produto escolhido.
 2. **Dia 2:** Backend (endpoints core) com testes unitários iniciais.
 3. **Dia 3:** Backend (autenticação + integrações externas) + hardening.
@@ -789,7 +1105,7 @@ Arquivo diário: `YYYY-MM-DD.md`
 - Documentação profissional + Vídeo demo
 - Portfolio website atualizado
 
-**Sequência (7 sessões de ≤2h40):**
+**Sequência (7 sessões de ≤2h (120min)):**
 1. **Dia 1:** Completar features restantes + checklist funcional.
 2. **Dia 2:** Polish UI/UX, responsividade e loading states.
 3. **Dia 3:** Testes E2E (Playwright) + correções críticas.

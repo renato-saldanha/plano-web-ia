@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-API FastAPI com Rate Limiting, Exception Handling e Logging - Template (Nível 2)
+API FastAPI com Testes e Exception Handling - Template (Nível 1)
 
-Preencha os TODOs seguindo GUIA_APRENDIZADO.md e o exemplo_referencia.py.
-Objetivo: adicionar rate limiting por usuário, exception handlers globais
-e logging estruturado à API de chat.
+Preencha os TODOs seguindo GUIA_PASSO_A_PASSO.md e o exemplo_completo.py.
+Objetivo: adicionar testes automatizados com pytest e exception handlers básicos à API de chat.
 
 Uso:
     uvicorn template:app --reload --port 8000
@@ -90,7 +89,7 @@ conversations: Dict[str, Dict[str, List[Dict]]] = {}
 #           - module, function, line (opcional)
 #           - campos extras (se existirem no record)
 # TODO 1.3: Configurar logger com handler e formatter JSON
-# Dica: Consulte GUIA_APRENDIZADO.md seção 3
+# Dica: Consulte GUIA_PASSO_A_PASSO.md e exemplo_completo.py
 
 
 class JSONFormatter(logging.Formatter):
@@ -131,7 +130,7 @@ logger.addHandler(handler)
 # TODO 2.1: Criar função log_structured(level: str, message: str, **kwargs)
 # TODO 2.2: Função deve criar dict com timestamp, level, message e kwargs
 # TODO 2.3: Serializar para JSON e logar usando logger apropriado
-# Dica: Consulte GUIA_APRENDIZADO.md seção 3.3
+# Dica: Consulte GUIA_PASSO_A_PASSO.md e exemplo_completo.py.3
 
 
 def log_structured(level: str, message: str, **kwargs):
@@ -169,7 +168,7 @@ def log_structured(level: str, message: str, **kwargs):
 # =============================================================================
 app = FastAPI(
     title="API com Rate Limiting e Logging",
-    description="Dia 5 - Rate limiting por usuário, exception handling e logging",
+    description="Dia 6 - Testes automatizados (pytest) + Exception handlers básicos",
     version="1.0.0",
 )
 
@@ -203,6 +202,8 @@ class SecurityHeadersMiddleware(BaseHTTPMiddleware):
         # Permissions Policy (controla features do navegador)
         response.headers["Permissions-Policy"] = "geolocation=(), microphone=()"
 
+        return response
+
 
 app.add_middleware(SecurityHeadersMiddleware)
 
@@ -214,12 +215,17 @@ app.add_middleware(SecurityHeadersMiddleware)
 def get_user_id_for_rate_limit(request: Request) -> str:
     """
     Extrai user_id do token JWT para usar como chave de rate limiting.
-    Se não houver token, use o IP como fallback.
+    Se não houver token, verifica X-Test-ID (para testes), depois usa IP como fallback.
+    Para testes com token válido, combina user_id com X-Test-ID para isolamento.
     """
 
     # Tentar extrair o header
     auth_header = request.headers.get("Authorization")
     if not auth_header or not auth_header.startswith("Bearer "):
+        # Para testes: usar X-Test-ID se disponível
+        test_id = request.headers.get("X-Test-ID")
+        if test_id:
+            return f"test:{test_id}"
         # Fallback para IP
         return get_remote_address(request)
 
@@ -233,8 +239,17 @@ def get_user_id_for_rate_limit(request: Request) -> str:
         )
         user_id = payload.get("sub")
 
+        # Para testes: combinar user_id com X-Test-ID para isolamento
+        test_id = request.headers.get("X-Test-ID")
+        if test_id:
+            return f"test:{test_id}:{user_id}"
+        
         return user_id or get_remote_address(request)
     except Exception:
+        # Para testes: verificar X-Test-ID antes de usar IP
+        test_id = request.headers.get("X-Test-ID")
+        if test_id:
+            return f"test:{test_id}"
         # Usa IP se falhar
         return get_remote_address(request)
 
@@ -250,7 +265,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # TODO 4.1: Criar handler para HTTPException
 # TODO 4.2: Criar handler para RequestValidationError (Pydantic)
 # TODO 4.3: Criar handler para Exception genérica (catch-all)
-# Dica: Consulte GUIA_APRENDIZADO.md seção 2
+# Dica: Consulte GUIA_PASSO_A_PASSO.md seção 5 (Exception Handlers) e exemplo_completo.py
 
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException):
@@ -330,7 +345,7 @@ async def general_exception_handler(request: Request, exc: Exception):
 # TODO 5.3: Chamar call_next(request) e capturar tempo final
 # TODO 5.4: Calcular duração e logar usando log_structured()
 # TODO 5.5: Registrar middleware na aplicação
-# Dica: Consulte GUIA_APRENDIZADO.md seção 4
+# Dica: Consulte GUIA_PASSO_A_PASSO.md seção 6 (Testes) e exemplo_completo.py
 
 class RequestLoggingMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):

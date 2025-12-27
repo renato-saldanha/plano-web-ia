@@ -96,7 +96,7 @@ Configurar documentação interativa (Swagger/OpenAPI) para a API, preparar chec
 12. Validar Swagger UI em produção
 
 ### Próxima Semana:
-- **Semana 4:** Backend Alternativo - Bun + Hono (JavaScript/TypeScript)
+- **Semana 4:** IA Avançada + Governança + MLFlow (Python)
   - Comparação de performance e DX: FastAPI (Python) vs Hono (Bun)
   - Entender trade-offs e escolher stack preferida para projeto final
 

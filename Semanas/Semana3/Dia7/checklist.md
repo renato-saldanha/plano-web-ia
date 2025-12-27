@@ -225,7 +225,7 @@ Entender os conceitos antes de implementar facilita o processo e evita erros.
 ### 5.2: Criar CONTEXTO_PROXIMO_DIA (10min)
 - [ ] Preencher `CONTEXTO_PROXIMO_DIA.md` com:
   - Resumo do que foi aprendido (Swagger, deploy, produção)
-  - Transição para Semana 4 (Backend Alternativo - Bun + Hono)
+  - Transição para Semana 4 (IA Avançada + Governança + MLFlow)
   - Como o aprendizado de FastAPI será aplicado no contexto alternativo
 
 **Tempo estimado:** 10 minutos

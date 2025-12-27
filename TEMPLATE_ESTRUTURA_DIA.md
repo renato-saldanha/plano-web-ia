@@ -34,26 +34,26 @@ Os arquivos obrigatórios devem seguir esta ordem lógica de uso:
 5. requirements.txt (dependências)
 6. CONTEXTO_PROXIMO_DIA.md (transição)
 
-> **Regra de tempo:** se algum conceito ou exercício não couber em 160 minutos, divida-o em um novo dia seguindo o método de scaffolding (exposição guiada → prática assistida → autonomia). O limite de 160min inclui **toda leitura dos documentos do dia, execução de testes/exercícios e preenchimento dos arquivos obrigatórios**, e o código deve ser escrito **sem autocomplete/IA gerando trechos**.
+> **Regra de tempo:** se algum conceito ou exercício não couber em 120 minutos, divida-o em um novo dia seguindo o método de scaffolding (exposição guiada → prática assistida → autonomia). O limite de 120min inclui **toda leitura dos documentos do dia, execução de testes/exercícios e preenchimento dos arquivos obrigatórios**, e o código deve ser escrito **sem autocomplete/IA gerando trechos**.
 
 ---
 
 ## ⏰ Métricas de Tempo Padrão
 
-### ⚠️ IMPORTANTE: Tempo Máximo = 2h40 (160min)
+### ⚠️ IMPORTANTE: Tempo Máximo = 2h (120min)
 
 | Fase | Duração | Atividades típicas | Saídas obrigatórias |
 |------|---------|--------------------|---------------------|
 | Preparação | 5min | Abrir checklist, revisar `README.md`, validar ambiente | Pré-requisitos marcados |
-| Leitura guiada | 20min | Ler guias/documentos do dia, destacar pontos-chave | Notas rápidas + dúvidas registradas |
-| Construção guiada | 90min | Trabalhar no `template.py`, exercícios ou código principal | TODOs resolvidos ou dúvidas comentadas |
-| Consolidação | 25min | Testes rápidos, refino e checklist parcial | Código executando + checklist atualizado |
-| Registro/handoff | 20min | Checklist final, journal, `CONTEXTO_PROXIMO_DIA.md` | Documentos preenchidos |
-| Buffer | 10min | Resolver imprevistos ou mover item para próximo dia | Deve permanecer livre se tudo der certo |
+| Leitura guiada | 15min | Ler guias/documentos do dia, destacar pontos-chave (foco no essencial) | Notas rápidas + dúvidas registradas |
+| Construção guiada | 60min | Trabalhar no `template.py`, exercícios ou código principal (MVP) | TODOs resolvidos ou dúvidas comentadas |
+| Consolidação | 20min | Testes rápidos, refino e checklist parcial | Código executando + checklist atualizado |
+| Registro/handoff | 15min | Checklist final, journal, `CONTEXTO_PROXIMO_DIA.md` | Documentos preenchidos |
+| Buffer | 5min | Resolver imprevistos ou mover item para próximo dia | Deve permanecer livre se tudo der certo |
 
-- **Total diário:** 160 minutos (não extrapole) e **sem uso de autocomplete/IA para escrever código**.
+- **Total diário:** 120 minutos (não extrapole) e **sem uso de autocomplete/IA para escrever código**.
 - **Fins de semana:** mesma estrutura em horário alternativo.
-- **Conceito maior que 160 minutos?** Converta o excedente em um novo dia e ajuste o scaffolding (Nível 1 → 2 → 3).
+- **Conceito maior que 120 minutos?** Converta o excedente em um novo dia e ajuste o scaffolding (Nível 1 → 2 → 3).
 
 ---
 
@@ -70,7 +70,7 @@ Este é o **[número] dia** do plano de desenvolvimento de 2 meses em Desenvolvi
 
 ### 📋 O que foi proposto:
 - **Objetivo do Dia:** [Objetivo claro e específico]
-- **Duração estimada:** [160min totais (inclui leitura, exercícios/testes e preenchimento de documentos) — sem autocomplete/IA escrevendo código]
+- **Duração estimada:** [120min totais (2h) (inclui leitura, exercícios/testes e preenchimento de documentos) — sem autocomplete/IA escrevendo código]
 - **Foco:** [Foco principal do aprendizado]
 
 ### 🗺️ Estrutura do Plano:
@@ -206,7 +206,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 ---
 
-> Todas as fases abaixo devem caber dentro dos **160min totais**, englobando leitura, exercícios/testes e preenchimento dos documentos. Não use autocomplete/IA para escrever o código.
+> Todas as fases abaixo devem caber dentro dos **120min totais (2h)**, englobando leitura, exercícios/testes e preenchimento dos documentos. Não use autocomplete/IA para escrever o código.
 
 ## 📋 FASE 1: [Nome da Fase] ([Tempo estimado])
 
@@ -233,7 +233,7 @@ Este arquivo fornece contexto essencial para agentes IA que precisam entender o 
 
 ## 🎉 CONCLUSÃO
 
-**Total estimado:** 160min no total (inclui leitura dos documentos, execução de exercícios/testes e preenchimento de checklist + journal, **sem usar autocomplete/IA para gerar código**)
+**Total estimado:** 120min no total (2h) (inclui leitura dos documentos, execução de exercícios/testes e preenchimento de checklist + journal, **sem usar autocomplete/IA para gerar código**)
 
 ### ✅ Critérios de Sucesso:
 - [ ] [Critério 1]

@@ -5,15 +5,15 @@
 Este é o **quinto dia** da Semana 3 do plano de 2 meses em Desenvolvimento Web + IA Generativa.
 
 ### 📋 O que foi proposto:
-- **Objetivo do Dia:** Implementar rate limiting por usuário, tratamento de erros robusto e logging estruturado para a API de chat, preparando o código para produção.
+- **Objetivo do Dia:** Implementar rate limiting por usuário e logging estruturado para a API de chat, preparando observabilidade e segurança básica.
 - **Duração estimada:** 160min totais (inclui leitura, exercícios/testes e preenchimento de documentos) — **sem autocomplete/IA escrevendo código**.
-- **Foco:** Segurança, observabilidade e robustez da API.
+- **Foco:** Rate limiting por usuário e logging estruturado (conceitos novos).
 
 ### 🗺️ Estrutura do Plano:
 - **Semana 3:** Backend FastAPI + IA (9-15 Dez)
 - **Dia 4 (concluído):** Sistema de histórico de conversas ✅
-- **Dia 5 (hoje):** Rate limiting por usuário, tratamento de erros e logging estruturado
-- **Dia 6:** Testes automatizados (pytest) com cobertura mínima de 60%
+- **Dia 5 (hoje):** Rate limiting por usuário + Logging estruturado
+- **Dia 6:** Testes automatizados (pytest) + Exception Handling básico
 
 ### 📁 Arquivos neste diretório:
 - `README.md` - Este arquivo (contexto)
@@ -22,18 +22,19 @@ Este é o **quinto dia** da Semana 3 do plano de 2 meses em Desenvolvimento Web 
 - `journal.md` - Journal do dia (preencher ao final)
 - `requirements.txt` - Dependências Python (obrigatório)
 - `CONTEXTO_PROXIMO_DIA.md` - Guia para construir próximo dia (obrigatório)
-- **Scaffolding Nível 2:** `template.py`, `GUIA_APRENDIZADO.md`, `exemplo_referencia.py`, `exercicios.md`
+- **Scaffolding Nível 1:** `exemplo_completo.py`, `GUIA_PASSO_A_PASSO.md`, `template.py`, `exercicios.md`
 
 ### 🎯 O que você vai aprender:
-1. Rate limiting por usuário (usando `slowapi` com função customizada)
-2. Exception handlers globais no FastAPI (HTTPException, ValidationError, Exception genérica)
-3. Logging estruturado em formato JSON para facilitar monitoramento
-4. Middleware de request logging para rastreabilidade
+1. Rate limiting por usuário (usando `slowapi` com função customizada que extrai user_id do JWT)
+2. Logging estruturado em formato JSON para facilitar monitoramento
+3. Middleware de request logging para rastreabilidade de requisições
+4. Uso de módulos compartilhados (`common/logging.py`) para reduzir duplicação
 
 ### 💡 Notas Importantes:
-- **Baseado em:** Dia 4 (histórico de chat). Reaproveite a estrutura existente e adicione as camadas de segurança e observabilidade.
-- **Foco:** Preparar código para produção com rate limiting robusto, tratamento de erros adequado e observabilidade através de logs estruturados.
-- **Nível de Scaffolding:** 2 (conceitos parcialmente conhecidos: rate limiting e logging são aplicações de conceitos conhecidos em novo contexto).
+- **Baseado em:** Dia 4 (histórico de chat). Reaproveite a estrutura existente e adicione rate limiting e logging.
+- **Foco:** Rate limiting por usuário e logging estruturado são conceitos novos que requerem suporte completo (Nível 1).
+- **Nível de Scaffolding:** **1 (Iniciante)** - Rate limiting por usuário e logging estruturado são conceitos novos, primeira exposição.
+- **Módulos compartilhados:** Use `common/logging.py` para reduzir duplicação de código.
 
 ### 🔗 Referências:
 - Plano completo: `../../1-Plano_Desenvolvimento.md`

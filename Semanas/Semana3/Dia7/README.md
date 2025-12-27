@@ -13,7 +13,7 @@ Este é o **sétimo e último dia** da Semana 3 do plano de 2 meses em Desenvolv
 - **Semana 3:** Backend FastAPI + IA (9-15 Dez)
 - **Dia 6 (concluído):** Testes automatizados (pytest) com cobertura mínima de 60% ✅
 - **Dia 7 (hoje):** Configurar Swagger, checklist de deploy e publicar no Railway
-- **Semana 4:** Backend Alternativo - Bun + Hono (JavaScript/TypeScript)
+- **Semana 4:** IA Avançada + Governança + MLFlow (Python)
 
 ### 📁 Arquivos neste diretório:
 - `README.md` - Este arquivo (contexto)

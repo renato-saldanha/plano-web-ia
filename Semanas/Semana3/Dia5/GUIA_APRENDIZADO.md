@@ -1,8 +1,8 @@
 # 📚 Guia de Aprendizado - Dia 5
 
-## Rate Limiting, Exception Handling e Logging Estruturado
+## Rate Limiting e Logging Estruturado
 
-Este guia explica os conceitos necessários para implementar rate limiting por usuário, tratamento robusto de erros e logging estruturado na API FastAPI.
+Este guia explica os conceitos necessários para implementar rate limiting por usuário e logging estruturado na API FastAPI usando módulos compartilhados.
 
 ---
 
@@ -95,117 +95,13 @@ A 31ª requisição deve retornar status 429 (Too Many Requests).
 
 ---
 
-## 2. Exception Handlers Globais
-
-### 2.1 Conceito
-
-Exception handlers globais permitem tratar todos os erros de forma consistente, retornando respostas JSON padronizadas. Isso melhora a experiência do cliente e facilita o debug.
-
-**Tipos de erros comuns:**
-- `HTTPException`: Erros HTTP explícitos (404, 401, etc.)
-- `ValidationError`: Erros de validação do Pydantic
-- `Exception`: Erros inesperados (500)
-
-### 2.2 Implementação
-
-**Handler para HTTPException:**
-
-```python
-from fastapi import HTTPException, Request
-from fastapi.responses import JSONResponse
-
-@app.exception_handler(HTTPException)
-async def http_exception_handler(request: Request, exc: HTTPException):
-    """
-    Trata HTTPException retornando JSON padronizado.
-    """
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={
-            "error": True,
-            "message": exc.detail,
-            "status_code": exc.status_code,
-            "path": str(request.url.path),
-        }
-    )
-```
-
-**Handler para ValidationError (Pydantic):**
-
-```python
-from pydantic import ValidationError
-from fastapi.exceptions import RequestValidationError
-
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    """
-    Trata erros de validação do Pydantic.
-    """
-    errors = []
-    for error in exc.errors():
-        errors.append({
-            "field": ".".join(str(loc) for loc in error["loc"]),
-            "message": error["msg"],
-            "type": error["type"],
-        })
-    
-    return JSONResponse(
-        status_code=422,
-        content={
-            "error": True,
-            "message": "Erro de validação",
-            "errors": errors,
-            "status_code": 422,
-            "path": str(request.url.path),
-        }
-    )
-```
-
-**Handler para Exception genérica (catch-all):**
-
-```python
-import logging
-
-logger = logging.getLogger(__name__)
-
-@app.exception_handler(Exception)
-async def general_exception_handler(request: Request, exc: Exception):
-    """
-    Trata erros inesperados (catch-all).
-    IMPORTANTE: Logar erro completo, mas retornar mensagem genérica ao cliente.
-    """
-    # Logar erro completo (com stack trace) para debug
-    logger.error(
-        f"Erro inesperado: {exc}",
-        exc_info=True,  # Inclui stack trace
-        extra={
-            "path": str(request.url.path),
-            "method": request.method,
-        }
-    )
-    
-    # Retornar mensagem genérica ao cliente (não expor detalhes internos)
-    return JSONResponse(
-        status_code=500,
-        content={
-            "error": True,
-            "message": "Erro interno do servidor",
-            "status_code": 500,
-            "path": str(request.url.path),
-        }
-    )
-```
-
-**⚠️ Importante:**
-- Sempre logar erros completos no servidor
-- Nunca expor detalhes internos (stack traces, paths de arquivos) ao cliente
-- Retornar mensagens genéricas mas úteis
+**Nota:** Exception handlers serão abordados no Dia 6 junto com testes automatizados.
 
 ---
 
-## 3. Logging Estruturado
+## 2. Logging Estruturado
 
-### 3.1 Conceito
+### 2.1 Conceito
 
 Logging estruturado usa formato JSON em vez de texto livre, facilitando análise e monitoramento. Cada log é um objeto JSON com campos padronizados.
 
@@ -214,72 +110,27 @@ Logging estruturado usa formato JSON em vez de texto livre, facilitando análise
 - Permite filtrar por campos específicos
 - Compatível com ferramentas de monitoramento (ELK, Datadog, etc.)
 
-### 3.2 Configuração Básica
+### 2.2 Usar Módulos Compartilhados
+
+**⚠️ IMPORTANTE:** Use os módulos compartilhados de `common/logging.py` em vez de criar do zero!
 
 ```python
-import logging
-import json
-from datetime import datetime
-
-# Configurar formato JSON
-class JSONFormatter(logging.Formatter):
-    def format(self, record):
-        log_data = {
-            "timestamp": datetime.now(timezone.utc).isoformat(),
-            "level": record.levelname,
-            "message": record.getMessage(),
-            "module": record.module,
-            "function": record.funcName,
-            "line": record.lineno,
-        }
-        
-        # Adicionar campos extras se existirem
-        if hasattr(record, "user_id"):
-            log_data["user_id"] = record.user_id
-        if hasattr(record, "conversation_id"):
-            log_data["conversation_id"] = record.conversation_id
-        
-        return json.dumps(log_data)
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from common.logging import log_structured, setup_logger
 
 # Configurar logger
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
-handler = logging.StreamHandler()
-handler.setFormatter(JSONFormatter())
-logger.addHandler(handler)
+logger = setup_logger(__name__)
 ```
 
-### 3.3 Função Helper para Logging Estruturado
+**Por que usar módulos compartilhados?**
+- Reduz duplicação de código
+- Garante consistência entre dias
+- Facilita manutenção (mudanças em um lugar)
+- Reduz complexidade dos arquivos dos dias
 
-```python
-def log_structured(level: str, message: str, **kwargs):
-    """
-    Função helper para logging estruturado.
-    
-    Args:
-        level: Nível do log (INFO, WARNING, ERROR, etc.)
-        message: Mensagem do log
-        **kwargs: Campos extras para incluir no log
-    """
-    log_data = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "level": level,
-        "message": message,
-        **kwargs
-    }
-    
-    log_json = json.dumps(log_data)
-    
-    if level == "ERROR":
-        logger.error(log_json)
-    elif level == "WARNING":
-        logger.warning(log_json)
-    else:
-        logger.info(log_json)
-```
-
-### 3.4 Uso Prático
+### 2.3 Uso Prático
 
 ```python
 # Log de login bem-sucedido
@@ -306,13 +157,13 @@ log_structured(
 
 ---
 
-## 4. Middleware de Request Logging
+## 3. Middleware de Request Logging
 
-### 4.1 Conceito
+### 3.1 Conceito
 
 Middleware de request logging registra todas as requisições HTTP, incluindo método, path, status code e tempo de resposta. Isso fornece visibilidade completa do tráfego da API.
 
-### 4.2 Implementação
+### 3.2 Implementação
 
 ```python
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -353,39 +204,42 @@ app.add_middleware(RequestLoggingMiddleware)
 
 ---
 
-## 5. Boas Práticas
+## 4. Boas Práticas
 
-### 5.1 Rate Limiting
+### 4.1 Rate Limiting
 - Use limites razoáveis (ex: 30/minuto para chat, 5/minuto para login)
 - Implemente fallback para IP quando não houver autenticação
 - Documente limites na documentação da API
+- Teste rate limiting fazendo múltiplas requisições
 
-### 5.2 Exception Handling
-- Sempre logar erros completos no servidor
-- Nunca expor detalhes internos ao cliente
-- Retornar mensagens úteis mas genéricas
-- Usar status codes HTTP apropriados
-
-### 5.3 Logging
+### 4.2 Logging
+- Use módulos compartilhados (`common/logging.py`) para reduzir duplicação
 - Use níveis apropriados (INFO, WARNING, ERROR)
 - Inclua contexto relevante (user_id, conversation_id, etc.)
-- Não logue dados sensíveis
+- Não logue dados sensíveis (senhas, tokens completos)
 - Use formato JSON para facilitar parsing
 
-### 5.4 Middleware
+### 4.3 Middleware
 - Registre middleware na ordem correta
 - Não bloqueie requisições no middleware (use async/await)
 - Logue apenas informações necessárias
+- Use `log_structured()` do módulo compartilhado
 
 ---
 
-## 6. Referências
+## 5. Referências
 
 - SlowAPI Documentation: https://slowapi.readthedocs.io/
-- FastAPI Exception Handling: https://fastapi.tiangolo.com/tutorial/handling-errors/
 - Python Logging: https://docs.python.org/3/library/logging.html
 - FastAPI Middleware: https://fastapi.tiangolo.com/advanced/middleware/
+- Módulos compartilhados: `../common/README.md`
+- GUIA_PASSO_A_PASSO.md: Tutorial detalhado passo-a-passo (Nível 1)
 
 ---
 
-**Próximo passo:** Implementar essas funcionalidades no `template.py` seguindo os TODOs.
+**Próximo passo:** 
+1. Ler `GUIA_PASSO_A_PASSO.md` para tutorial detalhado
+2. Implementar essas funcionalidades no `template.py` seguindo os TODOs
+3. Consultar `exemplo_completo.py` se precisar de referência
+
+**Próximo dia (Dia 6):** Testes automatizados (pytest) + Exception handlers básicos

@@ -1,73 +1,90 @@
 """
-Testes de rate limiting.
-
-Este módulo contém testes para validar que rate limiting funciona corretamente.
+Script de teste de rate limiting
 """
-import time
-from fastapi.testclient import TestClient
+
+from unittest.mock import AsyncMock, MagicMock, patch
+from template import app
 
 
-def test_login_rate_limit(client: TestClient):
-    """Testa rate limit de login (5/min)."""
-    # Fazer 5 requisições (limite)
+def test_chat_rate_limiting(client, auth_headers):
+    """
+    Testa rate limiting do chat-> 30/min
+    """
+
+    # Mock de resposta do LLM
+    mock_ai_response = MagicMock()
+    mock_ai_response.content = "Reposta mockada do LLM"
+
+    # Mock do modelo ChatOpenAI
+    mock_model = AsyncMock()
+    mock_model.ainvoke = AsyncMock(return_value=mock_ai_response)
+
+    with patch('template.ChatOpenAI', return_value=mock_model):
+        conversation_id = None
+        # Requisições válidas
+        for i in range(30):
+            if conversation_id:
+                json = {
+                    "message": f"Teste rate limiting chat {i+1}",
+                    "conversation_id": conversation_id,
+                    "stream": False,
+                }
+            else:
+                json = {
+                    "message": f"Teste rate limiting chat {i+1}",
+                    "stream": False,
+                }
+
+            response1 = client.post(
+                "/chat",
+                headers=auth_headers,
+                json=json
+            )
+
+            assert response1.status_code == 200 
+
+            data = response1.json()
+            assert "conversation_id" in data
+            assert "reply" in data
+            
+            print(f"Teste rate limiting chat {i+1}")
+            print(f"Conversation_id: {data["conversation_id"]}")
+            print(f"Reply: {data["reply"]}")
+            conversation_id = data["conversation_id"]
+        
+
+        # Requisição barrada
+        response2 = client.post(
+            "/chat",
+            headers=auth_headers,
+            json={
+                "message": f"Teste rate limiting chat 31",
+                "conversation_id": conversation_id,
+                "stream": False,
+            }
+        )
+
+        assert response2.status_code == 429
+
+# Teste de login com cliente isolado
+def test_login_rate_limiting(client, test_user):
+    """
+    Testa rate limiting do login-> 5/min
+    """
+
+    # Requisições válidas
     for i in range(5):
-        response = client.post(
+        response1 = client.post(
             "/login",
-            json={"username": "admin", "password": "admin123"}
+            json=test_user,
         )
-        assert response.status_code == 200, f"Requisição {i+1} falhou"
-    
-    # 6ª requisição deve ser bloqueada
-    response = client.post(
+
+    assert response1.status_code == 200
+
+    # Requisição barrada
+    response2 = client.post(
         "/login",
-        json={"username": "admin", "password": "admin123"}
+        json=test_user,
     )
-    assert response.status_code == 429, "Rate limit não foi aplicado"
 
-
-def test_chat_rate_limit(client: TestClient, auth_headers: dict):
-    """Testa rate limit de chat (30/min)."""
-    # Fazer 30 requisições (limite)
-    for i in range(30):
-        response = client.post(
-            "/chat",
-            headers=auth_headers,
-            json={"message": f"Test {i}", "stream": False}
-        )
-        assert response.status_code == 200, f"Requisição {i+1} falhou"
-    
-    # 31ª requisição deve ser bloqueada
-    response = client.post(
-        "/chat",
-        headers=auth_headers,
-        json={"message": "Should be blocked", "stream": False}
-    )
-    assert response.status_code == 429, "Rate limit não foi aplicado"
-
-
-def test_rate_limit_reset(client: TestClient, auth_headers: dict):
-    """
-    Testa que rate limit é resetado após período de tempo.
-    
-    Nota: Este teste pode ser lento pois precisa esperar o reset do rate limit.
-    Em produção, você pode usar mocks para acelerar.
-    """
-    # Fazer requisições até o limite
-    for i in range(30):
-        client.post(
-            "/chat",
-            headers=auth_headers,
-            json={"message": f"Test {i}", "stream": False}
-        )
-    
-    # Verificar que está bloqueado
-    response = client.post(
-        "/chat",
-        headers=auth_headers,
-        json={"message": "Blocked", "stream": False}
-    )
-    assert response.status_code == 429
-    
-    # Nota: Em um teste real, você esperaria 60 segundos para o reset
-    # ou usaria mocks para simular a passagem do tempo
-    # time.sleep(61)  # Descomente para testar reset real
+    assert response2.status_code == 429

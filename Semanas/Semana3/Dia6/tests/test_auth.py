@@ -1,94 +1,60 @@
-"""
-Testes de autenticação.
+def test_login_success(client, test_user):
+    """
+    Teste de login com credenciais válidas.
+    """
 
-Este módulo contém testes para endpoints de autenticação:
-- Login
-- Refresh token
-- Proteção de rotas
-"""
-from fastapi.testclient import TestClient
+    response = client.post("/login", json=test_user)
 
-
-def test_login_success(client: TestClient):
-    """Testa login com credenciais válidas."""
-    response = client.post(
-        "/login",
-        json={"username": "admin", "password": "admin123"}
-    )
-    assert response.status_code == 200
-    data = response.json()
-    assert "access_token" in data
-    assert "refresh_token" in data
-    assert data["token_type"] == "bearer"
-
-
-def test_login_invalid_username(client: TestClient):
-    """Testa login com usuário inválido."""
-    response = client.post(
-        "/login",
-        json={"username": "invalid", "password": "admin123"}
-    )
-    assert response.status_code == 401
-    data = response.json()
-    assert data["error"] == True
-    assert "Usuário inválido" in data["message"]
-
-
-def test_login_invalid_password(client: TestClient):
-    """Testa login com senha inválida."""
-    response = client.post(
-        "/login",
-        json={"username": "admin", "password": "wrong"}
-    )
-    assert response.status_code == 401
-    data = response.json()
-    assert data["error"] == True
-    assert "Senha inválida" in data["message"]
-
-
-def test_refresh_token_success(client: TestClient):
-    """Testa refresh de token válido."""
-    # Primeiro, obter refresh token
-    login_response = client.post(
-        "/login",
-        json={"username": "admin", "password": "admin123"}
-    )
-    refresh_token = login_response.json()["refresh_token"]
-    
-    # Fazer refresh
-    response = client.post(
-        "/refresh",
-        json={"refresh_token": refresh_token}
-    )
     assert response.status_code == 200
     data = response.json()
     assert "access_token" in data
     assert "refresh_token" in data
 
 
-def test_refresh_token_invalid(client: TestClient):
-    """Testa refresh com token inválido."""
-    response = client.post(
-        "/refresh",
-        json={"refresh_token": "invalid_token"}
-    )
+def test_login_invalid_username(client, test_user_invalid_username):
+    """
+    Teste para validar um login feito com usuário errado.
+    """
+
+    response = client.post("/login", json=test_user_invalid_username)
+
     assert response.status_code == 401
+    assert "Usuário inválido." in response.json()["message"]
 
 
-def test_protected_route_without_token(client: TestClient):
-    """Testa acesso a rota protegida sem token."""
+def test_login_invalid_password(client, test_user_invalid_password):
+    """
+    Teste para validar um login feito com usuário errado.
+    """
+
+    response = client.post("/login", json=test_user_invalid_password)
+
+    assert response.status_code == 401
+    assert "Senha inválida." in response.json()["message"]
+
+
+def test_protected_route_without_token(client, test_user):
+    """
+    Testa acesso a uma rota protegida sem token
+    """
+
     response = client.get("/conversations")
     assert response.status_code == 401
 
 
-def test_protected_route_with_invalid_token(client: TestClient):
-    """Testa acesso a rota protegida com token inválido."""
-    headers = {"Authorization": "Bearer invalid_token"}
+def test_protected_route_with_invalid_token(client):
+    """
+    Testa acesso a uma rota protegida com token inválido
+    """
+    headers = {"Authorization": "Bearer invalid"}
     response = client.get("/conversations", headers=headers)
     assert response.status_code == 401
 
 
-def test_protected_route_with_valid_token(client: TestClient, auth_headers: dict):
-    """Testa acesso a rota protegida com token válido."""
+def test_protected_route_with_valid_token(client, auth_headers):
+    """
+    Testa acesso a uma rota protegida com token valido.
+    """
+
     response = client.get("/conversations", headers=auth_headers)
     assert response.status_code == 200

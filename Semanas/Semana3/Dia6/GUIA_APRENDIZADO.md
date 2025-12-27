@@ -295,7 +295,7 @@ def test_protected_route_with_valid_token(client: TestClient, auth_headers: dict
 
 ```python
 def test_create_conversation(client: TestClient, auth_headers: dict):
-    """Testa criação de nova conversa via chat."""
+    """Testa criação de nova conversa via "chat"."""
     response = client.post(
         "/chat",
         headers=auth_headers,

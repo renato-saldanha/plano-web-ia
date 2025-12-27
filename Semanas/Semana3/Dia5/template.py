@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-API FastAPI com Rate Limiting, Exception Handling e Logging - Template (Nível 2)
+API FastAPI com Rate Limiting e Logging - Template (Nível 1)
 
-Preencha os TODOs seguindo GUIA_APRENDIZADO.md e o exemplo_referencia.py.
-Objetivo: adicionar rate limiting por usuário, exception handlers globais
-e logging estruturado à API de chat.
+Preencha os TODOs seguindo GUIA_PASSO_A_PASSO.md e o exemplo_completo.py.
+Objetivo: adicionar rate limiting por usuário e logging estruturado à API de chat.
 
 Uso:
     uvicorn template:app --reload --port 8000
@@ -12,17 +11,30 @@ Uso:
 Regras:
 - Não usar autocomplete/IA para gerar código.
 - Manter tempo total em 160min (ver checklist.md).
+- Usar módulos compartilhados de common/ para reduzir duplicação.
 """
 
 import os
-import uuid
-import json
 import time
-import logging
-from datetime import datetime, timedelta, timezone
-from typing import AsyncIterator, Dict, List, Literal, Optional
+import sys
+from pathlib import Path
 
 from dotenv import load_dotenv
+
+# Adicionar diretório pai ao path para importar common
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+# Importar módulos compartilhados
+from common.logging import log_structured, setup_logger
+from common.auth import get_current_user, create_access_token, create_refresh_token, verify_token
+from common.models import ChatRequest, Token, LoginRequest, RefreshRequest, ConversationSummary, Message
+from common.conversations import (
+    get_or_create_conversation,
+    add_message,
+    get_messages,
+    list_conversations,
+    conversations,
+)
 
 # LangChain
 from langchain_openai import ChatOpenAI
@@ -34,19 +46,15 @@ from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
 
 # FastAPI
-from fastapi import FastAPI, Depends, HTTPException, Request, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse, JSONResponse
-from fastapi.exceptions import RequestValidationError
-from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.status import HTTP_404_NOT_FOUND
+from fastapi.responses import StreamingResponse
 
-# Validação
-from pydantic import BaseModel, Field
+# Middleware
+from starlette.middleware.base import BaseHTTPMiddleware
 
 # JWT
-from jose import JWTError, jwt
+from jose import jwt
 
 # Hashing
 from passlib.context import CryptContext
@@ -60,116 +68,22 @@ JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
 if not JWT_SECRET_KEY:
     raise Exception("Favor verificar a JWT_SECRET_KEY")
 
-JWT_ALGORITHM = os.getenv("ALGORITHM")
-if not JWT_ALGORITHM:
-    raise Exception("Favor verificar o JWT_ALGORITHM")
-
-ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
-if not ACCESS_TOKEN_EXPIRE_MINUTES:
-    raise Exception("Favor verificar o ACCESS_TOKEN_EXPIRE_MINUTES")
-
-REFRESH_TOKEN_EXPIRE_DAYS = os.getenv("REFRESH_TOKEN_EXPIRE_DAYS")
-if not REFRESH_TOKEN_EXPIRE_DAYS:
-    raise Exception("Favor verificar o REFRESH_TOKEN_EXPIRE_DAYS")
-
+JWT_ALGORITHM = os.getenv("ALGORITHM", "HS256")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
+REFRESH_TOKEN_EXPIRE_DAYS = int(os.getenv("REFRESH_TOKEN_EXPIRE_DAYS", "7"))
 DEFAULT_MODEL = "gpt-4o-mini"
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-# Conversações
-conversations: Dict[str, Dict[str, List[Dict]]] = {}
-
-# =============================================================================
-# TODO 1: Configurar Logging Estruturado
-# =============================================================================
-# TODO 1.1: Criar classe JSONFormatter que herda de logging.Formatter
-# TODO 1.2: Implementar método format() que retorna JSON com campos:
-#           - timestamp (ISO format)
-#           - level
-#           - message
-#           - module, function, line (opcional)
-#           - campos extras (se existirem no record)
-# TODO 1.3: Configurar logger com handler e formatter JSON
-# Dica: Consulte GUIA_APRENDIZADO.md seção 3
-
-
-class JSONFormatter(logging.Formatter):
-    """
-    Classe de formatação JSON para o log handler
-    """
-
-    def format(self, record):
-        log_data = {
-            "timestamp": datetime.now(timezone.utc).isoformat(),
-            "level": record.levelname,
-            "message": record.getMessage(),
-            "module": record.module,
-            "function": record.funcName,
-            "line": record.lineno
-        }
-
-        # Adiciona campos extras
-        if hasattr(record, "user_id"):
-            log_data["user_id"] = record.user_id
-        if hasattr(record, "conversation_id"):
-            log_data["conversation_id"] = record.conversation_id
-
-        return json.dumps(log_data)
-
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-
-handler = logging.StreamHandler()
-handler.setFormatter(JSONFormatter())
-logger.addHandler(handler)
-
-
-# =============================================================================
-# TODO 2: Função Helper para Logging Estruturado
-# =============================================================================
-# TODO 2.1: Criar função log_structured(level: str, message: str, **kwargs)
-# TODO 2.2: Função deve criar dict com timestamp, level, message e kwargs
-# TODO 2.3: Serializar para JSON e logar usando logger apropriado
-# Dica: Consulte GUIA_APRENDIZADO.md seção 3.3
-
-
-def log_structured(level: str, message: str, **kwargs):
-    """
-    Função helper para logging estruturado.
-    
-    Args:
-        level: Nível do log (INFO, WARNING, ERROR, etc.)
-        message: Mensagem do log
-        **kwargs: Campos extras para incluir no log
-    """
-    # Define o log
-    log_data = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "level": level,
-        "message": message,
-        **kwargs,
-    }
-
-    # Converte em string JSON
-    log_json = json.dumps(log_data)
-
-    # Verifica o nível do log
-    match level:
-        case "ERROR":
-            logger.error(log_json)
-        case "WARNING":
-            logger.warning(log_json)
-        case "INFO":
-            logger.info(log_json)
-
+# Configurar logger usando módulo compartilhado
+logger = setup_logger(__name__)
 
 # =============================================================================
 # FastAPI App
 # =============================================================================
 app = FastAPI(
     title="API com Rate Limiting e Logging",
-    description="Dia 5 - Rate limiting por usuário, exception handling e logging",
+    description="Dia 5 - Rate limiting por usuário e logging estruturado",
     version="1.0.0",
 )
 
@@ -188,161 +102,106 @@ app.add_middleware(
 
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    """Middleware que adiciona headers de segurança."""
     async def dispatch(self, request, call_next):
         response = await call_next(request)
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["X-XSS-Protection"] = "1; mode=block"
-
-        # Content Security Policy (mais moderno que X-XSS-Protection)
-        response.headers["Content-Security-Policy"] = "default-src 'self'"
-        # Strict Transport Security (força HTTPS)
-        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
-        # Referrer Policy (controla informações enviadas)
-        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        # Permissions Policy (controla features do navegador)
-        response.headers["Permissions-Policy"] = "geolocation=(), microphone=()"
-
+        return response
 
 app.add_middleware(SecurityHeadersMiddleware)
 
 
 # =============================================================================
-# TODO 3: Rate Limiting por Usuário
+# TODO 1: Rate Limiting por Usuário
 # =============================================================================
+# TODO 1.1: Criar função get_user_id_for_rate_limit(request: Request) -> str
+# TODO 1.2: Função deve:
+#           - Extrair token do header Authorization (Bearer <token>)
+#           - Decodificar token JWT usando JWT_SECRET_KEY e JWT_ALGORITHM
+#           - Extrair user_id do payload (campo "sub")
+#           - Retornar user_id se existir, senão usar get_remote_address(request) como fallback
+#           - Tratar exceções e usar IP como fallback em caso de erro
+# TODO 1.3: Configurar limiter com key_func=get_user_id_for_rate_limit
+# TODO 1.4: Registrar exception handler para RateLimitExceeded
+# Dica: Consulte GUIA_PASSO_A_PASSO.md seção 4 e exemplo_completo.py
+
 
 def get_user_id_for_rate_limit(request: Request) -> str:
     """
     Extrai user_id do token JWT para usar como chave de rate limiting.
-    Se não houver token, use o IP como fallback.
+    Se não houver token, usa IP como fallback.
     """
-
-    # Tentar extrair o header
+    # TODO: Implementar função
+    # 1. Extrair header Authorization
+    # 2. Verificar se começa com "Bearer "
+    # 3. Extrair token
+    # 4. Decodificar JWT
+    # 5. Extrair user_id (campo "sub")
+    # 6. Retornar user_id ou IP como fallback
+    
     auth_header = request.headers.get("Authorization")
+
     if not auth_header or not auth_header.startswith("Bearer "):
-        # Fallback para IP
         return get_remote_address(request)
 
     token = auth_header.split(" ")[1]
-    try:
-        # Decodifica JWT (sem verificar assinatura completa, apenas para extrair user_id)
-        payload = jwt.decode(
-            token,
-            JWT_SECRET_KEY,
-            algorithms=[JWT_ALGORITHM]
-        )
-        user_id = payload.get("sub")
 
+    try:
+        payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
+        user_id = payload.get("sub")
         return user_id or get_remote_address(request)
-    except Exception:
-        # Usa IP se falhar
+    except Exception as e:
         return get_remote_address(request)
 
-    
+
+# Configurar limiter
+# TODO: Criar limiter com key_func=get_user_id_for_rate_limit
+# limiter = Limiter(key_func=...)
+# app.state.limiter = limiter
+# app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
 limiter = Limiter(key_func=get_user_id_for_rate_limit)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
 # =============================================================================
-# TODO 4: Exception Handlers Globais
+# TODO 2: Middleware de Request Logging
 # =============================================================================
-# TODO 4.1: Criar handler para HTTPException
-# TODO 4.2: Criar handler para RequestValidationError (Pydantic)
-# TODO 4.3: Criar handler para Exception genérica (catch-all)
-# Dica: Consulte GUIA_APRENDIZADO.md seção 2
+# TODO 2.1: Criar classe RequestLoggingMiddleware(BaseHTTPMiddleware)
+# TODO 2.2: No método dispatch():
+#           - Capturar tempo inicial com time.time()
+#           - Chamar call_next(request) e aguardar resposta
+#           - Calcular duração (tempo_final - tempo_inicial)
+#           - Usar log_structured() para logar:
+#             * method (request.method)
+#             * path (str(request.url.path))
+#             * status_code (response.status_code)
+#             * duration_ms (duração em milissegundos, arredondado)
+#             * client_ip (request.client.host se existir)
+# TODO 2.3: Registrar middleware na aplicação
+# Dica: Consulte GUIA_PASSO_A_PASSO.md seção 6 e exemplo_completo.py
 
-@app.exception_handler(HTTPException)
-async def http_exception_handler(request: Request, exc: HTTPException):
-    """
-    Trata HTTPException retornando JSON padronizado. 
-    """
-
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={
-            "error": True,
-            "message": exc.detail,
-            "status_code": exc.status_code,
-            "path": str(request.url.path),
-        }
-    )
-
-
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    """
-    Trata erros de validação do Pydantic.
-    """
-
-    # define lista de erros
-    errors = []
-    for error in exc.errors():
-        errors.append({
-            "field": ".".join(str(loc) for loc in error["loc"]),
-            "message": error["msg"],
-            "type": error["type"],
-        })
-
-    return JSONResponse(
-        status_code=422,
-        content={
-            "error": True,
-            "message": "Erro de validação",
-            "errors": errors,
-            "status_code": 422,
-            "path": str(request.url.path),
-        }
-    )
-
-
-@app.exception_handler(Exception)
-async def general_exception_handler(request: Request, exc: Exception):
-    """
-    Trata erros inesperados (catch-all).
-    """
-
-    logger.error(
-        f"Erro inesperado: {exc}",
-        exc_info=True,
-        extra={
-            "path": str(request.url.path),
-            "method": request.method,
-        }
-    )
-
-    return JSONResponse(
-        status_code=500,
-        content={
-            "error": True,
-            "message": "Erro interno do servidor",
-            "status_code": 500,
-            "path": str(request.url.path),
-        }
-    )
-
-
-# =============================================================================
-# TODO 5: Middleware de Request Logging
-# =============================================================================
-# TODO 5.1: Criar classe RequestLoggingMiddleware(BaseHTTPMiddleware)
-# TODO 5.2: No dispatch(), capturar tempo inicial
-# TODO 5.3: Chamar call_next(request) e capturar tempo final
-# TODO 5.4: Calcular duração e logar usando log_structured()
-# TODO 5.5: Registrar middleware na aplicação
-# Dica: Consulte GUIA_APRENDIZADO.md seção 4
 
 class RequestLoggingMiddleware(BaseHTTPMiddleware):
+    """Middleware que loga todas as requisições em formato estruturado."""
+    
     async def dispatch(self, request: Request, call_next):
-
+        # TODO: Implementar middleware
+        # 1. Capturar tempo inicial
+        # 2. Processar requisição (call_next)
+        # 3. Calcular duração
+        # 4. Logar usando log_structured()
+        # 5. Retornar response
+        
         start_time = time.time()
-
-        # Processa a requisição
+        
         response = await call_next(request)
 
         duration = time.time() - start_time
 
-        # Efetua log estruturado
         log_structured(
             "INFO",
             "Request processada",
@@ -352,153 +211,16 @@ class RequestLoggingMiddleware(BaseHTTPMiddleware):
             duration_ms=round(duration * 1000, 2),
             client_ip=request.client.host if request.client else None
         )
-
         return response
 
 
+# TODO: Registrar middleware
+# app.add_middleware(RequestLoggingMiddleware)
 app.add_middleware(RequestLoggingMiddleware)
 
 
 # =============================================================================
-# Autenticação (herdado do Dia 4)
-# =============================================================================
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
-
-
-def verify_token(token: str, expected_type: str = "access") -> dict:
-    try:
-        payload = jwt.decode(
-            token,
-            JWT_SECRET_KEY,
-            algorithms=[JWT_ALGORITHM]
-        )
-        token_type = payload.get("type")
-        if token_type != expected_type:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail=f"Tipo de token inválido ({token_type})",
-                headers={"WWW-Authenticate": "Bearer"}
-            )
-        return payload
-    except JWTError as exc:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=f"Token inválido ou expirado: {exc}",
-            headers={"WWW-Authenticate": "Bearer"}
-        ) from exc
-
-
-async def get_current_user(token: str = Depends(oauth2_scheme)) -> dict:
-    payload = verify_token(token, expected_type="access")
-    username = payload.get("sub")
-    if not username:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Usuário não autorizado",
-            headers={"WWW-Authenticate": "Bearer"}
-        )
-    return {"username": username, "payload": payload}
-
-
-# =============================================================================
-# Modelos Pydantic (herdado do Dia 4)
-# =============================================================================
-class Message(BaseModel):
-    role: Literal["user", "assistant"]
-    content: str
-    timestamp: Optional[str] = None
-
-
-class ConversationSummary(BaseModel):
-    id: str
-    created_at: str
-    last_message: Optional[str] = None
-    message_count: int
-
-
-class ChatRequest(BaseModel):
-    message: str = Field(..., description="Mensagem do usuário")
-    conversation_id: Optional[str] = Field(
-        None, description="ID da conversa (cria nova se não fornecido)")
-    model: Optional[str] = Field(default=None, description="Modelo LLM")
-    stream: bool = Field(default=True, description="Se true, responde via SSE")
-
-
-class Token(BaseModel):
-    access_token: str
-    refresh_token: str
-    token_type: str = "bearer"
-
-
-class LoginRequest(BaseModel):
-    username: str
-    password: str
-
-
-class RefreshRequest(BaseModel):
-    refresh_token: str
-
-
-class GenerateRequest(BaseModel):
-    prompt: str
-    model: Optional[str] = None
-
-
-# =============================================================================
-# Funções auxiliares de histórico (herdado do Dia 4)
-# =============================================================================
-def get_or_create_conversation(user_id: str, conversation_id: Optional[str] = None) -> str:
-    if user_id not in conversations:
-        conversations[user_id] = {}
-    if conversation_id and conversation_id in conversations[user_id]:
-        return conversation_id
-    new_id = str(uuid.uuid4())
-    conversations[user_id][new_id] = []
-    return new_id
-
-
-def add_message(user_id: str, conversation_id: str, role: str, content: str) -> None:
-    if user_id not in conversations:
-        conversations[user_id] = {}
-    if conversation_id not in conversations[user_id]:
-        conversations[user_id][conversation_id] = []
-    message = {
-        "role": role,
-        "content": content,
-        "timestamp": datetime.now(timezone.utc).isoformat()
-    }
-    conversations[user_id][conversation_id].append(message)
-
-
-def get_messages(user_id: str, conversation_id: str) -> List[Dict]:
-    if user_id not in conversations:
-        return []
-    if conversation_id not in conversations[user_id]:
-        return []
-    return conversations[user_id][conversation_id].copy()
-
-
-def list_conversations(user_id: str) -> List[Dict]:
-    if user_id not in conversations:
-        return []
-    result = []
-    for conversation_id, messages in conversations[user_id].items():
-        created_at = messages[0].get("timestamp", datetime.now(
-            timezone.utc).isoformat()) if messages else None
-        last_message = messages[-1].get("content") if messages else None
-        message_count = len(messages)
-        result.append({
-            "id": conversation_id,
-            "created_at": created_at,
-            "last_message": last_message,
-            "message_count": message_count,
-        })
-    result.sort(key=lambda x: x["created_at"], reverse=True)
-    return result
-
-
-# =============================================================================
-# Endpoints de Autenticação (herdado do Dia 4)
+# Endpoints de Autenticação
 # =============================================================================
 FAKE_USER = {
     "username": "admin",
@@ -506,230 +228,170 @@ FAKE_USER = {
 }
 
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
-    to_encode = data.copy()
-    if expires_delta:
-        expire = datetime.now(timezone.utc) + expires_delta
-    else:
-        expire = datetime.now(timezone.utc) + \
-            timedelta(minutes=int(ACCESS_TOKEN_EXPIRE_MINUTES))
-    to_encode.update({
-        "exp": expire,
-        "type": "access"
-    })
-    encoded_jwt = jwt.encode(
-        to_encode,
-        JWT_SECRET_KEY,
-        algorithm=JWT_ALGORITHM,
-    )
-    return encoded_jwt
-
-
-def create_refresh_token(data: dict) -> str:
-    to_encode = data.copy()
-    time_utc = datetime.now(timezone.utc)
-    time_delta = timedelta(days=int(REFRESH_TOKEN_EXPIRE_DAYS))
-    expire = time_utc + time_delta
-    to_encode.update({
-        "exp": expire,
-        "type": "refresh",
-    })
-    encoded_jwt = jwt.encode(
-        to_encode,
-        JWT_SECRET_KEY,
-        algorithm=JWT_ALGORITHM)
-    return encoded_jwt
-
-
 @app.post("/login", response_model=Token)
+# TODO: Aplicar rate limit de 5 requisições por minuto
 @limiter.limit("5/minute")
 async def login(request: Request, login_data: LoginRequest):
+    """Endpoint de login que retorna tokens JWT."""
     if login_data.username != FAKE_USER["username"]:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Usuário inválido."
-        )
+        raise HTTPException(status_code=401, detail="Usuário inválido")
     if not pwd_context.verify(login_data.password, FAKE_USER["hashed_password"]):
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Senha inválida."
-        )
+        raise HTTPException(status_code=401, detail="Senha inválida")
+    
     access_token = create_access_token(data={"sub": login_data.username})
     refresh_token = create_refresh_token(data={"sub": login_data.username})
     
-    log_structured("INFO", "Login bem-sucedido", user_id=login_data.username)
-    
-    return Token(
-        access_token=access_token,
-        refresh_token=refresh_token
+    # TODO: Logar login bem-sucedido usando log_structured()
+    # log_structured("INFO", "Login bem-sucedido", user_id=login_data.username)
+    log_structured(
+        "INFO",
+        "Login bem-sucedido",
+        user_id=login_data.username
     )
+    
+    return Token(access_token=access_token, refresh_token=refresh_token)
 
 
 @app.post("/refresh", response_model=Token)
 async def refresh(request: RefreshRequest):
+    """Endpoint para renovar tokens usando refresh token."""
     payload = verify_token(request.refresh_token, expected_type="refresh")
     username = payload.get("sub")
     access_token = create_access_token(data={"sub": username})
     refresh_token = create_refresh_token(data={"sub": username})
-    return Token(
-        access_token=access_token,
-        refresh_token=refresh_token)
+    return Token(access_token=access_token, refresh_token=refresh_token)
 
 
 # =============================================================================
-# TODO 6: Endpoint /chat com Rate Limiting
+# Endpoint /chat com Rate Limiting
 # =============================================================================
-# TODO 6.1: Adicionar decorator @limiter.limit("30/minute") ao endpoint
-# TODO 6.2: Adicionar log de início de chat usando log_structured()
-# TODO 6.3: Adicionar log de erro (se houver) usando log_structured()
-# Dica: Request deve ser primeiro parâmetro quando usar @limiter.limit()
-
 @app.post("/chat")
+# TODO: Aplicar rate limit de 30 requisições por minuto por usuário
 @limiter.limit("30/minute")
 async def chat(
-    request: Request,  # Request deve ser primeiro para slowapi
+    request: Request,
     chat_request: ChatRequest,
     current_user: dict = Depends(get_current_user),
 ):
-    """Endpoint de chat com histórico."""
-    model_name = chat_request.model or DEFAULT_MODEL
+    """
+    Endpoint de chat com histórico e rate limiting por usuário.
+    
+    Rate limit: 30 requisições por minuto por usuário autenticado.
+    """
     user_id = current_user["username"]
-    conversation_id = get_or_create_conversation(
-        user_id, chat_request.conversation_id)
-
+    model = chat_request.model or DEFAULT_MODEL
+    
+    conversation_id = get_or_create_conversation(user_id, chat_request.conversation_id)
+    
+    # TODO: Logar início de chat usando log_structured()
+    # log_structured("INFO", "Início de chat", user_id=user_id, conversation_id=conversation_id, model=model)
     log_structured(
-        "INFO",
-        "Inicio de chat",
+        "INFO", 
+        "Inicio de chat", 
         user_id=user_id,
-        conversation_id=conversation_id,
-        model=model_name,
+        consversation_id=conversation_id,
+        model=model,
     )
-
+    
     try:
-        messages = get_messages(user_id, conversation_id)
+        stored_messages = get_messages(user_id, conversation_id)
+        
         langchain_messages = []
-        for message in messages:
-            if message["role"] == "user":
-                langchain_messages.append(
-                    HumanMessage(content=message["content"]))
-            if message["role"] == "assistant":
-                langchain_messages.append(
-                    AIMessage(content=message["content"]))
-
-        user_message = HumanMessage(content=chat_request.message)
-        langchain_messages.append(user_message)
+        for msg in stored_messages:
+            if msg["role"] == "user":
+                langchain_messages.append(HumanMessage(content=msg["content"]))
+            elif msg["role"] == "assistant":
+                langchain_messages.append(AIMessage(content=msg["content"]))
+        
+        langchain_messages.append(HumanMessage(content=chat_request.message))
         add_message(user_id, conversation_id, "user", chat_request.message)
-
+        
         if chat_request.stream:
             async def generate():
-                model = ChatOpenAI(
-                    model=model_name,
-                    temperature=0.2,
-                    streaming=True,
-                )
-                response = ""
-                async for chunk in model.astream(langchain_messages):
+                llm = ChatOpenAI(model=model, streaming=True, temperature=0.2)
+                full_response = ""
+                
+                async for chunk in llm.astream(langchain_messages):
                     if chunk.content:
-                        response += chunk.content
+                        full_response += chunk.content
                         yield f"data: {chunk.content}\n\n"
+                
                 yield "data: [DONE]\n\n"
-                add_message(user_id, conversation_id, "assistant", response)
+                add_message(user_id, conversation_id, "assistant", full_response)
+            
             return StreamingResponse(generate(), media_type="text/event-stream")
         else:
-            model = ChatOpenAI(
-                model=model_name,
-                temperature=0.2,
-                streaming=False,
-            )
-            ai_response = await model.ainvoke(langchain_messages)
+            llm = ChatOpenAI(model=model, temperature=0.2)
+            ai_response = await llm.ainvoke(langchain_messages)
             response_content = ai_response.content
-            add_message(user_id, conversation_id,
-                        "assistant", response_content)
+            add_message(user_id, conversation_id, "assistant", response_content)
+            
             return {
                 "reply": response_content,
                 "conversation_id": conversation_id,
                 "user": user_id,
-                "model": model_name,
+                "model": model,
             }
     except Exception as exc:
+        # TODO: Logar erro usando log_structured()
+        
         log_structured(
-            "ERROR",
+            "ERROR", 
             "Erro ao processar chat",
             user_id=user_id,
-            error=str(exc),
             conversation_id=conversation_id,
+            error=str(exc),
         )
         raise
 
 
 # =============================================================================
-# Endpoints de Histórico (herdado do Dia 4)
+# Endpoints de Histórico
 # =============================================================================
-@app.get("/conversations", response_model=List[ConversationSummary])
+@app.get("/conversations")
 async def list_user_conversations(
     current_user: dict = Depends(get_current_user),
 ):
+    """Lista todas as conversas do usuário."""
     user_id = current_user["username"]
-    conversations_list = list_conversations(user_id)
+    convs = list_conversations(user_id)
     return [
         ConversationSummary(
             id=conv["id"],
             created_at=conv["created_at"],
             last_message=conv["last_message"],
-            message_count=conv["message_count"],
-        ) for conv in conversations_list
+            message_count=conv["message_count"]
+        )
+        for conv in convs
     ]
 
 
-@app.get("/conversations/{conversation_id}/messages", response_model=List[Message])
+@app.get("/conversations/{conversation_id}/messages")
 async def get_conversation_messages(
     conversation_id: str,
     current_user: dict = Depends(get_current_user),
 ):
+    """Retorna todas as mensagens de uma conversa."""
     user_id = current_user["username"]
     if user_id not in conversations:
-        raise HTTPException(
-            status_code=HTTP_404_NOT_FOUND,
-            detail="Conversa não encontrada"
-        )
+        raise HTTPException(status_code=404, detail="Conversa não encontrada")
     if conversation_id not in conversations[user_id]:
-        raise HTTPException(
-            status_code=HTTP_404_NOT_FOUND,
-            detail="Conversa não encontrada"
-        )
+        raise HTTPException(status_code=404, detail="Conversa não encontrada")
+    
     messages = get_messages(user_id, conversation_id)
     return [
         Message(
-            role=message["role"],
-            content=message["content"],
-            timestamp=message["timestamp"],
-        ) for message in messages
+            role=msg["role"],
+            content=msg["content"],
+            timestamp=msg.get("timestamp")
+        )
+        for msg in messages
     ]
-
-
-@app.post("/api/generate")
-async def generate(
-    request: GenerateRequest,
-    current_user: dict = Depends(get_current_user),
-):
-    """Endpoint simples de streaming (sem histórico)."""
-    model = request.model or DEFAULT_MODEL
-    llm = ChatOpenAI(model=model, streaming=True, temperature=0.2)
-
-    async def generate_stream():
-        async for chunk in llm.astream([HumanMessage(content=request.prompt)]):
-            if chunk.content:
-                yield f"data: {chunk.content}\n\n"
-        yield "data: [DONE]\n\n"
-
-    return StreamingResponse(
-        generate_stream(),
-        media_type="text/event-stream"
-    )
 
 
 @app.get("/health")
 async def health():
+    """Health check endpoint."""
     return {"status": "healthy", "feature": "rate_limiting_logging"}
 
 

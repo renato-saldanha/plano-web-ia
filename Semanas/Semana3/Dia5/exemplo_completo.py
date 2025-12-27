@@ -1,24 +1,26 @@
 #!/usr/bin/env python3
 """
-API FastAPI com Swagger/OpenAPI e Deploy - Exemplo Completo
+API FastAPI com Rate Limiting e Logging - Exemplo Completo (Nível 1)
 
 Este arquivo contém uma implementação completa e comentada para referência.
 Use este arquivo para consultar quando estiver completando o template.py.
 
 Uso:
-    uvicorn exemplo_referencia:app --reload --port 8000
+    uvicorn exemplo_completo:app --reload --port 8000
+
+Notas:
+- Este exemplo foca em Rate Limiting por usuário e Logging estruturado
+- Exception Handling será abordado no Dia 6
+- Usa módulos compartilhados de common/ para reduzir duplicação
 """
 
 import os
 import time
-import sys
-from pathlib import Path
 from typing import AsyncIterator, Optional
 
 from fastapi import FastAPI, Depends, HTTPException, Request
-from fastapi.responses import StreamingResponse, JSONResponse
+from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.exceptions import RequestValidationError
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 from slowapi.util import get_remote_address
@@ -26,8 +28,11 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from dotenv import load_dotenv
 
 # Importar módulos compartilhados
+import sys
+from pathlib import Path
+# Adicionar diretório pai ao path para importar common
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from common.logging import log_structured, setup_logger
+from common.logging import JSONFormatter, log_structured, setup_logger
 from common.auth import get_current_user, create_access_token, create_refresh_token, verify_token
 from common.models import ChatRequest, Token, LoginRequest, RefreshRequest, ConversationSummary, Message
 from common.conversations import (
@@ -59,36 +64,13 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # Configurar logger usando módulo compartilhado
 logger = setup_logger(__name__)
 
-
 # =============================================================================
-# FastAPI App com Metadados OpenAPI Configurados
+# FastAPI App
 # =============================================================================
 app = FastAPI(
-    title="API FastAPI com IA Generativa",
-    description="""
-    API REST completa com integração de IA generativa usando LangChain.
-    
-    ## Funcionalidades
-    
-    * **Autenticação JWT**: Login e refresh tokens
-    * **Chat com IA**: Conversação com histórico usando OpenAI
-    * **Rate Limiting**: Proteção contra abuso por usuário
-    * **Logging Estruturado**: Logs em formato JSON
-    * **Exception Handling**: Tratamento padronizado de erros
-    
-    ## Documentação
-    
-    * **Swagger UI**: Disponível em `/docs`
-    * **ReDoc**: Disponível em `/redoc`
-    """,
+    title="API com Rate Limiting e Logging",
+    description="Dia 5 - Rate limiting por usuário e logging estruturado",
     version="1.0.0",
-    contact={
-        "name": "Seu Nome",
-        "email": "seu.email@exemplo.com",
-    },
-    license_info={
-        "name": "MIT",
-    },
 )
 
 app.add_middleware(
@@ -101,18 +83,12 @@ app.add_middleware(
 
 
 class SecurityHeadersMiddleware(BaseHTTPMiddleware):
+    """Middleware que adiciona headers de segurança."""
     async def dispatch(self, request, call_next):
         response = await call_next(request)
         response.headers["X-Content-Type-Options"] = "nosniff"
         response.headers["X-Frame-Options"] = "DENY"
         response.headers["X-XSS-Protection"] = "1; mode=block"
-        
-        # Headers modernos de segurança
-        response.headers["Content-Security-Policy"] = "default-src 'self'"
-        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
-        response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-        response.headers["Permissions-Policy"] = "geolocation=(), microphone=()"
-        
         return response
 
 app.add_middleware(SecurityHeadersMiddleware)
@@ -125,100 +101,68 @@ def get_user_id_for_rate_limit(request: Request) -> str:
     """
     Extrai user_id do token JWT para usar como chave de rate limiting.
     Se não houver token, usa IP como fallback.
+    
+    Esta função é chamada pelo slowapi para determinar qual chave usar
+    para rastrear rate limits. Se o usuário estiver autenticado, usa o
+    user_id do token. Caso contrário, usa o IP do cliente.
+    
+    Args:
+        request: Objeto Request do FastAPI
+        
+    Returns:
+        str: user_id (se autenticado) ou IP do cliente (fallback)
     """
+    # Tentar extrair token do header Authorization
     auth_header = request.headers.get("Authorization")
     if not auth_header or not auth_header.startswith("Bearer "):
+        # Se não houver token, usar IP como fallback
         return get_remote_address(request)
     
+    # Extrair token do header
     token = auth_header.split(" ")[1]
+    
     try:
+        # Decodificar token JWT
         payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
         user_id = payload.get("sub")
+        # Retornar user_id se existir, senão usar IP
         return user_id or get_remote_address(request)
     except Exception:
+        # Se houver erro ao decodificar, usar IP como fallback
         return get_remote_address(request)
 
 
+# Configurar limiter com função customizada
 limiter = Limiter(key_func=get_user_id_for_rate_limit)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
 # =============================================================================
-# Exception Handlers Globais
-# =============================================================================
-@app.exception_handler(HTTPException)
-async def http_exception_handler(request: Request, exc: HTTPException):
-    """Trata HTTPException retornando JSON padronizado."""
-    return JSONResponse(
-        status_code=exc.status_code,
-        content={
-            "error": True,
-            "message": exc.detail,
-            "status_code": exc.status_code,
-            "path": str(request.url.path),
-        }
-    )
-
-
-@app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    """Trata erros de validação do Pydantic."""
-    errors = []
-    for error in exc.errors():
-        errors.append({
-            "field": ".".join(str(loc) for loc in error["loc"]),
-            "message": error["msg"],
-            "type": error["type"],
-        })
-    
-    return JSONResponse(
-        status_code=422,
-        content={
-            "error": True,
-            "message": "Erro de validação",
-            "errors": errors,
-            "status_code": 422,
-            "path": str(request.url.path),
-        }
-    )
-
-
-@app.exception_handler(Exception)
-async def general_exception_handler(request: Request, exc: Exception):
-    """Trata erros inesperados (catch-all)."""
-    # Logar erro completo para debug
-    logger.error(
-        f"Erro inesperado: {exc}",
-        exc_info=True,
-        extra={
-            "path": str(request.url.path),
-            "method": request.method,
-        }
-    )
-    
-    # Retornar mensagem genérica ao cliente
-    return JSONResponse(
-        status_code=500,
-        content={
-            "error": True,
-            "message": "Erro interno do servidor",
-            "status_code": 500,
-            "path": str(request.url.path),
-        }
-    )
-
-
-# =============================================================================
-# Middleware de Request Logging (usando módulo compartilhado)
+# Middleware de Request Logging
 # =============================================================================
 class RequestLoggingMiddleware(BaseHTTPMiddleware):
-    """Middleware que loga todas as requisições em formato estruturado."""
+    """
+    Middleware que loga todas as requisições em formato estruturado.
+    
+    Este middleware captura informações sobre cada requisição:
+    - Método HTTP (GET, POST, etc.)
+    - Path da requisição
+    - Status code da resposta
+    - Tempo de processamento em milissegundos
+    - IP do cliente
+    """
     async def dispatch(self, request: Request, call_next):
+        # Capturar tempo inicial
         start_time = time.time()
+        
+        # Processar requisição
         response = await call_next(request)
+        
+        # Calcular duração
         duration = time.time() - start_time
         
+        # Logar usando função compartilhada
         log_structured(
             "INFO",
             "Request processada",
@@ -243,18 +187,17 @@ FAKE_USER = {
 }
 
 
-@app.post("/login", response_model=Token, tags=["Auth"])
-@limiter.limit("5/minute")
+@app.post("/login", response_model=Token)
+@limiter.limit("5/minute")  # Rate limit no login: 5 tentativas por minuto
 async def login(request: Request, login_data: LoginRequest):
     """
-    Endpoint de autenticação.
+    Endpoint de login que retorna tokens JWT.
     
-    Retorna tokens de acesso e refresh após validar credenciais.
+    Credenciais de teste:
+    - username: admin
+    - password: admin123
     
-    - **username**: Nome de usuário (padrão: admin)
-    - **password**: Senha do usuário (padrão: admin123)
-    
-    Rate limit: 5 requisições por minuto por IP/usuário.
+    Rate limit: 5 tentativas por minuto (por IP ou usuário)
     """
     if login_data.username != FAKE_USER["username"]:
         raise HTTPException(status_code=401, detail="Usuário inválido")
@@ -264,20 +207,15 @@ async def login(request: Request, login_data: LoginRequest):
     access_token = create_access_token(data={"sub": login_data.username})
     refresh_token = create_refresh_token(data={"sub": login_data.username})
     
+    # Logar login bem-sucedido
     log_structured("INFO", "Login bem-sucedido", user_id=login_data.username)
     
     return Token(access_token=access_token, refresh_token=refresh_token)
 
 
-@app.post("/refresh", response_model=Token, tags=["Auth"])
+@app.post("/refresh", response_model=Token)
 async def refresh(request: RefreshRequest):
-    """
-    Endpoint para renovar tokens de acesso.
-    
-    Usa o refresh token para gerar novos tokens de acesso e refresh.
-    
-    - **refresh_token**: Token de refresh válido
-    """
+    """Endpoint para renovar tokens usando refresh token."""
     payload = verify_token(request.refresh_token, expected_type="refresh")
     username = payload.get("sub")
     access_token = create_access_token(data={"sub": username})
@@ -288,32 +226,25 @@ async def refresh(request: RefreshRequest):
 # =============================================================================
 # Endpoint /chat com Rate Limiting
 # =============================================================================
-@app.post("/chat", tags=["Chat"])
-@limiter.limit("30/minute")
+@app.post("/chat")
+@limiter.limit("30/minute")  # Rate limit: 30 requisições por minuto por usuário
 async def chat(
     request: Request,
     chat_request: ChatRequest,
     current_user: dict = Depends(get_current_user),
 ):
     """
-    Endpoint de chat com histórico e IA generativa.
+    Endpoint de chat com histórico e rate limiting por usuário.
     
-    Processa mensagem do usuário e retorna resposta da IA, mantendo contexto da conversa.
-    
-    - **message**: Mensagem do usuário
-    - **conversation_id**: ID da conversa (opcional, cria nova se não fornecido)
-    - **model**: Modelo LLM a usar (opcional, padrão: gpt-4o-mini)
-    - **stream**: Se true, retorna resposta via SSE (padrão: true)
-    
-    Rate limit: 30 requisições por minuto por usuário.
-    
-    Requer autenticação: Bearer token no header Authorization.
+    Rate limit: 30 requisições por minuto por usuário autenticado.
+    Se o usuário exceder o limite, receberá erro 429 (Too Many Requests).
     """
     user_id = current_user["username"]
     model = chat_request.model or DEFAULT_MODEL
     
     conversation_id = get_or_create_conversation(user_id, chat_request.conversation_id)
     
+    # Logar início de chat
     log_structured(
         "INFO",
         "Início de chat",
@@ -362,6 +293,7 @@ async def chat(
                 "model": model,
             }
     except Exception as exc:
+        # Logar erro
         log_structured(
             "ERROR",
             "Erro ao processar chat",
@@ -375,17 +307,11 @@ async def chat(
 # =============================================================================
 # Endpoints de Histórico
 # =============================================================================
-@app.get("/conversations", response_model=List[ConversationSummary], tags=["Chat"])
+@app.get("/conversations")
 async def list_user_conversations(
     current_user: dict = Depends(get_current_user),
 ):
-    """
-    Lista todas as conversas do usuário autenticado.
-    
-    Retorna resumo de cada conversa (ID, data de criação, última mensagem, contagem).
-    
-    Requer autenticação: Bearer token no header Authorization.
-    """
+    """Lista todas as conversas do usuário."""
     user_id = current_user["username"]
     convs = list_conversations(user_id)
     return [
@@ -399,18 +325,12 @@ async def list_user_conversations(
     ]
 
 
-@app.get("/conversations/{conversation_id}/messages", response_model=List[Message], tags=["Chat"])
+@app.get("/conversations/{conversation_id}/messages")
 async def get_conversation_messages(
     conversation_id: str,
     current_user: dict = Depends(get_current_user),
 ):
-    """
-    Retorna todas as mensagens de uma conversa específica.
-    
-    - **conversation_id**: ID da conversa a recuperar
-    
-    Requer autenticação: Bearer token no header Authorization.
-    """
+    """Retorna todas as mensagens de uma conversa."""
     user_id = current_user["username"]
     if user_id not in conversations:
         raise HTTPException(status_code=404, detail="Conversa não encontrada")
@@ -428,45 +348,9 @@ async def get_conversation_messages(
     ]
 
 
-@app.post("/api/generate", tags=["Chat"])
-async def generate(
-    request: GenerateRequest,
-    current_user: dict = Depends(get_current_user),
-):
-    """
-    Endpoint simples de geração de texto (sem histórico).
-    
-    Gera resposta da IA para um prompt único, sem manter contexto.
-    
-    - **prompt**: Prompt para geração
-    - **model**: Modelo LLM a usar (opcional)
-    
-    Requer autenticação: Bearer token no header Authorization.
-    """
-    model = request.model or DEFAULT_MODEL
-    llm = ChatOpenAI(model=model, streaming=True, temperature=0.2)
-    
-    async def generate_stream():
-        async for chunk in llm.astream([HumanMessage(content=request.prompt)]):
-            if chunk.content:
-                yield f"data: {chunk.content}\n\n"
-        yield "data: [DONE]\n\n"
-    
-    return StreamingResponse(
-        generate_stream(),
-        media_type="text/event-stream"
-    )
-
-
-@app.get("/health", tags=["Health"])
+@app.get("/health")
 async def health():
-    """
-    Health check endpoint.
-    
-    Retorna status da API. Usado para monitoramento e load balancers.
-    
-    Sempre retorna 200 OK se a API está funcionando.
-    """
+    """Health check endpoint."""
     return {"status": "healthy", "feature": "rate_limiting_logging"}
 
 

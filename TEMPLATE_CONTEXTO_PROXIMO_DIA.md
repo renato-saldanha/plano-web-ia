@@ -84,7 +84,7 @@ Dia[X+1]/
 - Consultar `TEMPLATE_ESTRUTURA_DIA.md` para estrutura completa
 - Adaptar templates conforme necessário
 - Manter consistência com dias anteriores
-- Garantir que o dia inteiro caiba em **160min**, incluindo leitura de documentos, execução de exercícios/testes e preenchimento de `checklist.md`, `journal.md` e `CONTEXTO_PROXIMO_DIA.md`. Não usar autocomplete/IA para gerar código.
+- Garantir que o dia inteiro caiba em **120min (2h)**, incluindo leitura de documentos, execução de exercícios/testes e preenchimento de `checklist.md`, `journal.md` e `CONTEXTO_PROXIMO_DIA.md`. Não usar autocomplete/IA para gerar código.
 
 **Por que:**
 Estrutura consistente facilita navegação e aprendizado.
@@ -155,22 +155,22 @@ Nível adequado garante aprendizado efetivo sem sobrecarga ou subcarga.
 **⚠️ IMPORTANTE: Tempo Padronizado**
 
 **Todos os Dias:**
-- **Total:** 160min (inclui leitura, execução de exercícios/testes e preenchimento de docs; sem autocomplete/IA no código)
+- **Total:** 120min (2h) (inclui leitura, execução de exercícios/testes e preenchimento de docs; sem autocomplete/IA no código)
 
 **Estrutura sugerida:**
-- Fases proporcionais (ajuste para somar 160min)
-- Preparação/Revisão: 5-10min
-- Leitura guiada: 15-20min
-- Construção/Exercícios: 80-95min (sem autocomplete/IA)
-- Testes/Refinamento: 20-25min
-- Finalização/Journal/CONTEXTO_PROXIMO_DIA: 15-20min
-- Buffer: 5-10min (só usar se necessário)
+- Fases proporcionais (ajuste para somar 120min)
+- Preparação/Revisão: 5min
+- Leitura guiada: 15min (foco no essencial)
+- Construção/Exercícios: 60min (sem autocomplete/IA, foco no MVP)
+- Testes/Refinamento: 20min
+- Finalização/Journal/CONTEXTO_PROXIMO_DIA: 15min
+- Buffer: 5min (só usar se necessário)
 
 **Como fazer:**
 - Consultar `TEMPLATE_ESTRUTURA_DIA.md` seção "Métricas de Tempo Padrão"
 - Adaptar para objetivos específicos do dia
 - Incluir guias passo-a-passo quando necessário
-- Garantir que tempos somem 160min e que o código seja escrito sem autocomplete/IA
+- Garantir que tempos somem 120min e que o código seja escrito sem autocomplete/IA
 
 **Por que:**
 Checklist detalhado guia o aprendizado passo a passo. Tempos padronizados garantem consistência e que o dia seja completável dentro do período disponível.
@@ -220,7 +220,7 @@ Checklist detalhado guia o aprendizado passo a passo. Tempos padronizados garant
 3. **Contexto:** Sempre incluir relação com dias anteriores
 4. **Clareza:** Objetivos devem ser claros e mensuráveis
 5. **Progressão:** Construir sobre conhecimentos anteriores
-6. **Tempo e IA:** Respeitar os 160min (leitura/testes/docs inclusos) e escrever código sem autocomplete/IA
+6. **Tempo e IA:** Respeitar os 120min (2h) (leitura/testes/docs inclusos) e escrever código sem autocomplete/IA
 
 ---
 
@@ -233,7 +233,7 @@ Antes de começar o Dia [X+1], certifique-se de:
 - [ ] [Pré-requisito 2] está configurado
 - [ ] Entendeu estrutura do projeto atual
 - [ ] [Outro pré-requisito específico]
-- [ ] Regra dos 160min confirmada (inclui leitura/testes/exercícios/docs e sem autocomplete/IA no código)
+- [ ] Regra dos 120min (2h) confirmada (inclui leitura/testes/exercícios/docs e sem autocomplete/IA no código)
 
 ---
 

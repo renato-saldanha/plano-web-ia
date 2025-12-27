@@ -1,7 +1,7 @@
 # ✅ Checklist - Dia 5 (Sexta, 13 Dez 2025)
 
 ## 🎯 Objetivo do Dia
-Implementar rate limiting por usuário, tratamento de erros robusto e logging estruturado para a API de chat, preparando o código para produção.
+Implementar rate limiting por usuário e logging estruturado para a API de chat, preparando observabilidade e segurança básica.
 
 ---
 
@@ -32,17 +32,16 @@ Garantir que você entende o contexto e tem o ambiente preparado antes de começ
 ## 📋 FASE 2: Leitura Guiada (20min)
 
 ### Estudo dos Conceitos
-- [ X] Ler `GUIA_APRENDIZADO.md` seção 1: Rate Limiting por Usuário
-- [ X] Ler `GUIA_APRENDIZADO.md` seção 2: Exception Handlers Globais
-- [ X] Ler `GUIA_APRENDIZADO.md` seção 3: Logging Estruturado
-- [ X] Ler `GUIA_APRENDIZADO.md` seção 4: Middleware de Request Logging
+- [ X] Ler `GUIA_PASSO_A_PASSO.md` seção 2: Rate Limiting por Usuário
+- [ X] Ler `GUIA_PASSO_A_PASSO.md` seção 3: Logging Estruturado
+- [ X] Ler `GUIA_PASSO_A_PASSO.md` seção 6: Middleware de Request Logging
 - [ X] Anotar dúvidas que serão respondidas na prática
 
 **Como fazer:**
-1. Abra `GUIA_APRENDIZADO.md`
+1. Abra `GUIA_PASSO_A_PASSO.md`
 2. Leia cada seção cuidadosamente
 3. Anote conceitos que não ficaram claros
-4. Consulte `exemplo_referencia.py` se precisar ver exemplos práticos
+4. Consulte `exemplo_completo.py` se precisar ver exemplos práticos
 
 **Por que:**
 Entender os conceitos antes de implementar facilita a resolução dos TODOs e evita erros comuns.
@@ -55,23 +54,26 @@ Entender os conceitos antes de implementar facilita a resolução dos TODOs e ev
 ## 📋 FASE 3: Construção Guiada (90min)
 
 ### Implementação do Rate Limiting por Usuário
-- [ X] Abrir `template.py` (herdar código do Dia 4)
+- [ X] Abrir `template.py` (herdar código do Dia 4 ou usar módulos common/)
 - [ X] TODO 1: Criar função `get_user_id_for_rate_limit()` que extrai `user_id` do token JWT
 - [ X] TODO 2: Configurar `slowapi.Limiter` com `key_func=get_user_id_for_rate_limit`
-- [ X] TODO 3: Aplicar rate limit ao endpoint `/chat` (ex: 30 requisições/minuto por usuário)
+- [ X] TODO 3: Aplicar rate limit ao endpoint `/login` (5 requisições/minuto)
+- [ X] TODO 4: Aplicar rate limit ao endpoint `/chat` (30 requisições/minuto por usuário)
 - [ X] Testar rate limiting: fazer múltiplas requisições e verificar retorno 429
 
 **Como fazer:**
 1. Copie o código do Dia 4 (`template.py` ou `exemplo_referencia.py`) para `template.py` do Dia 5
-2. Consulte `GUIA_APRENDIZADO.md` seção 1 para entender como criar função customizada
-3. Consulte `exemplo_referencia.py` se precisar de referência
+2. Consulte `GUIA_PASSO_A_PASSO.md` seção 4 para entender como criar função customizada
+3. Consulte `exemplo_completo.py` se precisar de referência
 4. Implemente a função `get_user_id_for_rate_limit()` que:
    - Extrai o token do header Authorization
-   - Decodifica o JWT
-   - Retorna o `user_id` (username)
+   - Decodifica o JWT usando JWT_SECRET_KEY e JWT_ALGORITHM
+   - Retorna o `user_id` (username do campo "sub")
+   - Usa IP como fallback se não houver token ou erro
 5. Configure o limiter com a função customizada
-6. Aplique o decorator `@limiter.limit("30/minute")` ao endpoint `/chat`
-7. Teste fazendo 31 requisições rápidas e verificando se a 31ª retorna 429
+6. Aplique o decorator `@limiter.limit("5/minute")` ao endpoint `/login`
+7. Aplique o decorator `@limiter.limit("30/minute")` ao endpoint `/chat`
+8. Teste fazendo múltiplas requisições e verificando se retorna 429 quando exceder limite
 
 **Por que:**
 Rate limiting por usuário é mais seguro que por IP, pois previne abuso mesmo quando múltiplos usuários compartilham o mesmo IP.
@@ -156,16 +158,15 @@ Middleware de request logging fornece visibilidade completa de todas as requisi�
 ## 📋 FASE 4: Consolidação (25min)
 
 ### Testes e Validação
-- [ X] Testar rate limiting: fazer 31 requisições rápidas ao `/chat` e verificar 429
-- [ X] Testar exception handlers: forçar erros e verificar respostas JSON
+- [ X] Testar rate limiting: fazer múltiplas requisições e verificar 429 quando exceder limite
 - [ X] Verificar logs estruturados: confirmar formato JSON e campos corretos
 - [ X] Verificar middleware: confirmar que todas as requisições são logadas
 - [ X] Revisar código: garantir que não há TODOs pendentes
-- [ ] Comparar com `exemplo_referencia.py` se necessário
+- [ X] Comparar com `exemplo_completo.py` se necessário
 
 **Como fazer:**
 1. Use `curl`, Postman ou script Python para testar rate limiting
-2. Force erros intencionalmente (endpoint inexistente, dados inválidos)
+2. Teste rate limit no `/login` (5/min) e `/chat` (30/min)
 3. Verifique logs no console (devem estar em formato JSON)
 4. Faça requisições a diferentes endpoints e verifique se todas são logadas
 5. Revise o código completo procurando por TODOs não resolvidos
@@ -211,12 +212,12 @@ Documentação e reflexão consolidam o aprendizado e facilitam a transição pa
 **Total estimado:** 160min no total (inclui leitura dos documentos, execução de exercícios/testes e preenchimento de checklist + journal, **sem usar autocomplete/IA para gerar código**)
 
 ### ✅ Critérios de Sucesso:
-- [ ] Rate limiting por usuário funcionando (retorna 429 após limite)
-- [ ] Exception handlers globais tratando todos os tipos de erro
-- [ ] Logging estruturado em formato JSON funcionando
-- [ ] Middleware de request logging registrando todas as requisições
-- [ ] Código testado e funcionando
-- [ ] Journal e CONTEXTO_PROXIMO_DIA preenchidos
+- [ X] Rate limiting por usuário funcionando (retorna 429 após limite)
+- [ X] Logging estruturado em formato JSON funcionando (usando módulos common/)
+- [ X] Middleware de request logging registrando todas as requisições
+- [ X] Código usando módulos compartilhados para reduzir duplicação
+- [ X] Código testado e funcionando
+- [ X] Journal e CONTEXTO_PROXIMO_DIA preenchidos
 
 ### 🎯 Streak: 19/56 dias
 

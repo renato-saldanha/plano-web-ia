@@ -30,43 +30,54 @@
 
 ## 🔗 Por que a Semana 4 é importante
 
-A Semana 3 consolidou o aprendizado de backend com **FastAPI (Python)**. A Semana 4 apresenta uma **alternativa moderna**: **Bun + Hono (JavaScript/TypeScript)**.
-
-### Aprendizado Comparativo
-- **Entender trade-offs:** Python vs JavaScript/TypeScript para backend
-- **Performance:** Bun é extremamente rápido (mais rápido que Node.js)
-- **DX (Developer Experience):** Comparar experiência de desenvolvimento
-- **Escolher stack:** Ter conhecimento suficiente para escolher stack para projeto final
+A Semana 3 consolidou o aprendizado de backend com **FastAPI (Python)**. A Semana 4 aprofunda em **IA Avançada + Governança + MLFlow (Python)**.
 
 ### Evolução do Aprendizado
 - **Semana 3:** Backend em Python (FastAPI) - robusto, maduro, amplamente usado
-- **Semana 4:** Backend em TypeScript (Bun/Hono) - moderno, rápido, tipo-seguro
-- **Resultado:** Visão completa de duas stacks modernas para backend
+- **Semana 4:** IA Avançada (Hugging Face, MLFlow, Governança) - aprofundamento em IA
+- **Resultado:** Conhecimento avançado em IA aplicada, diferencial competitivo
+
+### O que será aprendido na Semana 4
+- **Hugging Face:** Modelos open-source, padrão da indústria
+- **Transfer Learning:** Fine-tuning de modelos
+- **Governança de IA:** Segurança, ética, compliance
+- **MLFlow:** Gerenciamento de ciclo de vida de modelos
+- **Estratégias:** Aplicar IA em produtos digitais
 
 ---
 
 ## 🎯 O que será feito na Semana 4 - Dia 1
 
 ### Objetivo Principal
-Setup inicial de Bun + Hono e leitura do guia rápido de TypeScript server-side. Criar esqueleto básico da API equivalente à da Semana 3.
+Hugging Face - Fundamentos e Modelos (carregar e usar modelos pré-treinados)
 
 ### Conceitos que serão aprendidos
-- **Bun Runtime:** Runtime JavaScript ultra-rápido
-- **Hono Framework:** Framework web minimalista e rápido
-- **TypeScript Server-side:** TypeScript para backend
-- **Comparação inicial:** FastAPI vs Hono (primeira impressão)
+- Ecossistema Hugging Face (Hub, Transformers, Datasets)
+- Modelos pré-treinados (BERT, GPT-2, T5)
+- Carregar e usar modelos localmente
+- Comparação: Hugging Face vs APIs (quando usar cada um)
+
+### Nível de Scaffolding
+**Nível 1** (conceito completamente novo)
+
+### Consultar
+**OBRIGATÓRIO:** `1-Plano_Desenvolvimento.md` seção "SEMANA 4" para detalhes completos
 
 ### Como se relaciona com Dia 7
-- Aprendemos a fazer deploy de API Python em produção
-- Agora vamos criar API equivalente em TypeScript
-- Poderemos comparar facilidade de deploy, performance, DX
+- Aprendemos a criar API Python com FastAPI
+- Agora vamos aprofundar em IA: modelos open-source, fine-tuning, governança
+- Conhecimento aplicável diretamente no projeto final (Semana 7-8)
 
 ---
 
 ## 📋 Como Construir a Semana 4 - Dia 1
 
-### 1. Criar Estrutura Básica
+### ⚠️ OBRIGATÓRIO: Consultar documentação
 
+1. **Consultar `1-Plano_Desenvolvimento.md` seção "SEMANA 4"** para estrutura completa
+2. **Seguir estrutura abaixo**
+
+### 1. Criar Estrutura Básica
 ```
 Semana4/
 ├── Dia1/
@@ -74,19 +85,23 @@ Semana4/
 │   ├── CONTEXTO_AGENTE.md
 │   ├── checklist.md
 │   ├── journal.md
-│   ├── package.json
-│   ├── tsconfig.json
+│   ├── requirements.txt (transformers, datasets, accelerate)
 │   ├── CONTEXTO_PROXIMO_DIA.md
-│   ├── template.ts (scaffolding nível 1 - conceito novo)
-│   ├── GUIA_PASSO_A_PASSO.md (guia detalhado Bun + Hono)
-│   └── exemplo_completo.ts (código completo comentado)
+│   ├── exemplo_completo.py (Nível 1 - conceito novo)
+│   └── GUIA_PASSO_A_PASSO.md (tutorial Hugging Face detalhado)
 ```
+**Consultar `1-Plano_Desenvolvimento.md` seção "SEMANA 4" para:**
+- Níveis de scaffolding pré-definidos (Dia 1: Nível 1)
+- Estrutura de tempo detalhada (120min: 5+15+60+20+15+5)
+- Objetivos e entregáveis específicos
+- Recursos e referências
 
 **Ordem sugerida:**
 1. Criar pasta `Semana4/Dia1/`
 2. Copiar templates de `TEMPLATE_ESTRUTURA_DIA.md` na raiz
-3. Preencher README.md com contexto específico da Semana 4
-4. Criar CONTEXTO_AGENTE.md
+3. **Se Opção B:** Consultar `SEMANA4_ALTERNATIVA_CORRIGIDA.md` para detalhes
+4. Preencher README.md com contexto específico da Semana 4
+5. Criar CONTEXTO_AGENTE.md
 5. Criar checklist.md detalhado
 
 **Como fazer:**
@@ -105,14 +120,14 @@ Estrutura consistente facilita navegação e aprendizado, mesmo mudando de lingu
 **Nível recomendado:** **1** (Iniciante)
 
 **Justificativa:**
-- **Conceito novo:** Bun + Hono é primeira exposição a runtime Bun e framework Hono
-- **Contexto novo:** TypeScript para backend (se não tiver experiência prévia)
-- **Primeira vez:** Construir API REST em TypeScript (diferente de Python)
+- **Conceito novo:** Hugging Face é primeira exposição a modelos open-source
+- **Contexto novo:** Transfer Learning e fine-tuning (conceitos novos)
+- **Primeira vez:** Trabalhar com modelos pré-treinados localmente
 
 **Arquivos necessários (Nível 1):**
-- `exemplo_completo.ts` - Código completo comentado linha por linha
-- `GUIA_PASSO_A_PASSO.md` - Tutorial muito detalhado sobre Bun + Hono
-- `template.ts` - Pode ser simplificado no Nível 1 (apenas para referência)
+- `exemplo_completo.py` - Código completo comentado linha por linha
+- `GUIA_PASSO_A_PASSO.md` - Tutorial muito detalhado sobre Hugging Face
+- Consultar `1-Plano_Desenvolvimento.md` seção "SEMANA 4" para estrutura completa
 
 **Como fazer:**
 - Consultar `METODOLOGIA_ENSINO.md` para entender níveis
@@ -126,53 +141,51 @@ Nível adequado garante aprendizado efetivo sem sobrecarga. Conceito novo = Nív
 
 ### 3. Criar Arquivos de Aprendizado
 
-#### exemplo_completo.ts (Nível 1)
+**⚠️ OBRIGATÓRIO:** Consultar `SEMANA4_ALTERNATIVA_CORRIGIDA.md` para estrutura completa de arquivos.
+
+#### exemplo_completo.py (Nível 1)
 **Estrutura sugerida:**
-```typescript
-// SEÇÃO 1: IMPORTS
-// Explicar por que cada import é necessário
+```python
+# SEÇÃO 1: IMPORTS
+# transformers, datasets, accelerate
 
-// SEÇÃO 2: CONFIGURAÇÃO
-// Setup do Bun, variáveis de ambiente
+# SEÇÃO 2: CARREGAR MODELO
+# Usar pipeline do Hugging Face
 
-// SEÇÃO 3: APP HONO
-// Criação da aplicação Hono
+# SEÇÃO 3: USAR MODELO
+# Exemplos práticos (sentiment analysis, text classification)
 
-// SEÇÃO 4: ENDPOINTS
-// Endpoints básicos comentados linha por linha
-
-// SEÇÃO 5: SERVIDOR
-// Inicialização do servidor Bun
+# SEÇÃO 4: COMPARAR COM APIs
+# Quando usar Hugging Face vs APIs (Groq/Gemini)
 ```
 
 **Explicações detalhadas:**
 - Cada linha deve ter comentário explicando o que faz
-- Comparações com FastAPI (quando aplicável)
-- Explicar diferenças entre Python e TypeScript
+- Comparações com APIs de IA (quando usar cada um)
+- Explicar vantagens de modelos locais vs APIs
 
 #### GUIA_PASSO_A_PASSO.md
 **Conteúdo sugerido:**
-1. **Introdução ao Bun**
-   - O que é Bun
-   - Por que é rápido
-   - Como instalar
-   - Comparação com Node.js
+1. **Introdução ao Hugging Face**
+   - O que é Hugging Face
+   - Ecossistema (Hub, Transformers, Datasets)
+   - Por que usar modelos open-source
+   - Comparação com APIs pagas
 
-2. **Introdução ao Hono**
-   - O que é Hono
-   - Filosofia do framework
-   - Comparação com Express/FastAPI
-   - Quando usar Hono
+2. **Modelos Pré-treinados**
+   - BERT, GPT-2, T5
+   - Como escolher modelo adequado
+   - Carregar modelos do Hub
 
-3. **TypeScript Server-side**
-   - Configuração básica
-   - Tipos para APIs
-   - Estrutura de projeto
+3. **Pipelines de NLP**
+   - Sentiment analysis
+   - Text classification
+   - Question answering
 
-4. **Primeiro Endpoint**
-   - Setup inicial
-   - Endpoint "Hello World"
-   - Testar localmente
+4. **Primeiro Uso**
+   - Instalar transformers
+   - Carregar modelo simples
+   - Fazer primeira predição
 
 ---
 
@@ -180,51 +193,52 @@ Nível adequado garante aprendizado efetivo sem sobrecarga. Conceito novo = Nív
 
 **⚠️ IMPORTANTE: Tempo Padronizado**
 
-**Fases (total 160min):**
+**Fases (total 120min):**
 - **Preparação (5min):** Revisar Semana 3, entender objetivo da Semana 4
-- **Leitura guiada (20min):** Ler GUIA_PASSO_A_PASSO.md sobre Bun + Hono
-- **Construção guiada (90min):** 
-  - Instalar Bun
-  - Configurar projeto TypeScript
-  - Criar esqueleto básico da API
-  - Implementar 1-2 endpoints simples (equivalente aos da Semana 3 Dia 1)
-- **Consolidação (25min):** Testar endpoints, comparar com FastAPI
-- **Registro/handoff (20min):** Preencher journal e CONTEXTO_PROXIMO_DIA
+- **Leitura guiada (15min):** Ler GUIA_PASSO_A_PASSO.md sobre Hugging Face
+- **Construção guiada (60min):** 
+  - Instalar transformers, datasets, accelerate
+  - Carregar modelo pré-treinado
+  - Usar pipeline de NLP
+  - Comparar com APIs (Groq/Gemini)
+- **Consolidação (20min):** Testar modelo, documentar diferenças
+- **Registro/handoff (15min):** Preencher journal e CONTEXTO_PROXIMO_DIA
+- **Buffer (5min):** Resolver bloqueios
 
 **Referências:**
-- Bun Documentation: https://bun.sh/docs
-- Hono Documentation: https://hono.dev/
-- Comparar com Dia 1 da Semana 3 (FastAPI básico)
+- Hugging Face Documentation: https://huggingface.co/docs/transformers
+- Hugging Face Hub: https://huggingface.co/models
+- Consultar `SEMANA4_ALTERNATIVA_CORRIGIDA.md` para detalhes completos
 
 ---
 
 ## 📚 Recursos de Preparação
 
 ### O que revisar antes de começar:
-- [ ] Dia 1 da Semana 3 (estrutura básica FastAPI) - para comparar
-- [ ] Dia 7 da Semana 3 (deploy em produção) - para entender onde chegamos
-- [ ] Conceitos básicos de TypeScript (se necessário)
+- [ ] Semana 1-2 (integração com APIs de IA) - para comparar
+- [ ] Semana 3 (backend FastAPI) - para entender contexto
+- [ ] Conceitos básicos de Python e ML (se necessário)
 
 ### Recursos úteis para ler:
-- [Bun Documentation](https://bun.sh/docs) - Introdução ao Bun runtime
-- [Hono Documentation](https://hono.dev/) - Framework Hono
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html) - Se não conhece TypeScript
-- YouTube: "Bun vs Node Performance 2025" - Comparação de performance
+- [Hugging Face Documentation](https://huggingface.co/docs/transformers) - Introdução ao Hugging Face
+- [Hugging Face Hub](https://huggingface.co/models) - Explorar modelos disponíveis
+- [1-Plano_Desenvolvimento.md](../../1-Plano_Desenvolvimento.md) seção "SEMANA 4" - Estrutura completa
+- YouTube: "Hugging Face Transformers Tutorial 2025"
 
 ### Conceitos pré-requisitos:
-- **JavaScript/TypeScript básico:** Variáveis, funções, objetos
-- **HTTP/REST:** Entender endpoints, métodos HTTP (já aprendido na Semana 3)
-- **APIs REST:** Conceitos básicos (já consolidado na Semana 3)
+- **Python básico:** Variáveis, funções, imports (já consolidado)
+- **APIs de IA:** Entender uso de LLMs (já aprendido na Semana 1-2)
+- **Machine Learning básico:** Conceitos de modelos e predição (será aprendido)
 
 ---
 
 ## 💡 Dicas Importantes
 
-1. **Comparação constante:** Sempre comparar com FastAPI da Semana 3
-2. **Mesma funcionalidade, linguagem diferente:** Objetivo é criar API equivalente
-3. **Foco em diferenças:** Prestar atenção nas diferenças entre Python e TypeScript
-4. **Stack diferente, conceitos similares:** Autenticação, endpoints, deploy são similares
-5. **Tempo:** Respeitar 160min (leitura/testes/docs inclusos)
+1. **Comparação constante:** Sempre comparar com APIs de IA da Semana 1-2
+2. **Modelos locais vs APIs:** Entender quando usar cada um
+3. **Foco em conceitos:** Transfer Learning, fine-tuning, embeddings
+4. **Python mantido:** Continuar usando Python (sem mudar linguagem)
+5. **Tempo:** Respeitar 120min (leitura/testes/docs inclusos)
 
 ---
 
@@ -234,34 +248,35 @@ Antes de começar, certifique-se de:
 
 - [ ] Semana 3 está completa (Dia 7 concluído)
 - [ ] API FastAPI está em produção e funcionando
-- [ ] Entende estrutura básica de REST APIs (já aprendido)
-- [ ] Tem noções básicas de JavaScript/TypeScript (se não, revisar antes)
-- [ ] Tem Node.js/Bun instalado (ou pode instalar)
-- [ ] Regra dos 160min confirmada
+- [ ] Entende uso de APIs de IA (já aprendido na Semana 1-2)
+- [ ] Tem Python 3.12 instalado e funcionando
+- [ ] Tem pip funcionando para instalar pacotes
+- [ ] Regra dos 120min confirmada
 
 ---
 
 ## 🔄 Transição Suave
 
-A Semana 4 é uma **expansão natural** da Semana 3:
+A Semana 4 é uma **expansão natural** do aprendizado em IA:
 
+- **Semana 1-2:** APIs de IA (Groq, Gemini, Claude) - uso de LLMs via API ✅
 - **Semana 3:** Backend Python (FastAPI) - API completa e em produção ✅
-- **Semana 4:** Backend TypeScript (Bun/Hono) - API equivalente, comparar stacks
+- **Semana 4:** IA Avançada (Hugging Face, MLFlow, Governança) - aprofundamento em IA
 
-O objetivo não é reescrever tudo, mas **aprender alternativa** e **comparar**:
-- Qual é mais rápido?
-- Qual tem melhor DX?
-- Qual você prefere?
+O objetivo é **aprender modelos open-source** e **governança**:
+- Quando usar modelos locais vs APIs?
+- Como fazer fine-tuning?
+- Como gerenciar ciclo de vida de modelos?
 
 ---
 
 ## 📝 Notas Finais
 
 A Semana 4 é uma oportunidade de:
-- **Aprender stack moderna:** Bun + Hono são tecnologias muito recentes e promissoras
-- **Comparar e decidir:** Ter informação suficiente para escolher stack para projeto final
-- **Expandir horizontes:** Ver que existem alternativas excelentes além de Python
-- **Entender trade-offs:** Nenhuma tecnologia é perfeita, entender prós e contras
+- **Aprender modelos open-source:** Hugging Face é padrão da indústria
+- **Aprofundar em IA:** Transfer Learning, fine-tuning, governança
+- **Diferencial competitivo:** Governança de IA é conhecimento raro e valioso
+- **Aplicar em produção:** MLFlow para gerenciar modelos em produção
 
 ---
 

@@ -1,115 +1,120 @@
 """
-Testes de chat e histórico.
-
-Este módulo contém testes para endpoints de chat:
-- Criação de conversa
-- Envio de mensagens
-- Listagem de conversas
-- Obtenção de mensagens
+Script de teste de chat
 """
-from fastapi.testclient import TestClient
+
+from requests import auth
 
 
-def test_create_conversation(client: TestClient, auth_headers: dict):
-    """Testa criação de nova conversa via chat."""
+def test_create_conversation(client, auth_headers):
+    """
+    Testa a criação de um chat
+    """
+
     response = client.post(
         "/chat",
         headers=auth_headers,
         json={
-            "message": "Olá!",
-            "stream": False
-        }
-    )
+            "message": "Olá, como vai?",
+            "stream": False,
+        })
+
     assert response.status_code == 200
     data = response.json()
     assert "conversation_id" in data
     assert "reply" in data
-    assert "user" in data
 
 
-def test_send_message(client: TestClient, auth_headers: dict):
-    """Testa envio de mensagem em conversa existente."""
-    # Criar conversa
+def test_send_message_with_exists_conversation(client, auth_headers):
+    """
+    Testa o envio de mensagem em uma conversa existente
+    """
+
     response1 = client.post(
         "/chat",
         headers=auth_headers,
-        json={"message": "Primeira mensagem", "stream": False}
-    )
+        json={
+            "message": "Olá, como vai?",
+            "stream": False,
+        })
+
     conversation_id = response1.json()["conversation_id"]
-    
-    # Enviar segunda mensagem
+
     response2 = client.post(
         "/chat",
         headers=auth_headers,
         json={
-            "message": "Segunda mensagem",
+            "message": "Teste conversa existente",
             "conversation_id": conversation_id,
-            "stream": False
+            "stream": False,
         }
     )
+
     assert response2.status_code == 200
-    assert response2.json()["conversation_id"] == conversation_id
+    data = response2.json()
+    assert "conversation_id" in data
+    assert "reply" in data
 
 
-def test_list_conversations(client: TestClient, auth_headers: dict):
-    """Testa listagem de conversas do usuário."""
-    # Criar algumas conversas
+def test_list_conversation(client, auth_headers):
+    """
+    Testa a listagem de uma conversa.
+    """
+
     for i in range(3):
-        client.post(
+        response = client.post(
             "/chat",
             headers=auth_headers,
-            json={"message": f"Mensagem {i}", "stream": False}
+            json={
+                "message": f"Mensagem teste {i}",
+                "stream": False,
+            }
         )
-    
-    # Listar conversas
+
     response = client.get("/conversations", headers=auth_headers)
+
     assert response.status_code == 200
     conversations = response.json()
+
     assert len(conversations) == 3
     assert all("id" in conv for conv in conversations)
     assert all("message_count" in conv for conv in conversations)
-    assert all("created_at" in conv for conv in conversations)
 
 
-def test_get_conversation_messages(client: TestClient, auth_headers: dict):
-    """Testa obtenção de mensagens de uma conversa."""
-    # Criar conversa com mensagens
+def test_get_messages_by_conversation_id(client, auth_headers):
+    """
+    Testa a listagem de mensagens de uma conversa.
+    """
+
     response1 = client.post(
         "/chat",
         headers=auth_headers,
-        json={"message": "Mensagem 1", "stream": False}
+        json={
+            "message": f"Teste lista mensagens 1",
+            "stream": False,
+        }
     )
-    conversation_id = response1.json()["conversation_id"]
-    
-    client.post(
+
+    conversation_id1 = response1.json()["conversation_id"]
+
+    response2 = client.post(
         "/chat",
         headers=auth_headers,
         json={
-            "message": "Mensagem 2",
-            "conversation_id": conversation_id,
-            "stream": False
+            "message": f"Teste lista mensagens 2",
+            "conversation_id": conversation_id1,
+            "stream": False,
         }
     )
-    
-    # Obter mensagens
-    response = client.get(
+
+    conversation_id = response2.json()["conversation_id"]  
+
+    response3 = client.get(
         f"/conversations/{conversation_id}/messages",
-        headers=auth_headers
+        headers=auth_headers,
     )
-    assert response.status_code == 200
-    messages = response.json()
-    assert len(messages) == 4  # 2 user + 2 assistant
+
+    assert response3.status_code == 200
+    messages = response3.json()
+    assert len(messages) == 4
     assert messages[0]["role"] == "user"
     assert messages[1]["role"] == "assistant"
-
-
-def test_get_conversation_not_found(client: TestClient, auth_headers: dict):
-    """Testa obtenção de mensagens de conversa inexistente."""
-    response = client.get(
-        "/conversations/invalid_id/messages",
-        headers=auth_headers
-    )
-    assert response.status_code == 404
-    data = response.json()
-    assert data["error"] == True
-    assert "não encontrada" in data["message"].lower()
